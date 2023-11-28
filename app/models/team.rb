@@ -8,8 +8,8 @@ class Team < ApplicationRecord
   has_many :team_players
   has_many :players, through: :team_players, source: :player
 
-  validates :club_name, presence: true
-  validates :age_level, presence: true
-  validates :category, presence: true
-  validates :city, presence: true
+  validates :club_name,
+            :age_level,
+            :category,
+            :city, presence: true
 end

@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates :category, presence: true, inclusion: { in: %w[coach player spectator],
                                                     message: "This is not a valid category" }
   validates :email, uniqueness: true
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :date_of_birth, presence: true
+  validates :first_name,
+            :last_name,
+            :date_of_birth, presence: true
 end
