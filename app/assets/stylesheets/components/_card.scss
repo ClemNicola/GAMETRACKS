@@ -1,0 +1,56 @@
+// show coach et player
+
+.pregame-card{
+  display: flex;
+  align-items: center;
+  width: 370px;
+  height: 124px;
+  box-shadow: 5px 5px 0px 0px #FF7517;
+  border-radius: 4px;
+  // modif à apporter ce n'est pas complet
+}
+
+.card-infos-orange{
+  width: 150px;
+  height: 159px;
+  border-radius: 4px;
+  border: 1px solid $orange;
+
+}
+
+.card-infos-white{
+  width: 150px;
+  height: 159px;
+  border-radius: 4px;
+  border: 1px solid $white;
+  // modif à apporter ce n'est pas complet
+}
+
+// Selcect player
+.card-select-player{
+  display: flex;
+  flex-direction: column;
+  width: 144px;
+  height: 130px;
+  border-radius: 4px;
+  background: $white;
+  box-shadow: 5px 5px 0px 0px rgba(255, 117, 23, 0.99);
+  // modif à apporter ce n'est pas complet
+}
+
+.card-opposite-team{
+  display: flex;
+  flex-direction: column;
+  width: 144px;
+  height: 130px;
+  border-radius: 4px;
+  border: 1px solid $orange;
+}
+
+// Player-stat
+
+.card-player{
+  width: 336px;
+  height: 245px;
+  display: flex;
+}
