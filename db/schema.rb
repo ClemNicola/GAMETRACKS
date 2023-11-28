@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_27_163957) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_28_170735) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,6 +57,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_27_163957) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "home?", default: false
     t.index ["game_id"], name: "index_participations_on_game_id"
     t.index ["team_id"], name: "index_participations_on_team_id"
     t.index ["user_id"], name: "index_participations_on_user_id"
@@ -138,15 +139,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_27_163957) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
-    t.string "first_name"
-    t.string "last_name"
+    t.string "name"
     t.date "date_of_birth"
     t.string "license_id"
     t.string "phone"
     t.string "sex"
     t.text "description"
     t.string "position"
-    t.float "height"
+    t.integer "height"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
