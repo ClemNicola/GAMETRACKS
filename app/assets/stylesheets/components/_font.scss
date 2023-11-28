@@ -1,0 +1,71 @@
+
+h1{
+  color: $white;
+  font-family: 'Archivo Black';
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+h3{
+  color: $white;
+  font-family: 'Archivo Black';
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+// level up your game
+h4{
+  color: $white;
+  font-family: 'Archivo Black';
+  font-size: 29px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+// -------
+
+h5{
+  color: $white;
+  font-family: 'Hind Guntur';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 25px;
+}
+
+// GAMETIME
+
+h1 .game-time{
+  text-shadow: 5px 5px 0px #FF7517;
+  font-family: 'Archivo Black';
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+}
+
+p .game-time{
+  color: var(--white, #FFF);
+  text-align: center;
+  font-family: 'Archivo Black';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+// game stat
+p{
+  color: $white;
+  font-family: 'Hind Guntur';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

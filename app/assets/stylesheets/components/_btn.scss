@@ -1,0 +1,165 @@
+// Btn Home
+.btn-login{
+  width: 139px;
+  height: 45px;
+  border-radius: 30px;
+  border: 2px solid $orange;
+  background-color: none;
+
+  a{
+    text-decoration: none;
+    color: $white;
+    font-family: 'Hind Guntur';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.btn-signup{
+  width: 139px;
+  height: 45px;
+  border-radius: 30px;
+  border: 2px solid $white;
+  background-color: none;
+
+  a{
+    text-decoration: none;
+    color: $orange;
+    font-family: 'Hind Guntur';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.btn-dashboard{
+  width: 355px;
+  height: 50px;
+  border-radius: 30px;
+  border: 2px solid $orange;
+  background-color: none;
+
+  a{
+    color: $white;
+    font-family: 'Hind Guntur';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+  }
+}
+
+
+// Show btn + remplacement save
+.btn-prepare-orange{
+  width: 240px;
+  height: 43px;
+  border-radius: 5px;
+  background: $orange;
+  box-shadow: 5px 5px 0px 0px #F6F4F4;
+
+  a{
+    text-decoration: none;
+    font-family: 'Hind Guntur';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: $white;
+  }
+}
+
+.btn-orange-classic{
+  width: 150px;
+  border-radius: 5px;
+  background: $orange;
+  box-shadow: 5px 5px 0px 0px #F6F4F4;height: 43px;
+
+  a{
+    text-decoration: none;
+    color: var(--white, #FFF);
+    font-family: 'Hind Guntur';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}
+
+.btn-edit{
+  height: 32px;
+  width: 40px;
+  border-radius: 4px;
+  border: 2px solid $orange;
+  background: #F4F6F6;
+}
+
+
+// Start game part
+
+.btn-green-round{
+  width: 70px;
+  height: 70px;
+  stroke-width: 2px;
+  stroke: #24FF00;
+
+  p{
+    color: white;
+    font-family: 'Archivo Black';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.btn-red-round{
+  width: 70px;
+  height: 70px;
+  stroke-width: 2px;
+  stroke: #F00;
+
+  p{
+    color: white;
+    font-family: 'Archivo Black';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.btn-white-round{
+  width: 70px;
+  height: 70px;
+  stroke-width: 2px;
+  stroke: $white;
+
+  p{
+    color: white;
+    font-family: 'Archivo Black';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.btn-rectangle{
+  width: 100px;
+  height: 28px;
+  border: 1px solid $orange;
+
+  p{
+    color: $white;
+    font-family: Archivo Black;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
