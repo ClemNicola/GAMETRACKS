@@ -1,0 +1,22 @@
+<h1>Your team</h1>
+
+<a href="<%= edit_game_players_selection_path(@game) %>" class="btn btn-secondary">Edit Players</a>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Position</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @selected_players.each do |player| %>
+      <tr>
+        <td><%= player.name %></td>
+        <td><%= player.position %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<a href="<%= start_game_path(@game) %>" class="btn btn-primary">Start Game</a>
