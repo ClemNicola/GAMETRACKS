@@ -1,12 +1,41 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.navbar {
+  overflow: hidden;
+  background-color: black;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar-right {
+  float: right;
   width: 40px;
+  height: 40px;
+  padding-right: 16px;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
 }
