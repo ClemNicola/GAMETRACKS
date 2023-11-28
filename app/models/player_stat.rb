@@ -1,7 +1,5 @@
 class PlayerStat < ApplicationRecord
   belongs_to :participation
-  belongs_to :player, through: :participations, source: :user
-  belongs_to :game_stat, through: :participations
 
   validates :minute,
             :point,

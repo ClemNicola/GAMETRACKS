@@ -3,7 +3,6 @@ class GameStat < ApplicationRecord
   has_many :teams
   has_many :users, through: :teams
   has_many :players_stat, through: :games
-  belongs_to :team_stats, through: :teams
 
   validates :point,
             :fg_made,

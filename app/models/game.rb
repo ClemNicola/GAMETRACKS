@@ -9,4 +9,12 @@ class Game < ApplicationRecord
             :time,
             :arena,
             :arena_address, presence: true
+
+  def home_team
+    teams.joins(:participations).where(participations: { home?: true }).distinct.first
+  end
+
+  def away_team
+    teams.joins(:participations).where(participations: { home?: false }).distinct.first
+  end
 end
