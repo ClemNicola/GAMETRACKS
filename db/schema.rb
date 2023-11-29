@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_28_170735) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_29_105104) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,10 +80,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_170735) do
     t.integer "block"
     t.integer "fault"
     t.integer "evaluation"
-    t.bigint "participations_id", null: false
+    t.bigint "participation_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["participations_id"], name: "index_player_stats_on_participations_id"
+    t.index ["participation_id"], name: "index_player_stats_on_participation_id"
   end
 
   create_table "team_players", force: :cascade do |t|
@@ -157,7 +157,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_170735) do
   add_foreign_key "participations", "games"
   add_foreign_key "participations", "teams"
   add_foreign_key "participations", "users"
-  add_foreign_key "player_stats", "participations", column: "participations_id"
+  add_foreign_key "player_stats", "participations"
   add_foreign_key "team_players", "teams"
   add_foreign_key "team_players", "users"
   add_foreign_key "team_stats", "teams"

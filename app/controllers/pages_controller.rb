@@ -4,7 +4,5 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
-    # Display the homepage content
   end
 end
-
