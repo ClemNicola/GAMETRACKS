@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :players
 
   resources :coaches, only: %i[new edit update delete] do
-    resources :participations, execpt: %i[index]
+    resources :participations, except: %i[index]
   end
 
   resources :player_stats, except: %i[show index] do

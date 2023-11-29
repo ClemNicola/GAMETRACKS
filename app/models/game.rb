@@ -25,4 +25,5 @@ class Game < ApplicationRecord
   def away_team_stats
     Participation.where(game: self, team: away_team).map(&:player_stat)
   end
+
 end
