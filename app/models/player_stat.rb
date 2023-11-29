@@ -1,5 +1,6 @@
 class PlayerStat < ApplicationRecord
   belongs_to :participation
+  delegate :user, to: :participation, allow_nil: true, prefix: false
 
   validates :minute,
             :point,
