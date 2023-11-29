@@ -77,6 +77,7 @@ competition_url_api = "https://api.sportradar.com/basketball/trial/v2/en/seasons
 json_parsed = JSON.parse(URI.open(competition_url_api).read)
 
 # On va chercher la data des équipes générées
+list_coach = [coach_alex.id, coach_abdes.id, coach_clement.id, coach_pierre.id]
 json_parsed["season_competitors"].take(4).each do |team|
   p team_id = team["id"]
   team = Team.create(
@@ -84,7 +85,7 @@ json_parsed["season_competitors"].take(4).each do |team|
     age_level: "Seniors",
     category: "PRO A",
     city: team["short_name"],
-    coach_id: [coach_alex.id, coach_abdes.id, coach_clement.id, coach_pierre.id].pop
+    coach_id: list_coach.pop
   )
 
   puts "#{team.club_name} #{team.city} created"

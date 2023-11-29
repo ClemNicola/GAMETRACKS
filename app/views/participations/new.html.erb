@@ -1,1 +1,37 @@
-<h1>Participations</h1>
+<div class="container">
+  <h3>Select your players</h3>
+  <p class="game-time">x/10</p>
+  <h5>Center</h5>
+  <div class="card-select-players">
+  <% @players_list.each do |player| %>
+    <% if player.position == "C" %>
+    <div class="card-select-player">
+      <p><%= player.name %></p>
+    </div>
+    <% end %>
+  <% end %>
+  </div>
+  <h5>Forward</h5>
+  <div class="card-select-players">
+  <% @players_list.each do |player| %>
+    <% if player.position == "F" %>
+    <div class="card-select-player">
+      <p><%= player.name %></p>
+    </div>
+    <% end %>
+  <% end %>
+  </div>
+  <h5>Guard</h5>
+  <div class="card-select-players">
+  <% @players_list.each do |player| %>
+    <% if player.position == "G" %>
+    <div class="card-select-player">
+      <p><%= player.name %></p>
+    </div>
+    <% end %>
+  <% end %>
+  </div>
+  <div class="container-flex">
+    <button class="btn-orange-classic">Next ></button>
+  </div>
+</div>

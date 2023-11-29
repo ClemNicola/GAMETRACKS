@@ -26,16 +26,25 @@
   // modif à apporter ce n'est pas complet
 }
 
-// Selcect player
-.card-select-player{
+// Select player
+.card-select-players {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+}
+
+.card-select-player{
   width: 144px;
   height: 130px;
   border-radius: 4px;
   background: $white;
   box-shadow: 5px 5px 0px 0px rgba(255, 117, 23, 0.99);
+  margin: 0px 8px;
   // modif à apporter ce n'est pas complet
+}
+
+.container-flex {
+  display: flex;
+  justify-content: center;
 }
 
 .card-opposite-team{
