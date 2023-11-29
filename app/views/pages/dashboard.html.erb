@@ -1,1 +1,54 @@
-<h1>Dashboard user</h1>
+
+<div class="title-container">
+  <h3>Next Game</h3>
+</div>
+
+<div class="card-game-container">
+  <div class="pregame-card">
+    <div class="card-info">
+      <img src="<%= @team && @team.photo.present? ?cl_image_path(team.photo.key) :asset_path('Tours.png')%>" alt="">
+      <p><%= Time.now.strftime("%Y-%m-%d")%></p>
+      <img src="<%= @team && @team.photo.present? ?cl_image_path(team.photo.key) :asset_path('Pau.png')%>" alt="">
+    </div>
+    <div class="name-hour">
+      <p>Tours</p>
+      <p>15:30</p>
+      <p>Pau</p>
+    </div>
+  </div>
+  <%= link_to "Prepare your game", dashboard_path, class: "btn-dashboard"%>
+</div>
+
+<div class="title-container">
+  <h3>Your Team Stats</h3>
+</div>
+
+<div class="card-stats-container">
+  <div class="parent">
+   <div class="card-infos-orange-img">
+      <p>W6 - 2L</p>
+      <div class="ratio-logo">
+        <div class="ratio">
+         <h4>61%</h4>
+          <p>Winrate</p>
+        </div>
+        <img src="<%= asset_path('Tours.png')%>" alt="">
+      </div>
+    </div>
+    <div class="card-infos-white">
+      <h4>75 pts</h4>
+      <p>scored / game</p>
+    </div>
+    <div class="card-infos-white">
+      <h4>3rd</h4>
+      <p>championship</p>
+    </div>
+    <div class="card-infos-orange-img">
+      <div class="MVP-info">
+        <p>Last</p>
+        <h4>MVP</h4>
+      </div>
+      <img id='curry' src="<%= asset_path('curry.png')%>" alt="">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,105 @@
+body{
+  background-color: black;
+}
+
+.title-container{
+  width:100%;
+  margin: 0px auto;
+  padding: 14px;
+
+  h3{
+    border-left: 4px solid $orange;
+  }
+}
+
+.card-game-container{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.card-info{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  p{
+    color: $lighter-black;
+    margin: 0px;
+  }
+}
+
+.card-info img{
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.name-hour{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  p{
+    color: $lighter-black;
+    padding: 5px 15px;
+    font-weight: 300;
+  }
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 2rem;
+  row-gap: 2rem;
+}
+
+.card-stats-container{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.card-infos-orange-img{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 150px;
+  height: 159px;
+  border-radius: 4px;
+  border: 1px solid $orange;
+  p{
+    text-align: center;
+  }
+}
+
+.ratio-logo{
+  display: flex;
+  align-items: center;
+  img{
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+  }
+}
+
+.ratio{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.MVP-info{
+  p, h4{
+    text-align: left;
+    margin: 0px;
+  }
+}
+
+#curry{
+  max-width: 90%;
+  max-height: 100%;
+  object-fit: contain;
+}
