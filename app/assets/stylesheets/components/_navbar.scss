@@ -19,9 +19,11 @@ body {
 
 .navbar-right {
   float: right;
-  width: 40px;
-  height: 40px;
   padding-right: 16px;
+  img{
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .dropdown {
@@ -33,9 +35,20 @@ body {
   font-size: 16px;
   border: none;
   outline: none;
-  color: white;
   padding: 14px 16px;
   background-color: inherit;
-  font-family: inherit;
   margin: 0;
+  color: $white;
+  .fa-caret-down{
+    margin-left: 0.5em;
+  }
+}
+
+#navbar{
+  font-size: 18px;
+  color: $white;
+  font-family: 'Hind Guntur';
+  font-weight:600;
+  border-bottom: 4px solid $orange;
+  margin: none;
 }
