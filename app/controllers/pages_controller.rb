@@ -4,10 +4,11 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[home dashboard]
 
   def home
+    @skip_navbar = true
+    @skip_footer = true
   end
 
   def dashboard
     @user = current_user
   end
-
 end
