@@ -1,0 +1,95 @@
+#global::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.3;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#global > * {
+  z-index: 1;
+}
+
+.img1 {
+  background-image: asset-url('joueur_1.jpg');
+}
+
+.img2 {
+  background-image: asset-url('joueur_2.jpg');
+}
+
+.img3 {
+  background-image: asset-url('joueur_3.jpg');
+}
+
+#global {
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#homepagelogo {
+  height: 70px;
+}
+
+#divlogo {
+  display: flex;
+  justify-content: center;
+}
+
+#divgametracks {
+  display: flex;
+  margin-top: 16px;
+  margin-left: -150px;
+}
+
+#divlevelupyourgame {
+  display: flex;
+  margin-top: 200px;
+  margin-left: -80px;
+}
+
+#levelup {
+  border-bottom: 4px solid $orange;
+}
+
+#divbtn {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 275px;
+  width: 80%;
+}
+
+.btn-login {
+  text-decoration: none;
+  color: $white;
+  padding-top: 8px;
+  text-align: center;
+}
+
+.btn-signup {
+  text-decoration: none;
+  color: $orange;
+  padding: 4px 8px;
+  padding-top: 8px;
+  text-align: center;
+}
+
+.btn-dashboard {
+  text-decoration: none;
+  color: $white;
+  padding-top: 8px;
+  text-align: center;
+}
