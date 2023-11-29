@@ -8,6 +8,7 @@ class Team < ApplicationRecord
   has_one :team_stats
   has_many :team_players
   has_many :players, through: :team_players, source: :player
+  has_one_attached :photo
 
   # validates :club_name,
   #           :age_level,
