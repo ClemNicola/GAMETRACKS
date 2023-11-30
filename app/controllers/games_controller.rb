@@ -13,6 +13,7 @@ class GamesController < ApplicationController
   end
 
   def set_participations
+    # TBC
   end
 
   private

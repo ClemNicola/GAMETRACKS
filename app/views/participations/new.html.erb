@@ -2,15 +2,10 @@
   <h3>Select your players</h3>
   <p class="new-part-right">x/10</p>
 
-<%#= simple_form_for @players do |f| %>
-  <%#= f.input :game_id, as: :boolean %>
-  <%#= f.button :submit %>
-<%# end %>
-
   <h5>Center</h5>
   <div class="card-select-players">
   <% @players_list.each do |player| %>
-    <% if player.position == "C" %>
+    <%# if player.position == "C" %>
     <div class="card-select-player">
       <img src="<%= player && player.photo.present? ?cl_image_path(player.photo.key) :asset_path('curry.png')%>" alt="player_picture">
       <div class="flex-text"><p><%= player.name %></p></div>
@@ -21,26 +16,27 @@
   <h5>Forward</h5>
   <div class="card-select-players">
   <% @players_list.each do |player| %>
-    <% if player.position == "F" %>
+    <%# if player.position == "F" %>
     <div class="card-select-player">
       <img src="<%= player && player.photo.present? ?cl_image_path(player.photo.key) :asset_path('curry.png')%>" alt="player_picture">
       <div class="flex-text"><p><%= player.name %></p></div>
     </div>
-    <% end %>
+    <%# end %>
   <% end %>
   </div>
   <h5>Guard</h5>
   <div class="card-select-players">
   <%= form_with url:  set_participations_game_path(@game), method: :post, class: "d-flex" do %>
-    <% @players_list.each do |player| %>
+    <% @players_list.keys.each do |key| %>
+    <%= key.name %>
       <%= label_tag "player_#{player.id}", player.name %>
       <input type="checkbox" name="players[]" id="player_<%= player.id %>" value="<%= player.id %>">
-      <% if player.position == "G" %>
+      <%# if player.position == "G" %>
       <div class="card-select-player">
         <img src="<%= player && player.photo.present? ?cl_image_path(player.photo.key) :asset_path('curry.png')%>" alt="player_picture">
         <div class="flex-text"><p><%= player.name %></p></div>
       </div>
-      <% end %>
+      <%# end %>
     <% end %>
     <%= submit_tag "Next", class: "btn-orange-classic" %>
   <% end %>
