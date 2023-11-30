@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   get "dashboard", to: "pages#dashboard"
   get "calendar", to: "pages#calendar"
 
+  resources :games, only: :show do
+    member do
+      get :stats
+    end
+  end
+
   resources :coaches, only: %i[new edit update delete] do
     resources :teams, except: %i[show index]
   end
