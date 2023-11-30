@@ -122,7 +122,13 @@ other_teams = Team.where.not(id: my_team)
 
 Game.all.each do |game|
   home = [true, false].sample
-
+  # Create participation for coach
+  Participation.create(
+    team: my_team,
+    user: my_team.coach,
+    game: game,
+    home?: home
+  )
   my_team.players.each do |player|
     Participation.create(
       team: player.teams.first,
@@ -136,10 +142,18 @@ end
 Game.all.each_with_index do |game, index|
   break if other_teams.count == index
 
-  home = !game.teams.first.participations.first.home?
+  home = !game.teams.find{|team| team == Team.first }.participations.first.home?
+
 
   puts "Creating participation for team #{index}"
 
+  # Create participation for coach
+  Participation.create(
+    team: other_teams[index],
+    user: other_teams[index].coach,
+    game: game,
+    home?: home
+  )
   other_teams[index].players.each do |player|
     Participation.create(
       team: player.teams.first,
