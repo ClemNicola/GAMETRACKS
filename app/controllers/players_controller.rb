@@ -15,7 +15,13 @@ class PlayersController < ApplicationController
   end
 
   def index
-    @players = Player.all
+    @user = current_user
+    @team = Team.find_by(coach: @user)
+    if @team
+      @players = @team.players
+    else
+      @players = []
+    end
   end
 
   def show

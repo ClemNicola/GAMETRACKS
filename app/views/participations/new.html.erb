@@ -1,12 +1,13 @@
 <div class="container">
   <h3>Select your players</h3>
-  <p class="game-time">x/10</p>
+  <p class="new-part-right">x/10</p>
   <h5>Center</h5>
   <div class="card-select-players">
   <% @players_list.each do |player| %>
     <% if player.position == "C" %>
     <div class="card-select-player">
-      <p><%= player.name %></p>
+      <img src="<%= player && player.photo.present? ?cl_image_path(player.photo.key) :asset_path('curry.png')%>" alt="player_picture">
+      <div class="flex-text"><p><%= player.name %></p></div>
     </div>
     <% end %>
   <% end %>
@@ -16,7 +17,8 @@
   <% @players_list.each do |player| %>
     <% if player.position == "F" %>
     <div class="card-select-player">
-      <p><%= player.name %></p>
+      <img src="<%= player && player.photo.present? ?cl_image_path(player.photo.key) :asset_path('curry.png')%>" alt="player_picture">
+      <div class="flex-text"><p><%= player.name %></p></div>
     </div>
     <% end %>
   <% end %>
@@ -26,7 +28,8 @@
   <% @players_list.each do |player| %>
     <% if player.position == "G" %>
     <div class="card-select-player">
-      <p><%= player.name %></p>
+      <img src="<%= player && player.photo.present? ?cl_image_path(player.photo.key) :asset_path('curry.png')%>" alt="player_picture">
+      <div class="flex-text"><p><%= player.name %></p></div>
     </div>
     <% end %>
   <% end %>

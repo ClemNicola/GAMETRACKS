@@ -1,7 +1,5 @@
 class Team < ApplicationRecord
   belongs_to :coach, class_name: :User, foreign_key: :coach_id
-  # has_one_attached :photo
-  # has_many :players, class_name: :User, foreign_key: :player_id
   has_many :participations
   has_many :games, through: :participations
   has_many :game_stats
