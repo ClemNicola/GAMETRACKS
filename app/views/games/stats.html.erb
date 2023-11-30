@@ -40,13 +40,13 @@
           <td><%= stat.block %></td>
           <td><%= stat.fg_made %></td>
           <td><%= stat.fg_attempt %></td>
-          <td><%= stat.fg_made != 0 ? (stat.fg_made / stat.fg_attempt * 100) : 0 %></td>
+          <td><%= stat.fg_made != 0 ? (stat.fg_made.fdiv(stat.fg_attempt) * 100).round(1) : 0 %></td>
           <td><%= stat.threep_made %></td>
           <td><%= stat.threep_attempt %></td>
-          <td><%= stat.threep_made != 0 ? (stat.threep_made / stat.threep_attempt * 100) : 0 %></td>
+          <td><%= stat.threep_made != 0 ? (stat.threep_made.fdiv(stat.threep_attempt) * 100).round(1) : 0 %></td>
           <td><%= stat.ft_made %></td>
           <td><%= stat.ft_attempt %></td>
-          <td><%= stat.ft_made != 0 ? (stat.ft_made / stat.ft_attempt * 100) : 0 %></td>
+          <td><%= stat.ft_made != 0 ? (stat.ft_made.fdiv(stat.ft_attempt) * 100).round(1) : 0 %></td>
           <td><%= stat.off_rebound %></td>
           <td><%= stat.def_rebound %></td>
           <td><%= stat.turnover %></td>
