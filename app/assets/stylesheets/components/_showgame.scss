@@ -3,12 +3,14 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 23vh;
+  height: 29vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   margin-top: 225px;
+  width: 100vw;
+  position: relative;
 }
 
 .terrainimg {
@@ -52,15 +54,17 @@
 .divclass1 {
   display: flex;
   flex-direction: column;
-  position: relative;
-  top: -20px;
+  position: fixed;
+  top: 23vh;
+  align-items: baseline;
+  height: 100%;
 }
 
 .divclass2 {
   display: flex;
   justify-content: space-between;
-  position: relative;
-  top: -150px;
+  position: fixed;
+  top: 27vh;
 }
 
 .divclass21 {
@@ -77,6 +81,6 @@
 .divclass3 {
   display: flex;
   flex-direction: column;
-  position: relative;
-  top: -130px;
+  position: fixed;
+  top: 53vh;
 }
