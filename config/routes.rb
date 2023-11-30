@@ -6,6 +6,12 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "dashboard", to: "pages#dashboard"
 
+  resources :games, only: :show do
+    member do
+      get :stats
+    end
+  end
+
   resources :coaches, only: %i[new edit update delete] do
     resources :teams, except: %i[show index]
   end
