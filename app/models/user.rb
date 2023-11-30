@@ -11,9 +11,9 @@ class User < ApplicationRecord
   has_many :participations
   has_many :games, through: :participations
 
-  # validates :category, presence: true, inclusion: { in: %w[Coach Player Spectator],
-  #                                                   message: "This is not a valid category" }
-  # validates :email, uniqueness: true
-  # validates :name,
-  #           :date_of_birth, presence: true
+  validates :category, presence: true, inclusion: { in: %w[Coach Player Spectator] }
+  validates :email, presence: true, uniqueness: true
+  validates :encrypted_password, presence: true
+  validates :name, presence: true
+  # validates :date_of_birth, presence: true
 end

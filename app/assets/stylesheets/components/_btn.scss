@@ -35,22 +35,24 @@
   }
 }
 
-.btn-dashboard{
-  width: 355px;
-  height: 50px;
-  border-radius: 30px;
-  border: 2px solid $orange;
-  background-color: none;
-
-  a{
+.btn-dashboard {
+    width: 70%;
+    height: 40px;
+    border-radius: 5px;
+    background-color: $orange;
     color: $white;
     font-family: 'Hind Guntur';
-    font-size: 24px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     text-decoration: none;
-  }
+    box-shadow: 5px 5px 0px 0px #F6F4F4;
+    margin-top: 2rem;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -78,6 +80,7 @@
   border-radius: 5px;
   background: $orange;
   box-shadow: 5px 5px 0px 0px #F6F4F4;height: 43px;
+  margin: 20px 0px;
 
   a{
     text-decoration: none;
