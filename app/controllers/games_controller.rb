@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_player, only: [:show]
+  before_action :set_game, only: [:show]
 
   def stats
     @game = Game.find(params[:id])
