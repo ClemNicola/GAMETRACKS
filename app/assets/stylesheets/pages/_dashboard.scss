@@ -6,10 +6,14 @@ body{
   width:100%;
   margin: 0px auto;
   padding: 14px;
-
   h3{
     border-left: 4px solid $orange;
   }
+}
+
+#Team{
+  margin-top: 2rem;
+  border-left: 4px solid $orange;
 }
 
 .card-game-container{
@@ -62,6 +66,14 @@ body{
   margin-bottom: 10px;
 }
 
+.card-infos-white a{
+  text-decoration: none;
+  color: $white;
+  border-bottom: 2px solid $orange;
+  font-family: 'Hind Guntur';
+  font-weight: 500;
+}
+
 .card-infos-orange-img{
   display: flex;
   flex-direction: column;
@@ -85,10 +97,10 @@ body{
   }
 }
 
-.ratio{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.info-ratio{
+ h4, p {
+  margin-bottom: 0px;
+ }
 }
 
 .MVP-info{
