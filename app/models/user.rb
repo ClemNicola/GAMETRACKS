@@ -16,5 +16,4 @@ class User < ApplicationRecord
   validates :encrypted_password, presence: true
   validates :name, presence: true
   # validates :date_of_birth, presence: true
-
 end

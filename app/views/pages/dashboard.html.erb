@@ -16,11 +16,11 @@
       <p>Pau</p>
     </div>
   </div>
-  <%= link_to "Prepare your game", dashboard_path, class: "btn-dashboard"%>
+  <%= link_to "Prepare your game", new_coach_participation_path(current_user), class: "btn-dashboard"%>
 </div>
 
 <div class="title-container">
-  <h3>Your Team Stats</h3>
+  <h3 id='Team'>Your Team Stats</h3>
 </div>
 
 <div class="card-stats-container">
@@ -28,7 +28,7 @@
    <div class="card-infos-orange-img">
       <p>W6 - 2L</p>
       <div class="ratio-logo">
-        <div class="ratio">
+        <div class="info-ratio">
          <h4>61%</h4>
           <p>Winrate</p>
         </div>
@@ -42,6 +42,7 @@
     <div class="card-infos-white">
       <h4>3rd</h4>
       <p>championship</p>
+      <a target ="_blank" href="https://nm1.ffbb.com/classement">go to ranking ></a>
     </div>
     <div class="card-infos-orange-img">
       <div class="MVP-info">
