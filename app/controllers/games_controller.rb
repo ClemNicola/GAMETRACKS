@@ -1,6 +1,11 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show]
 
+  def stats
+    @game = Game.find(params[:id])
+    @home_team_stats = @game.home_team_stats
+  end
+
   def show
   end
 
