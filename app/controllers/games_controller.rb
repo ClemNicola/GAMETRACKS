@@ -18,7 +18,6 @@ class GamesController < ApplicationController
   end
 
   def set_participations
-    raise
   end
 
   private

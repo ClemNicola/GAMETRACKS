@@ -4,7 +4,6 @@ class ParticipationsController < ApplicationController
     @user = current_user
     @team = Team.where(coach: @user)
     @players_list = @team.first.players.all
-    raise
     @game = Game.find(params[:game_id])
   end
 
