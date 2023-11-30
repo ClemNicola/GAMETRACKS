@@ -4,19 +4,22 @@
 </div>
 
 <div class="card-game-container">
-  <div class="pregame-card">
-    <div class="card-info">
-      <img src="<%= @team && @team.photo.present? ?cl_image_path(team.photo.key) :asset_path('Tours.png')%>" alt="">
-      <p><%= Time.now.strftime("%Y-%m-%d")%></p>
-      <img src="<%= @team && @team.photo.present? ?cl_image_path(team.photo.key) :asset_path('Pau.png')%>" alt="">
+  <% if @next_game %>
+    <div class="pregame-card">
+      <div class="card-info">
+        <img src="<%= @home_team && @home_team.photo.present? ?cl_image_path(@home_team.photo.key) :asset_path('Tours.png')%>" alt="">
+        <p><%= Time.now.strftime("%Y-%m-%d")%></p>
+        <img src="<%= @away_team && @away_team.photo.present? ?cl_image_path(@away_team.photo.key) :asset_path('Pau.png')%>" alt="">
+      </div>
+      <div class="name-hour">
+        <p><%= @home_team.club_name %></p>
+        <p><%= @next_game.time.strftime("%Hh%M") %></p>
+        <p><%= @away_team.club_name %></p>
+
+      </div>
     </div>
-    <div class="name-hour">
-      <p>Tours</p>
-      <p>15:30</p>
-      <p>Pau</p>
-    </div>
-  </div>
-  <%= link_to "Prepare your game", new_coach_participation_path(current_user), class: "btn-dashboard"%>
+    <%= link_to "Prepare your game", new_game_participation_path(@next_game), class: "btn-dashboard"%>
+  <% end %>
 </div>
 
 <div class="title-container">
