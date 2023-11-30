@@ -36,6 +36,7 @@ h5{
   font-style: normal;
   font-weight: 700;
   line-height: 25px;
+  margin: 14px 0px 3px 0px;
 }
 
 // GAMETIME
@@ -68,4 +69,29 @@ p{
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+// New-Participation
+.new-part-right {
+  text-align: right;
+  margin-right: 40px;
+  margin-top: 15px;
+  color: $white;
+  font-family: Archivo Black;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.flex-text p {
+  color: $black;
+  text-align: center;
+  font-family: Hind Guntur;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px;
+  margin: 0px;
+  width: 140px;
 }
