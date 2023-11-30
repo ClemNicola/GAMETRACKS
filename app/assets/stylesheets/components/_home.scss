@@ -27,6 +27,10 @@
   background-image: asset-url('joueur_3.jpg');
 }
 
+.img4 {
+  background-image: asset-url('joueur_4.jpg');
+}
+
 #global {
   margin: 0;
   padding: 0;
@@ -92,4 +96,8 @@
   color: $white;
   padding-top: 8px;
   text-align: center;
+}
+
+.btn-center {
+  margin-left: 102px;
 }

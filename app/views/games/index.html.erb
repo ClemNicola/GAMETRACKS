@@ -1,0 +1,11 @@
+<% @games.each do |game| %>
+
+  <%= link_to game_path(game) do %>
+
+    <div>
+      <%= game.arena %>
+    </div>
+
+  <% end %>
+
+<% end %>
