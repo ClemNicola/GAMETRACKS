@@ -48,8 +48,11 @@
     line-height: normal;
     text-decoration: none;
     box-shadow: 5px 5px 0px 0px #F6F4F4;
-    margin-top: 15px;
+    margin-top: 2rem;
     text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -78,6 +81,7 @@
   background: $orange;
   box-shadow: 5px 5px 0px 0px #F6F4F4;height: 43px;
   margin: 20px 0px;
+  color: $white;
 
   a{
     text-decoration: none;
