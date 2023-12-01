@@ -12,10 +12,11 @@
         <img src="<%= @away_team && @away_team.photo.present? ?cl_image_path(@away_team.photo.key) :asset_path('Pau.png')%>" alt="">
       </div>
       <div class="name-hour">
-        <p><%= @home_team.city %></p>
-        <p><%= @next_game.time.strftime("%Hh%M") %></p>
-        <p><%= @away_team.city %></p>
-
+        <% unless @next_game.nil? %>
+          <p><%= @home_team.city %></p>
+          <p><%= @next_game.time.strftime("%Hh%M") %></p>
+          <p><%= @away_team.city %></p>
+        <% end %>
       </div>
     </div>
     <%= link_to "Prepare your game", new_game_participation_path(@next_game), class: "btn-dashboard"%>
