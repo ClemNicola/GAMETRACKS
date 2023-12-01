@@ -21,5 +21,4 @@ class ParticipationsController < ApplicationController
   def participation_params
     params.require(:participation).permit(:team_id, :game_id, :player_id)
   end
-
 end

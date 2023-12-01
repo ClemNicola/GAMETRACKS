@@ -78,14 +78,14 @@ json_parsed = JSON.parse(URI.open(competition_url_api).read)
 
 # On va chercher la data des équipes générées
 list_coach = [coach_alex.id, coach_abdes.id, coach_clement.id, coach_pierre.id]
-json_parsed["season_competitors"].take(4).each do |team|
+json_parsed["season_competitors"].take(4).each_with_index do |team, index|
   p team_id = team["id"]
   team = Team.create(
     club_name: team["name"],
     age_level: "Seniors",
     category: "PRO A",
     city: team["short_name"],
-    coach_id: list_coach.pop
+    coach_id: list_coach[index]
   )
 
   puts "#{team.club_name} #{team.city} created"
