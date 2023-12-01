@@ -39,7 +39,7 @@
 .card-select-players {
   display: flex;
   flex-direction: column;
-  width: 115px;
+  width: 100%;
 }
 
 .card-select-player{
@@ -62,7 +62,8 @@
 
 .container-flex {
   display: flex;
-  justify-content: center;
+  white-space: nowrap;
+  overflow-x: auto;
 }
 
 .card-opposite-team{
@@ -95,4 +96,9 @@
   width: 336px;
   height: 245px;
   display: flex;
+}
+
+.btn-flex {
+  display: flex;
+  justify-content: center;
 }
