@@ -92,7 +92,11 @@
 
 <div class='chart-container' data-controller='chart'>
   <div class= 'card' data-chart-id-value = 'chart'>
-   <%= column_chart(
+    <%= column_chart(@game.home_stats_for_chart, id: 'chart')%>
+  </div>
+</div>
+
+   <%# <%= column_chart(
   {
     "Game Team Stats" => @game.home_stats_for_chart,
     "Total Team Stats" => @game.previous_home_stats
@@ -102,8 +106,6 @@
       0 => { type: "column" },
       1 => { type: "column" }
     }
-  },
-  id: 'chart'
+  }, %>
+  <%# id: 'chart' %>
 ) %>
-  </div>
-</div>
