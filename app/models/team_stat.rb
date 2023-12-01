@@ -20,3 +20,9 @@ class TeamStat < ApplicationRecord
             :total_fault,
             :total_evaluation, numericality: { only_integer: true }
 end
+
+def rebound
+  total_off_rebound + total_def_rebound
+end
+
+
