@@ -56,7 +56,6 @@ class Game < ApplicationRecord
     stats
   end
 
-
   def previous_home_stats
     averages = {}
     outputs = %i(total_point total_off_rebound total_def_rebound total_assist total_turnover)
