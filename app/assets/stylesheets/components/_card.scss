@@ -43,7 +43,8 @@
 }
 
 .card-select-player{
-  height: 130px;
+  height: 144px;
+  width: 130px;
   border-radius: 4px;
   background: $white;
   box-shadow: 5px 5px 0px 0px rgba(255, 117, 23, 0.99);
@@ -82,6 +83,11 @@
 
 .label-class {
   background-image: url('curry.png');
+}
+
+.d-flex {
+  display: flex;
+  flex-direction: column;
 }
 
 // Player-stat
