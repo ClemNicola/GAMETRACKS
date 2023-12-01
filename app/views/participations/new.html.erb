@@ -10,7 +10,7 @@
       <img src="<%= player && player.photo.present? ?cl_image_path(player.photo.key) :asset_path('curry.png')%>" alt="player_picture">
       <div class="flex-text"><p><%= player.name %></p></div>
     </div>
-    <% end %>
+    <%# end %>
   <% end %>
   </div>
   <h5>Forward</h5>
@@ -39,12 +39,10 @@
       <%# end %>
     <% end %>
     <%= submit_tag "Next", class: "btn-orange-classic" %>
-  <% end %>
+  <%# end %>
   </div>
   <div class="container-flex">
-    <%# <%= link_to "Next >", game_path(@game), class: "btn-orange-classic" %> %>
-    <button class="btn-orange-classic">Next ></button>
+    <%=# link_to "Next >", game_path(@game), class: "btn-orange-classic" %>
+    <%# <button class="btn-orange-classic">Next </button> %>
   </div>
-
-
 </div>
