@@ -24,4 +24,12 @@ class PlayerStat < ApplicationRecord
     first_name = "#{user.name.split(', ').last[0]}."
     [last_name, first_name].join(' ')
   end
+
+  def eval_player
+    ( point + off_rebound + def_rebound +  assist + steal + block ) - ( fg_attempt - fg_made - ft_attempt - ft_made - turnover )
+  end
+
+  def rebound
+    off_rebound + def_rebound
+  end
 end
