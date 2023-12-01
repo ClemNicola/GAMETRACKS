@@ -4,9 +4,11 @@
 
     <h3>Your Team :</h3>
 
-    <span class="material-symbols-outlined editsymbol">
-      edit
-    </span>
+    <%= link_to new_game_participation_path(@game) do %>
+      <span class="material-symbols-outlined editsymbol">
+        edit
+      </span>
+    <% end %>
 
   </div>
 
@@ -41,6 +43,7 @@
 
   </div>
 
-  <%= link_to "Start Game", new_player_stat_path, class: "btn-orange-classic startgame" %>
+  <%# <%= link_to "Start Game", new_player_stat_path, class: "btn-orange-classic startgame" %>
+    <%= link_to "Start Game", fake_new_path, class: "btn-orange-classic startgame" %>
 
 </div>
