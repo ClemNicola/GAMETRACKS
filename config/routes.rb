@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "dashboard", to: "pages#dashboard"
   get "calendar", to: "pages#calendar"
 
+  get "fake_new", to: "pages#fake_new"
+
   resources :games, only: :show do
     member do
       get :stats
