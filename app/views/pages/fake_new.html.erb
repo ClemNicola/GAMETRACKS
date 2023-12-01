@@ -1,3 +1,5 @@
+<%# FAUSSE PAGE A EFFACER QUAND LE FORM SERA OK %>
+
 <div class="megamegadiv">
 
   <div class="divpoints">
@@ -49,5 +51,5 @@
 </div>
 
 <div class="lillildiv">
-  <%= link_to 'End QT', stats_game_path(@game), class: 'btn-rectangle' %>
+  <%= link_to 'End QT', stats_game_path(Game.find(Game.last.id)), class: 'btn-rectangle' %>
 </div>

@@ -23,4 +23,9 @@ class PagesController < ApplicationController
 
   def calendar
   end
+
+  def fake_new
+    @skip_navbar = true
+    @skip_footer = true
+  end
 end
