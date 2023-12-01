@@ -67,7 +67,7 @@ class Game < ApplicationRecord
     # previous_team_stats / previous_team_stats.length
   end
 
-   def away_team
+  def away_team
     teams.joins(:participations).where(participations: { home?: false }).distinct.first
   end
 

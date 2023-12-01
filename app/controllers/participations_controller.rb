@@ -3,7 +3,7 @@ class ParticipationsController < ApplicationController
     @participation = Participation.new
     @user = current_user
     @team = Team.where(coach: @user)
-    @players_list = @team.first.players.all
+    @players_list = @team.first.players.group_by(&:position)
     @game = Game.find(params[:game_id])
   end
 
@@ -21,5 +21,4 @@ class ParticipationsController < ApplicationController
   def participation_params
     params.require(:participation).permit(:team_id, :game_id, :player_id)
   end
-
 end

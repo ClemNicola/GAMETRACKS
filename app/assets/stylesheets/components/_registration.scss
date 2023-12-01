@@ -1,0 +1,50 @@
+/* app/assets/stylesheets/front.css */
+
+.form-container {
+  width: 80%; /* Ajustez la largeur au besoin */
+  margin: 20px auto; /* Centrez le conteneur du formulaire horizontalement avec une marge */
+}
+
+.form-section h1.custom-title {
+  text-align: center;
+  font-size: 2rem;
+  margin: 20px 0 0; /* Ajoutez plus d'espace au-dessus du titre */
+  color: white;
+}
+
+.form-inputs {
+  text-align: left;
+}
+
+.form-section {
+  margin-bottom: 30px; /* Augmentez l'espace entre les sections */
+}
+
+.form-section h4 {
+  margin-bottom: 10px; /* Augmentez l'espace entre les titres de section */
+}
+
+.form-section input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: black;
+}
+
+.form-actions {
+  margin-top: 20px; /* Augmentez l'espace entre les sections du formulaire et les actions du formulaire */
+  text-align: center; /* Centrez les éléments dans la direction horizontale */
+}
+
+.login-button {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+/* Media query pour les écrans plus petits */
+@media (max-width: 768px) {
+  .form-container {
+    width: 90%;
+  }
+}

@@ -38,12 +38,13 @@
 // Select player
 .card-select-players {
   display: flex;
-  flex-direction: row;
-  width: 115px;
+  flex-direction: column;
+  width: 100%;
 }
 
 .card-select-player{
-  height: 130px;
+  height: 144px;
+  width: 130px;
   border-radius: 4px;
   background: $white;
   box-shadow: 5px 5px 0px 0px rgba(255, 117, 23, 0.99);
@@ -61,7 +62,8 @@
 
 .container-flex {
   display: flex;
-  justify-content: center;
+  white-space: nowrap;
+  overflow-x: auto;
 }
 
 .card-opposite-team{
@@ -83,6 +85,11 @@
   background-image: url('curry.png');
 }
 
+.d-flex {
+  display: flex;
+  flex-direction: column;
+}
+
 // Player-stat
 
 .card-player{
@@ -90,3 +97,9 @@
   height: 245px;
   display: flex;
 }
+
+// .btn-flex {
+  // display: flex;
+  // justify-content: center;
+// }
+
