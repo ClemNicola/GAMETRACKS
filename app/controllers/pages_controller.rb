@@ -10,15 +10,12 @@ class PagesController < ApplicationController
 
   def dashboard
     @coach_team = current_user.managed_teams.first
-    @next_game = @coach_team.games.distinct.select{ |game| game.date >= Date.today }.min_by(&:date)
+    @next_game = Game.first
+    # @next_game = @coach_team.games.distinct.select { |game| game.date >= Date.today }.min_by(&:date)
 
-    if @next_game.nil?
-      @home_team = nil
-      @away_team = nil
-    else
-      @home_team = @next_game.home_team
-      @away_team = @next_game.away_team
-    end
+    @home_team = @next_game.home_team
+    @away_team = @next_game.away_team
+
   end
 
   def calendar
