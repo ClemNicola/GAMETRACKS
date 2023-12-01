@@ -1,0 +1,86 @@
+#terrainbackground {
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 29vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 225px;
+  width: 100vw;
+  position: relative;
+}
+
+.terrainimg {
+  background-image: asset-url('terrain.png');
+}
+
+#titleyourteam {
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+  margin: 0px auto;
+  padding: 14px;
+  h3 {
+    border-left: 4px solid $orange;
+  }
+}
+
+.startgame {
+  text-align: center;
+  padding-top: 6px;
+  text-decoration: none;
+  margin-top: 125px;
+}
+
+.editsymbol {
+  color: $orange;
+}
+
+.imgimgimg {
+  height: 80px;
+  width: 80px;
+  object-fit: contain;
+}
+
+.maximaxidiv {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.divclass1 {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 23vh;
+  align-items: baseline;
+  height: 100%;
+}
+
+.divclass2 {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 27vh;
+}
+
+.divclass21 {
+  display: flex;
+  flex-direction: column;
+  padding-right: 175px;
+}
+
+.divclass22 {
+  display: flex;
+  flex-direction: column;
+}
+
+.divclass3 {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 53vh;
+}

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <div id="global" class="<%= ["img1", "img2", "img3"].sample %>">
+=======
+<div id="global" class="<%= ["img1", "img2", "img3", "img4"].sample %>">
+>>>>>>> 47f3d3d54f14f0de02be241ea98a2922e7ab8e48
 
   <div id="divlogo">
     <img id="homepagelogo" src="<%= asset_path('gtlogo.png') %>" alt="GameTracks logo">
@@ -12,6 +16,11 @@
     </h1>
   </div>
 
+<<<<<<< HEAD
+=======
+  <%= link_to "sign_out", destroy_user_session_path, data: { turbo_method: :delete } %>
+
+>>>>>>> 47f3d3d54f14f0de02be241ea98a2922e7ab8e48
   <div id="divlevelupyourgame">
     <h4>
       <span id="levelup">
@@ -25,7 +34,11 @@
 
   <div id="divbtn">
     <% if user_signed_in? %>
+<<<<<<< HEAD
       <%= link_to "Dashboard", dashboard_path, class: "btn-dashboard" %>
+=======
+      <%= link_to "Dashboard", dashboard_path, class: "btn-login btn-center" %>
+>>>>>>> 47f3d3d54f14f0de02be241ea98a2922e7ab8e48
     <% else %>
       <%= link_to "Log In", new_user_session_path, class: "btn-login" %>
       <%= link_to "Sign Up", new_user_registration_path, class: "btn-signup" %>

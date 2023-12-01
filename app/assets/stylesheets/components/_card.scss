@@ -39,16 +39,40 @@
 .card-select-players {
   display: flex;
   flex-direction: row;
+<<<<<<< HEAD
 }
 
 .card-select-player{
   width: 144px;
+=======
+  width: 115px;
+}
+
+.card-select-player{
+>>>>>>> 47f3d3d54f14f0de02be241ea98a2922e7ab8e48
   height: 130px;
   border-radius: 4px;
   background: $white;
   box-shadow: 5px 5px 0px 0px rgba(255, 117, 23, 0.99);
   margin: 0px 8px;
+<<<<<<< HEAD
   // modif à apporter ce n'est pas complet
+=======
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 5px;
+}
+
+.card-select-player img {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+.container-flex {
+  display: flex;
+  justify-content: center;
+>>>>>>> 47f3d3d54f14f0de02be241ea98a2922e7ab8e48
 }
 
 .container-flex {
@@ -63,6 +87,16 @@
   height: 130px;
   border-radius: 4px;
   border: 1px solid $orange;
+}
+
+.flex-text {
+  display: flex;
+  height: inherit;
+  align-items: center;
+}
+
+.label-class {
+  background-image: url('curry.png');
 }
 
 // Player-stat

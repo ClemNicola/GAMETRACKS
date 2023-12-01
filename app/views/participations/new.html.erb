@@ -1,5 +1,6 @@
 <div class="container">
   <h3>Select your players</h3>
+<<<<<<< HEAD
   <p class="game-time">x/10</p>
   <h5>Center</h5>
   <div class="card-select-players">
@@ -9,20 +10,43 @@
       <p><%= player.name %></p>
     </div>
     <% end %>
+=======
+  <p class="new-part-right">x/10</p>
+
+  <h5>Center</h5>
+  <div class="card-select-players">
+  <% @players_list.each do |player| %>
+    <%# if player.position == "C" %>
+    <div class="card-select-player">
+      <img src="<%= player && player.photo.present? ?cl_image_path(player.photo.key) :asset_path('curry.png')%>" alt="player_picture">
+      <div class="flex-text"><p><%= player.name %></p></div>
+    </div>
+    <%# end %>
+>>>>>>> 47f3d3d54f14f0de02be241ea98a2922e7ab8e48
   <% end %>
   </div>
   <h5>Forward</h5>
   <div class="card-select-players">
   <% @players_list.each do |player| %>
+<<<<<<< HEAD
     <% if player.position == "F" %>
     <div class="card-select-player">
       <p><%= player.name %></p>
     </div>
     <% end %>
+=======
+    <%# if player.position == "F" %>
+    <div class="card-select-player">
+      <img src="<%= player && player.photo.present? ?cl_image_path(player.photo.key) :asset_path('curry.png')%>" alt="player_picture">
+      <div class="flex-text"><p><%= player.name %></p></div>
+    </div>
+    <%# end %>
+>>>>>>> 47f3d3d54f14f0de02be241ea98a2922e7ab8e48
   <% end %>
   </div>
   <h5>Guard</h5>
   <div class="card-select-players">
+<<<<<<< HEAD
   <% @players_list.each do |player| %>
     <% if player.position == "G" %>
     <div class="card-select-player">
@@ -33,5 +57,25 @@
   </div>
   <div class="container-flex">
     <button class="btn-orange-classic">Next ></button>
+=======
+  <%= form_with url:  set_participations_game_path(@game), method: :post, class: "d-flex" do %>
+    <% @players_list.keys.each do |key| %>
+    <%= key.name %>
+      <%= label_tag "player_#{player.id}", player.name %>
+      <input type="checkbox" name="players[]" id="player_<%= player.id %>" value="<%= player.id %>">
+      <%# if player.position == "G" %>
+      <div class="card-select-player">
+        <img src="<%= player && player.photo.present? ?cl_image_path(player.photo.key) :asset_path('curry.png')%>" alt="player_picture">
+        <div class="flex-text"><p><%= player.name %></p></div>
+      </div>
+      <%# end %>
+    <% end %>
+    <%= submit_tag "Next", class: "btn-orange-classic" %>
+  <%# end %>
+  </div>
+  <div class="container-flex">
+    <%=# link_to "Next >", game_path(@game), class: "btn-orange-classic" %>
+    <%# <button class="btn-orange-classic">Next </button> %>
+>>>>>>> 47f3d3d54f14f0de02be241ea98a2922e7ab8e48
   </div>
 </div>

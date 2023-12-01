@@ -1,0 +1,11 @@
+<% @players.each do |player| %>
+
+  <%= link_to player_path(player) do %>
+
+    <div style="font-color: white">
+      <%= player.name %>
+    </div>
+
+  <% end %>
+
+<% end %>

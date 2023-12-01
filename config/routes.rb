@@ -5,6 +5,13 @@ Rails.application.routes.draw do
   # Log in + Sign up + Dashboard btn
   root to: "pages#home"
   get "dashboard", to: "pages#dashboard"
+  get "calendar", to: "pages#calendar"
+
+  resources :games, only: :show do
+    member do
+      get :stats
+    end
+  end
 
   resources :coaches, only: %i[new edit update delete] do
     resources :teams, except: %i[show index]
@@ -17,8 +24,16 @@ Rails.application.routes.draw do
   end
 
   resources :player_stats, except: %i[show index] do
-    resources :game_stats, only: %i[show new create]
+    resources :game_stats, only: %i[show new create index]
   end
+
+  resources :games, only: %i[show index] do
+    resources :participations, only: %i[new]
+    member do
+      post "set_participations", to: "games#set_participations"
+    end
+  end
+
 
   # Define a route for displaying the coach's profile and dashboard (Same page)
   # get :profile, to: 'pages#profile', as: :coach_dashboard

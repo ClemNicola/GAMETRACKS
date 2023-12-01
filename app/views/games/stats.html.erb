@@ -1,0 +1,131 @@
+<div class="title-container">
+  <h3>Game Stats</h3>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">NAME</th>
+      <th scope="col">MIN</th>
+      <th scope="col">PTS</th>
+      <th scope="col">REB</th>
+      <th scope="col">AST</th>
+      <th scope="col">STL</th>
+      <th scope="col">BLK</th>
+      <th scope="col">FGM</th>
+      <th scope="col">FGA</th>
+      <th scope="col">%FG</th>
+      <th scope="col">3PM</th>
+      <th scope="col">3PA</th>
+      <th scope="col">3P%</th>
+      <th scope="col">FTM</th>
+      <th scope="col">FTA</th>
+      <th scope="col">%FT</th>
+      <th scope="col">OREB</th>
+      <th scope="col">DREB</th>
+      <th scope="col">TOV</th>
+      <th scope="col">FLT</th>
+      <th scope="col">EVAL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% total_minute = "" %>
+    <% total_point = 0 %>
+    <% total_rebound = 0 %>
+    <% total_assist = 0 %>
+    <% total_steal = 0 %>
+    <% total_block = 0 %>
+    <% total_fg_made = 0 %>
+    <% total_fg_attempt = 0 %>
+    <% total_threep_made = 0 %>
+    <% total_threep_attempt = 0 %>
+    <% total_ft_made = 0 %>
+    <% total_ft_attempt = 0 %>
+    <% total_off_rebound = 0 %>
+    <% total_def_rebound = 0 %>
+    <% total_turnover = 0 %>
+    <% total_fault = 0 %>
+    <% eval_mean = 0 %>
+
+    <% @home_team_stats.each do |stat| %>
+      <tr>
+        <th scope="row"><%= stat.player %></th>
+          <td><%= stat.minute %></td>
+          <td><%= stat.point %></td>
+          <td><%= stat.off_rebound + stat.def_rebound %></td>
+          <td><%= stat.assist %></td>
+          <td><%= stat.steal %></td>
+          <td><%= stat.block %></td>
+          <td><%= stat.fg_made %></td>
+          <td><%= stat.fg_attempt %></td>
+          <td><%= stat.fg_made != 0 ? (stat.fg_made.fdiv(stat.fg_attempt) * 100).round(1) : 0 %></td>
+          <td><%= stat.threep_made %></td>
+          <td><%= stat.threep_attempt %></td>
+          <td><%= stat.threep_made != 0 ? (stat.threep_made.fdiv(stat.threep_attempt) * 100).round(1) : 0 %></td>
+          <td><%= stat.ft_made %></td>
+          <td><%= stat.ft_attempt %></td>
+          <td><%= stat.ft_made != 0 ? (stat.ft_made.fdiv(stat.ft_attempt) * 100).round(1) : 0 %></td>
+          <td><%= stat.off_rebound %></td>
+          <td><%= stat.def_rebound %></td>
+          <td><%= stat.turnover %></td>
+          <td><%= stat.fault %></td>
+          <td> <% eval_positif = stat.point + stat.off_rebound + stat.def_rebound +  stat.assist + stat.steal + stat.block%>
+              <% eval_neg = (stat.fg_attempt - stat.fg_made) - (stat.ft_attempt - stat.ft_made) - stat.turnover %>
+              <% eval_player = eval_positif - eval_neg %>
+              <%= eval_player %>
+          </td>
+
+          <% total_point += stat.point %>
+          <% total_rebound += stat.off_rebound + stat.def_rebound %>
+          <% total_assist += stat.assist %>
+          <% total_steal += stat.steal %>
+          <% total_block += stat.block %>
+          <% total_fg_made += stat.fg_made %>
+          <% total_fg_attempt += stat.fg_attempt %>
+          <% total_threep_made += stat.threep_made %>
+          <% total_threep_attempt += stat.threep_attempt %>
+          <% total_ft_made += stat.ft_made %>
+          <% total_ft_attempt += stat.ft_attempt %>
+          <% total_off_rebound += stat.off_rebound %>
+          <% total_def_rebound += stat.def_rebound %>
+          <% total_turnover += stat.turnover %>
+          <% total_fault += stat.fault %>
+          <% eval_mean += eval_player %>
+      </tr>
+    <% end %>
+
+      <tr>
+        <td>Total</td>
+        <td> <%=total_minute%></td>
+        <td><%= total_point %></td>
+        <td><%= total_rebound %></td>
+        <td><%= total_assist %></td>
+        <td><%= total_steal %></td>
+        <td><%= total_block %></td>
+        <td><%= total_fg_made %></td>
+        <td><%= total_fg_attempt %></td>
+        <td><%= total_fg_attempt != 0 ? (total_fg_made.fdiv(total_fg_attempt) * 100).round(1) : 0 %></td>
+        <td><%= total_threep_made %></td>
+        <td><%= total_threep_attempt %></td>
+        <td><%= total_threep_attempt != 0 ? (total_threep_made.fdiv(total_threep_attempt) * 100).round(1) : 0 %></td>
+        <td><%= total_ft_made %></td>
+        <td><%= total_ft_attempt %></td>
+        <td><%= total_ft_attempt != 0 ? (total_ft_made.fdiv(total_ft_attempt) * 100).round(1) : 0 %></td>
+        <td><%= total_off_rebound %></td>
+        <td><%= total_def_rebound %></td>
+        <td><%= total_turnover %></td>
+        <td><%= total_fault %></td>
+        <td><%= eval_mean/@home_team_stats.count%></td>
+      </tr>
+  </tbody>
+</table>
+
+<div class="title-container">
+  <h3>Charts Game</h3>
+  <div data-chart-target='chart'></div>
+</div>
+
+<div class="chart-container" data-controller='chart'>
+  <canvas data-chart-target='chart'></canvas>
+
+</div>
