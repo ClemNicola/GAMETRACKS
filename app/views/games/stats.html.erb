@@ -95,7 +95,7 @@
    <%= column_chart(
   {
     "Game Team Stats" => @game.home_stats_for_chart,
-    "Total Team Stats" => @game.total_home_stats
+    "Total Team Stats" => @game.previous_home_stats
   },
   library: {
     series: {
