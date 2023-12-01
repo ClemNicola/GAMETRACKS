@@ -56,10 +56,16 @@ class Game < ApplicationRecord
     stats
   end
 
-  def total_home_stats
-    stat_values = home_stats_for_chart.values
-    stat_team = stat_values[0...-1]
-    mean_stat_team = stat_team.sum.to_f / stat_team.length
+
+  def previous_home_stats
+    averages = {}
+    outputs = %i(total_point total_off_rebound total_def_rebound total_assist total_turnover)
+    outputs.each do |output|
+      avg_values = TeamStat.average(output)
+      averages[output] = avg_values
+    end
+    averages
+    # previous_team_stats / previous_team_stats.length
   end
 
   def away_team
