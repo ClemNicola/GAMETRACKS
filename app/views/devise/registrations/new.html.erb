@@ -1,18 +1,45 @@
-<h2>Sign up</h2>
+<!-- app/views/devise/registrations/new.html.erb -->
+<div class="form-container">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" } %>
-    <%= f.input :name, required: true %>
-    <%= f.input :date_of_birth, as: :date, start_year: Date.current.year - 100, end_year: Date.current.year - 10 %>
-    <%= f.input :category, collection: ['Coach', 'Player', 'Spectator'], prompt: 'Select a category' %>
-  </div>
+    <%= f.error_notification %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+    <div class="form-inputs">
+      <div class="form-section">
+        <h1 class="custom-title">Sign up</h1>
+      </div>
 
-<%= render "devise/shared/links" %>
+      <div class="form-section">
+        <h5>Email</h5>
+        <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" }, label: false %>
+      </div>
+
+       <div class="form-section">
+        <h5>Password</h5>
+        <%= f.input :password, required: true, input_html: { autocomplete: "new-password" }, label: false %>
+      </div>
+
+      <div class="form-section">
+        <h5>Full Name</h5>
+        <%= f.input :name, required: true, label: false %>
+      </div>
+
+      <div class="form-section">
+        <h5>Date of Birth</h5>
+        <%= f.input :date_of_birth, as: :date, start_year: Date.current.year - 100, end_year: Date.current.year - 10, label: false %>
+      </div>
+
+      <div class="form-section">
+        <h5>Category</h5>
+        <%= f.input :category, collection: ['Coach', 'Player', 'Spectator'], prompt: 'Select a category', label: false %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up", class: "btn btn-primary btn-light" %>
+      <%= link_to "Login", new_user_session_path, class: "btn btn-primary btn-light login-button" %>
+    </div>
+
+  <% end %>
+</div>
