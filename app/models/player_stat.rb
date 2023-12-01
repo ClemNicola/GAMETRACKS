@@ -18,4 +18,10 @@ class PlayerStat < ApplicationRecord
             :block,
             :fault,
             :evaluation, numericality: { only_integer: true }
+
+  def player
+    last_name = user.name.split(', ').first
+    first_name = "#{user.name.split(', ').last[0]}."
+    [last_name, first_name].join(' ')
+  end
 end

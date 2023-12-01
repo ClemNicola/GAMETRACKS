@@ -20,14 +20,20 @@ Rails.application.routes.draw do
   resources :players
 
   resources :coaches, only: %i[new edit update delete] do
-    resources :participations, except: %i[index]
+    resources :participations, except: %i[index new]
   end
 
   resources :player_stats, except: %i[show index] do
     resources :game_stats, only: %i[show new create index]
   end
 
-  resources :games, only: %i[show index]
+  resources :games, only: %i[show index] do
+    resources :participations, only: %i[new]
+    member do
+      post "set_participations", to: "games#set_participations"
+    end
+  end
+
 
   # Define a route for displaying the coach's profile and dashboard (Same page)
   # get :profile, to: 'pages#profile', as: :coach_dashboard

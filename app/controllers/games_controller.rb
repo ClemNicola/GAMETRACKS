@@ -17,6 +17,9 @@ class GamesController < ApplicationController
     @games = @games.flatten
   end
 
+  def set_participations
+  end
+
   private
 
   def set_game
