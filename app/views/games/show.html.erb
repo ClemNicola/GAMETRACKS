@@ -1,4 +1,4 @@
-<div class="maximaxidiv">
+<div class="maximaxidiv" data-controller="titulaire">
 
   <div id="titleyourteam">
 
@@ -16,35 +16,31 @@
     <div id="terrainbackground" class="terrainimg">
 
       <div class="divclass1">
-        <% @my_players.each do |position, player| %>
-          <% if position == "G" %>
-            <div class="player-container">
-              <input type="checkbox" name="players[]" id="player_<%= player.id %>" value="<%= player.id %>" class="checkbox">
-              <img src="<%= player && player.photo.present? ? cl_image_path(player.photo.key) : asset_path('curry.png') %>" alt="player_picture">
+        <% @my_guards.each do |player| %>
+          <%= link_to set_titulaire_game_path(@game, user_id: player) do %>
+            <div class="player-container" data-action="click->titulaire#newTitulaire">
+              <%# <%= check_box_tag "players[]", player.id, false, id: "player_#{player.id}", class: "checkbox", style: "display: none;" %>
+              <%= label_tag "player_#{player.id}", image_tag(player && player.photo.present? ? cl_image_path(player.photo.key) : asset_path('curry.png'), alt: "player_picture", class: "imgimgimg"), id: "player_#{player.id}" %>
             </div>
           <% end %>
         <% end %>
       </div>
 
       <div class="divclass2">
-        <% @my_players.each do |position, player| %>
-          <% if position == "F" %>
-            <div class="player-container">
-              <input type="checkbox" name="players[]" id="player_<%= player.id %>" value="<%= player.id %>" class="checkbox">
-              <img src="<%= player && player.photo.present? ? cl_image_path(player.photo.key) : asset_path('curry.png') %>" alt="player_picture">
-            </div>
-          <% end %>
+        <% @my_forwards.each_with_index do |player, index| %>
+          <div class="player-container <%= index.even? ? 'divclass21' : 'divclass22' %>">
+            <%= check_box_tag "players[]", player.id, false, id: "player_#{player.id}", class: "checkbox", style: "display: none;" %>
+            <%= label_tag "player_#{player.id}", image_tag(player && player.photo.present? ? cl_image_path(player.photo.key) : asset_path('curry.png'), alt: "player_picture", class: "imgimgimg") %>
+          </div>
         <% end %>
       </div>
 
       <div class="divclass3">
-        <% @my_players.each do |position, player| %>
-          <% if position == "C" %>
-            <div class="player-container">
-              <input type="checkbox" name="players[]" id="player_<%= player.id %>" value="<%= player.id %>" class="checkbox">
-              <img src="<%= player && player.photo.present? ? cl_image_path(player.photo.key) : asset_path('curry.png') %>" alt="player_picture">
-            </div>
-          <% end %>
+        <% @my_centers.each_with_index do |player, index| %>
+          <div class="player-container <%= index.even? ? 'divclass31' : 'divclass32' %>">
+            <%= check_box_tag "players[]", player.id, false, id: "player_#{player.id}", class: "checkbox", style: "display: none;" %>
+            <%= label_tag "player_#{player.id}", image_tag(player && player.photo.present? ? cl_image_path(player.photo.key) : asset_path('curry.png'), alt: "player_picture", class: "imgimgimg") %>
+          </div>
         <% end %>
       </div>
 
@@ -58,11 +54,17 @@
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<%# <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
   $(document).ready(function () {
     $('.player-container').click(function () {
-      $(this).toggleClass('titu');
+      var checkbox = $(this).find('input[type="checkbox"]');
+      checkbox.prop('checked', !checkbox.prop('checked'));
+      updateSelectedCount();
+    });
+
+    $('.player-container input[type="checkbox"]').change(function () {
+      $(this).closest('.player-container').toggleClass('titu', $(this).prop('checked'));
       updateSelectedCount();
     });
 
@@ -75,4 +77,4 @@
       }
     }
   });
-</script>
+</script> %>

@@ -7,9 +7,12 @@ class GamesController < ApplicationController
   end
 
   def show
-    @team = Team.where(coach: current_user)
-    @my_particip = @team.first.participations.where(selected: true)
-    @my_players = @my_particip.players.group_by(&:position)
+    selected = @game.participations.where(selected?: true)
+    user_ids = selected.map(&:user_id)
+    my_players = User.where(id: user_ids)
+    @my_centers = my_players.group_by(&:position)["C"]
+    @my_forwards = my_players.group_by(&:position)["F"]
+    @my_guards = my_players.group_by(&:position)["G"]
   end
 
   def index
