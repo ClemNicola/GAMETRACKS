@@ -1,5 +1,5 @@
-.centered {
-  justify-content: center;
+.left {
+  justify-content: left;
 }
 
 .col-sm-6 {
@@ -7,11 +7,11 @@
 }
 
 .card-list-players{
-  height: 130px;
-  width: 130px;
+  height: 145px;
+  width: 115px;
   border-radius: 4px;
   background: $white;
-  margin: 10px 15px;
+  margin: 10px;
   margin-bottom: 12px;
   display: flex;
   flex-direction: column;
@@ -22,6 +22,8 @@
 .card-list-players img {
   width: 80px;
   margin-bottom: 10px;
+  display: block;
+  margin: 0 auto 10px auto;
 }
 
 .card-list-players p {
@@ -34,10 +36,11 @@
   font-weight: 500;
   line-height: 25px;
   margin: 0px;
-  width: 130px;
+  width: 110px;
   text-decoration: none;
+  word-wrap: break-word;
 }
 
-.centered a {
+.left a {
   text-decoration: none;
 }

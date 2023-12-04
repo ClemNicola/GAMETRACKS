@@ -1,7 +1,7 @@
 .column-left img {
   width: 150px;
   margin-bottom: 10px;
-  animation: rotateImage 5s 2 linear;
+  animation: rotateImage 5s 3 linear;
 }
 
 @keyframes rotateImage {
@@ -15,7 +15,13 @@
 
 .column-left h4 {
   text-align: center;
-  margin: 10px 0 20px 0;
+  margin: 10px 0 10px 0;
+}
+
+.column-left p {
+  margin-bottom: 10px;
+  font-style: italic;
+  color: $orange;
 }
 
 .columns {
@@ -25,11 +31,12 @@
 
 .column-right {
   display: flex;
+  min-width: 85px;
 }
 
 .content-right {
   margin: auto 0px auto 8px;
-  height: 60%;
+  height: 65%;
   p {
     margin: 0px;
     font-size: 22px;
@@ -68,4 +75,10 @@
 
 .number-bold {
   font-weight: 700;
+}
+
+.column-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

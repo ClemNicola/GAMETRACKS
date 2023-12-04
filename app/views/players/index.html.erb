@@ -2,7 +2,7 @@
   <div class="title-container">
     <h3>Your team:</h3>
   </div>
-  <div class="row centered">
+  <div class="row left">
     <% @players.each do |player| %>
       <div class="card-list-players col-sm-6">
         <%= link_to player_path(player) do %>

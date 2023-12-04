@@ -6,6 +6,8 @@
       <div class="column-left">
         <img src="<%= @player && @player.photo.present? ?cl_image_path(@player.photo.key) :asset_path('curry.png')%>" alt="player_picture">
         <h4><%= @player.player_name_full %></h4>
+        <p><%= @player.teams.first.club_name %></p>
+
       </div>
       <div class="column-right">
         <div class="content-right">
