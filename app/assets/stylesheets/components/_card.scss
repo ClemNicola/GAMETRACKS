@@ -6,7 +6,7 @@
   width: 90%;
   height: 124px;
   background-color: $white;
-  box-shadow: 5px 5px 0px 0px #FF7517;
+  box-shadow: 5px 5px 0px 0px $orange;
   border-radius: 4px;
   // modif à apporter ce n'est pas complet
 }
@@ -16,7 +16,6 @@
   height: 159px;
   border-radius: 4px;
   border: 1px solid $orange;
-
 }
 
 .card-infos-white{
@@ -47,12 +46,16 @@
   width: 130px;
   border-radius: 4px;
   background: $white;
-  box-shadow: 5px 5px 0px 0px rgba(255, 117, 23, 0.99);
   margin: 0px 8px;
+  margin-bottom: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 5px 5px;
+}
+
+.card-select-player.checked {
+  box-shadow: 5px 5px 0px 0px $orange;
 }
 
 .card-select-player img {
@@ -98,8 +101,16 @@
   display: flex;
 }
 
-// .btn-flex {
-  // display: flex;
-  // justify-content: center;
-// }
+.btn-flex {
+  display: flex;
+  justify-content: center;
+}
 
+.card-select-player input[type="checkbox"] {
+  display: none;
+}
+
+.fa-circle-check {
+color: $orange;
+display: none;
+}

@@ -1,4 +1,6 @@
 class ParticipationsController < ApplicationController
+  # before_action :player_name
+
   def new
     @participation = Participation.new
     @user = current_user
