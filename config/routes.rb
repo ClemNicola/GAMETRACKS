@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :games, only: :show do
     member do
+      get :play
       get :stats
     end
   end

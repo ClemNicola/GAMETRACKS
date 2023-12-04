@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :set_participations]
+  before_action :set_game, only: [:play, :show, :set_participations]
 
   def stats
     @game = Game.find(params[:id])
@@ -32,6 +32,10 @@ class GamesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def play
+    # @my_players = @game.participations.where(team_id: current_user.teams.first.id, selected: true).map(&:user)  RECUPERER LES JOUEURS EN JEU
   end
 
   private

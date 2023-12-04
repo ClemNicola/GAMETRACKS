@@ -3,6 +3,7 @@ class Game < ApplicationRecord
   # has_many :game_stats
   has_many :participations
   has_many :teams, -> { distinct }, through: :participations
+  has_many :users, -> { distinct }, through: :participations
   has_many :players, through: :participations, source: :user
 
   validates :date,
@@ -12,6 +13,10 @@ class Game < ApplicationRecord
 
   def home_team
     teams.joins(:participations).where(participations: { home?: true }).distinct.first
+  end
+
+  def my_game_players
+    users.joins(:participations).where(participations: { home?: true }).distinct
   end
 
   def home_team_stats

@@ -15,7 +15,6 @@ class PagesController < ApplicationController
 
     @home_team = @next_game.home_team
     @away_team = @next_game.away_team
-
   end
 
   def calendar
@@ -24,5 +23,6 @@ class PagesController < ApplicationController
   def fake_new
     @skip_navbar = true
     @skip_footer = true
+    
   end
 end
