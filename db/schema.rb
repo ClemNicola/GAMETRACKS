@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_30_093508) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_04_195127) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,6 +76,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_093508) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "winner_id"
+    t.integer "Q1"
+    t.integer "Q2"
+    t.integer "Q3"
+    t.integer "Q4"
+    t.integer "OT"
+    t.boolean "home_team"
+    t.boolean "away_team"
     t.index ["winner_id"], name: "index_games_on_winner_id"
   end
 

@@ -59,15 +59,67 @@ p "Abdes is a coach"
 puts "Creating 3 games"
 
 6.times do
-game = Game.create(
-  date: Date.new(2023, rand(10..12), rand(1..30)),
-  time: "#{rand(10..22)}:00",
-  arena: ["Palais des Sports", "Bercy", "Adidas Arena"].sample,
-  arena_address: Faker::Address.street_address,
-  score_home_team: 0,
-  score_away_team: 0
-)
-puts "#{game.date} created"
+  game = Game.create(
+    date: Date.new(2023, rand(10..12), rand(1..30)),
+    time: "#{rand(10..22)}:00",
+    arena: ["Palais des Sports", "Bercy", "Adidas Arena"].sample,
+    arena_address: Faker::Address.street_address,
+    score_home_team: 0,
+    score_away_team: 0,
+    Q1: 0,
+    Q2: 0,
+    Q3: 0,
+    Q4: 0
+  )
+
+  if game.score_home_team > game.score_away_team
+    game.winner_id = game.home_team.id
+    game.save
+
+    home_team_stats = GameStat.find_by(game_id: game.id, teams_id: game.home_team.id)
+    home_team_stats.wins += 1
+    home_team_stats.save
+
+    away_team_stats = GameStat.find_by(game_id: game.id, teams_id: game.away_team.id)
+    away_team_stats.losses += 1
+    away_team_stats.save
+  else
+    game.winner_id = game.away_team.id
+    game.save
+
+    away_team_stats = GameStat.find_by(game_id: game.id, teams_id: game.away_team.id)
+    away_team_stats.wins += 1
+    away_team_stats.save
+
+    home_team_stats = GameStat.find_by(game_id: game.id, teams_id: game.home_team.id)
+    home_team_stats.losses += 1
+    home_team_stats.save
+  end
+
+  home_team_quarters = []
+  away_team_quarters = []
+
+  4.times do
+    quarter_score_home = rand(1..score_home_team - home_team_quarters.sum - (4 - home_team_quarters.length - 1))
+    home_team_quarters << quarter_score_home
+  end
+  home_team_quarters << score_home_team - home_team_quarters.sum
+
+  home_team_quarters.each_with_index do |quarter_score, index|
+    puts "Home Team Q#{index + 1}: #{quarter_score}"
+  end
+
+  4.times do
+    quarter_score_away = rand(1..score_away_team - away_team_quarters.sum - (4 - away_team_quarters.length - 1))
+    away_team_quarters << quarter_score_away
+  end
+  away_team_quarters << score_away_team - away_team_quarters.sum
+
+  away_team_quarters.each_with_index do |quarter_score, index|
+    puts "away Team Q#{index + 1}: #{quarter_score}"
+  end
+
+  puts "#{game.date} created"
 end
 
 api_key = 'gty53tnwetmr2cau5sn8k24z'
@@ -277,7 +329,7 @@ games_stats = [
       { minute: 18, point: 0, fg_made: 0, fg_attempt: 1, threep_made: 0, threep_attempt: 1, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 1, assist: 1, turnover: 0, steal: 0, block: 1, fault: 1, evaluation: 3},
       { minute: 17, point: 11, fg_made: 1, fg_attempt: 1, threep_made: 3, threep_attempt: 5, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 2, steal: 1, block: 2, fault: 1, evaluation: 10},
       { minute: 7, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 3, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault: 1, evaluation: 0},
-      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made: t_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
+      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made:, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
     ],
   },
 
@@ -306,7 +358,7 @@ games_stats = [
       { minute: 18, point: 0, fg_made: 0, fg_attempt: 1, threep_made: 0, threep_attempt: 1, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 1, assist: 1, turnover: 0, steal: 0, block: 1, fault: 1, evaluation: 3},
       { minute: 17, point: 11, fg_made: 1, fg_attempt: 1, threep_made: 3, threep_attempt: 5, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 2, steal: 1, block: 2, fault: 1, evaluation: 10},
       { minute: 7, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 3, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault: 1, evaluation: 0},
-      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made: t_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
+      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made:, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
     ],
   },
 
@@ -335,7 +387,7 @@ games_stats = [
       { minute: 18, point: 0, fg_made: 0, fg_attempt: 1, threep_made: 0, threep_attempt: 1, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 1, assist: 1, turnover: 0, steal: 0, block: 1, fault: 1, evaluation: 3},
       { minute: 17, point: 11, fg_made: 1, fg_attempt: 1, threep_made: 3, threep_attempt: 5, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 2, steal: 1, block: 2, fault: 1, evaluation: 10},
       { minute: 7, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 3, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault: 1, evaluation: 0},
-      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made: t_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
+      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made:, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
     ],
   },
 
@@ -364,7 +416,7 @@ games_stats = [
       { minute: 18, point: 0, fg_made: 0, fg_attempt: 1, threep_made: 0, threep_attempt: 1, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 1, assist: 1, turnover: 0, steal: 0, block: 1, fault: 1, evaluation: 3},
       { minute: 17, point: 11, fg_made: 1, fg_attempt: 1, threep_made: 3, threep_attempt: 5, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 2, steal: 1, block: 2, fault: 1, evaluation: 10},
       { minute: 7, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 3, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault: 1, evaluation: 0},
-      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made: t_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
+      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made:, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
     ],
   },
 
@@ -393,7 +445,7 @@ games_stats = [
       { minute: 18, point: 0, fg_made: 0, fg_attempt: 1, threep_made: 0, threep_attempt: 1, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 1, assist: 1, turnover: 0, steal: 0, block: 1, fault: 1, evaluation: 3},
       { minute: 17, point: 11, fg_made: 1, fg_attempt: 1, threep_made: 3, threep_attempt: 5, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 2, steal: 1, block: 2, fault: 1, evaluation: 10},
       { minute: 7, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 3, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault: 1, evaluation: 0},
-      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made: t_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
+      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made:, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
     ],
   },
 
@@ -422,7 +474,7 @@ games_stats = [
       { minute: 18, point: 0, fg_made: 0, fg_attempt: 1, threep_made: 0, threep_attempt: 1, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 1, assist: 1, turnover: 0, steal: 0, block: 1, fault: 1, evaluation: 3},
       { minute: 17, point: 11, fg_made: 1, fg_attempt: 1, threep_made: 3, threep_attempt: 5, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 2, steal: 1, block: 2, fault: 1, evaluation: 10},
       { minute: 7, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 3, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault: 1, evaluation: 0},
-      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made: t_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
+      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made:, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
     ],
   },
 
@@ -437,9 +489,8 @@ games_stats = [
       { minute: 18, point: 0, fg_made: 0, fg_attempt: 1, threep_made: 0, threep_attempt: 1, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 1, assist: 1, turnover: 0, steal: 0, block: 1, fault: 1, evaluation: 3},
       { minute: 17, point: 11, fg_made: 1, fg_attempt: 1, threep_made: 3, threep_attempt: 5, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 2, steal: 1, block: 2, fault: 1, evaluation: 10},
       { minute: 7, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 3, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault: 1, evaluation: 0},
-      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made: t_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
-    ]
-
+      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made:, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
+    ],
     opponent: [
       { minute: 28, point: 20, fg_made: 5, fg_attempt: 10, threep_made: 3, threep_attempt: 6, ft_made: 1, ft_attempt: 2, off_rebound: 0, def_rebound: 2, assist: 2, turnover: 1, steal: 1, block: 2, fault: 2, evaluation: 18 },
       { minute: 18, point: 6, fg_made: 2, fg_attempt: 2, threep_made: 0, threep_attempt: 0, ft_made: 2, ft_attempt: 4, off_rebound: 1, def_rebound: 2, assist: 0, turnover: 0, steal: 0, block: 0, fault: 1, evaluation: 8 },
@@ -450,9 +501,62 @@ games_stats = [
       { minute: 18, point: 0, fg_made: 0, fg_attempt: 1, threep_made: 0, threep_attempt: 1, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 1, assist: 1, turnover: 0, steal: 0, block: 1, fault: 1, evaluation: 3},
       { minute: 17, point: 11, fg_made: 1, fg_attempt: 1, threep_made: 3, threep_attempt: 5, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 2, steal: 1, block: 2, fault: 1, evaluation: 10},
       { minute: 7, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 3, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault: 1, evaluation: 0},
-      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made: t_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
+      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made:, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
     ],
   },
+  {
+    my_team: [
+      { minute: 30, point: 11, fg_made: 2, fg_attempt: 4, threep_made: 2, threep_attempt: 5, ft_made: 1, ft_attempt: 3, off_rebound: 0, def_rebound: 1, assist: 1, turnover: 2, steal: 4, block: 8, fault: 3, evaluation: 7 },
+      { minute: 27, point: 16, fg_made: 6, fg_attempt: 8, threep_made: 1, threep_attempt: 2, ft_made: 1, ft_attempt: 4, off_rebound: 0, def_rebound: 7, assist: 1, turnover: 3, steal: 0, block: 1, fault: 3, evaluation: 18 },
+      { minute: 31, point: 20, fg_made: 6, fg_attempt: 7, threep_made: 2, threep_attempt: 3, ft_made: 2, ft_attempt: 3, off_rebound: 0, def_rebound: 6, assist: 9, turnover: 0, steal: 4, block: 2, fault: 2, evaluation: 29 },
+      { minute: 30, point: 11, fg_made: 2, fg_attempt: 4, threep_made: 2, threep_attempt: 5, ft_made: 1, ft_attempt: 3, off_rebound: 0, def_rebound: 1, assist: 1, turnover: 2, steal: 4, block: 8, fault: 3, evaluation: 7 },
+      { minute: 27, point: 16, fg_made: 6, fg_attempt: 8, threep_made: 1, threep_attempt: 2, ft_made: 1, ft_attempt: 4, off_rebound: 0, def_rebound: 7, assist: 1, turnover: 3, steal: 0, block: 1, fault: 3, evaluation: 18 },
+      { minute: 31, point: 20, fg_made: 6, fg_attempt: 7, threep_made: 2, threep_attempt: 3, ft_made: 2, ft_attempt: 3, off_rebound: 0, def_rebound: 6, assist: 9, turnover: 0, steal: 4, block: 2, fault: 2, evaluation: 29 },
+      { minute: 19, point: 10, fg_made: 5, fg_attempt: 8, threep_made: 0, threep_attempt: 0, ft_made: 0, ft_attempt: 0, off_rebound: 1, def_rebound: 6, assist: 0, turnover: 1, steal: 1, block: 2, fault: 1, evaluation: 13 },
+      { minute: 24, point: 5, fg_made: 0, fg_attempt: 1, threep_made: 1, threep_attempt: 3, ft_made: 2, ft_attempt: 2, off_rebound: 0, def_rebound: 1, assist: 4, turnover: 0, steal: 0, block: 0, fault: 2, evaluation: 7 },
+      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
+      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
+    ],
+    opponent: [
+      { minute: 13, point: 4, fg_made: 1, fg_attempt: 3, threep_made: 0, threep_attempt: 3, ft_made: 2, ft_attempt: 2, off_rebound: 1, def_rebound: 0, assist: 0, turnover: 2, steal: 2, block: 0, fault: 2, evaluation: 0 },
+      { minute: 29, point: 14, fg_made: 5, fg_attempt: 9, threep_made: 1, threep_attempt: 4, ft_made: 1, ft_attempt: 2, off_rebound: 2, def_rebound: 5, assist: 7, turnover: 2, steal: 2, block: 0, fault: 4, evaluation: 15 },
+      { minute: 13, point: 1, fg_made: 0, fg_attempt: 1, threep_made: 0, threep_attempt: 0, ft_made: 1, ft_attempt: 2, off_rebound: 2, def_rebound: 1, assist: 3, turnover: 0, steal: 0, block: 0, fault: 2, evaluation: 3 },
+      { minute: 13, point: 4, fg_made: 1, fg_attempt: 3, threep_made: 0, threep_attempt: 3, ft_made: 2, ft_attempt: 2, off_rebound: 1, def_rebound: 0, assist: 0, turnover: 2, steal: 2, block: 0, fault: 2, evaluation: 0 },
+      { minute: 29, point: 14, fg_made: 5, fg_attempt: 9, threep_made: 1, threep_attempt: 4, ft_made: 1, ft_attempt: 2, off_rebound: 2, def_rebound: 5, assist: 7, turnover: 2, steal: 2, block: 0, fault: 4, evaluation: 15 },
+      { minute: 13, point: 1, fg_made: 0, fg_attempt: 1, threep_made: 0, threep_attempt: 0, ft_made: 1, ft_attempt: 2, off_rebound: 2, def_rebound: 1, assist: 3, turnover: 0, steal: 0, block: 0, fault: 2, evaluation: 3 },
+      { minute: 28, point: 20, fg_made: 5, fg_attempt: 10, threep_made: 3, threep_attempt: 6, ft_made: 1, ft_attempt: 2, off_rebound: 0, def_rebound: 2, assist: 2, turnover: 1, steal: 1, block: 2, fault: 2, evaluation: 18 },
+      { minute: 18, point: 6, fg_made: 2, fg_attempt: 2, threep_made: 0, threep_attempt: 0, ft_made: 2, ft_attempt: 4, off_rebound: 1, def_rebound: 2, assist: 0, turnover: 0, steal: 0, block: 0, fault: 1, evaluation: 8 },
+      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
+      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault:0, evaluation: 0},
+    ]
+  },
+
+  {
+    my_team: [
+      { minute: 30, point: 11, fg_made: 2, fg_attempt: 4, threep_made: 2, threep_attempt: 5, ft_made: 1, ft_attempt: 3, off_rebound: 0, def_rebound: 1, assist: 1, turnover: 2, steal: 4, block: 8, fault: 3, evaluation: 7 },
+      { minute: 27, point: 16, fg_made: 6, fg_attempt: 8, threep_made: 1, threep_attempt: 2, ft_made: 1, ft_attempt: 4, off_rebound: 0, def_rebound: 7, assist: 1, turnover: 3, steal: 0, block: 1, fault: 3, evaluation: 18 },
+      { minute: 31, point: 20, fg_made: 6, fg_attempt: 7, threep_made: 2, threep_attempt: 3, ft_made: 2, ft_attempt: 3, off_rebound: 0, def_rebound: 6, assist: 9, turnover: 0, steal: 4, block: 2, fault: 2, evaluation: 29 },
+      { minute: 13, point: 1, fg_made: 0, fg_attempt: 1, threep_made: 0, threep_attempt: 0, ft_made: 1, ft_attempt: 2, off_rebound: 2, def_rebound: 1, assist: 3, turnover: 0, steal: 0, block: 0, fault: 2, evaluation: 3 },
+      { minute: 13, point: 4, fg_made: 1, fg_attempt: 3, threep_made: 0, threep_attempt: 3, ft_made: 2, ft_attempt: 2, off_rebound: 1, def_rebound: 0, assist: 0, turnover: 2, steal: 2, block: 0, fault: 2, evaluation: 0 },
+      { minute: 21, point: 2, fg_made: 1, fg_attempt: 2, threep_made: 0, threep_attempt: 2, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 2, assist: 3, turnover: 1, steal: 0, block: 1, fault: 2, evaluation: 4 },
+      { minute: 11, point: 1, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made: 1, ft_attempt: 2, off_rebound: 1, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault: 1, evaluation: 6 },
+      { minute: 11, point: 8, fg_made: 1, fg_attempt: 1, threep_made: 1, threep_attempt: 1, ft_made: 3, ft_attempt: 4, off_rebound: 0, def_rebound: 2, assist: 2, turnover: 2, steal: 1, block: 2, fault: 1, evaluation: 12 },
+      { minute: 4, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 1, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault: 0, evaluation: -1 },
+      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault: 0, evaluation: 0 }
+    ],
+    opponent: [
+      { minute: 13, point: 4, fg_made: 1, fg_attempt: 3, threep_made: 0, threep_attempt: 3, ft_made: 2, ft_attempt: 2, off_rebound: 1, def_rebound: 0, assist: 0, turnover: 2, steal: 2, block: 0, fault: 2, evaluation: 0 },
+      { minute: 29, point: 14, fg_made: 5, fg_attempt: 9, threep_made: 1, threep_attempt: 4, ft_made: 1, ft_attempt: 2, off_rebound: 2, def_rebound: 5, assist: 7, turnover: 2, steal: 2, block: 0, fault: 4, evaluation: 15 },
+      { minute: 13, point: 1, fg_made: 0, fg_attempt: 1, threep_made: 0, threep_attempt: 0, ft_made: 1, ft_attempt: 2, off_rebound: 2, def_rebound: 1, assist: 3, turnover: 0, steal: 0, block: 0, fault: 2, evaluation: 3 },
+      { minute: 18, point: 0, fg_made: 0, fg_attempt: 1, threep_made: 0, threep_attempt: 1, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 1, assist: 1, turnover: 0, steal: 0, block: 1, fault: 1, evaluation: 3},
+      { minute: 17, point: 11, fg_made: 1, fg_attempt: 1, threep_made: 3, threep_attempt: 5, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 2, steal: 1, block: 2, fault: 1, evaluation: 10},
+      { minute: 21, point: 2, fg_made: 1, fg_attempt: 2, threep_made: 0, threep_attempt: 2, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 2, assist: 3, turnover: 1, steal: 0, block: 1, fault: 2, evaluation: 4 },
+      { minute: 11, point: 1, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made: 1, ft_attempt: 2, off_rebound: 1, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault: 1, evaluation: 6 },
+      { minute: 11, point: 8, fg_made: 1, fg_attempt: 1, threep_made: 1, threep_attempt: 1, ft_made: 3, ft_attempt: 4, off_rebound: 0, def_rebound: 2, assist: 2, turnover: 2, steal: 1, block: 2, fault: 1, evaluation: 12 },
+      { minute: 4, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 1, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault: 0, evaluation: -1 },
+      { minute: 0, point: 0, fg_made: 0, fg_attempt: 0, threep_made: 0, threep_attempt: 0, ft_made: 0, ft_attempt: 0, off_rebound: 0, def_rebound: 0, assist: 0, turnover: 0, steal: 0, block: 0, fault: 0, evaluation: 0 }
+    ]
+  }
 ]
 
 
