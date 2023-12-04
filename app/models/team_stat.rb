@@ -18,9 +18,14 @@ class TeamStat < ApplicationRecord
             :total_steal,
             :total_block,
             :total_fault,
-            :total_evaluation, numericality: { only_integer: true }
-end
+            presence: true
 
-def rebound
-  total_off_rebound + total_def_rebound
-end 
+
+  # def total_team_stats
+  #   Team.where(team: team_id)
+  #       .where.not(id: current_game_id)
+  #       .map(&:team_stat)
+  # end
+
+
+end

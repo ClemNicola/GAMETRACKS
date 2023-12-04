@@ -1,20 +1,37 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "stimulus";
+import Chartkick from "chartkick";
+import { columnChart } from "chartkick";
 
-// Connects to data-controller="chart"
 export default class extends Controller {
-
-  static value = {
-    id: String,
+  connect() {
+    this.loadStats();
   }
 
+  loadStats() {
+    const gameId = this.data.get("gameId");
+    fetch(`/games/${gameId}/stats`)
+      .then((response) => response.json())
+      .then((data) => {
+        const chartData = {
+          "Home Team Stats": data.home_stats,
+          "Total Team Stats": data.total_team_stats,
+        };
 
-  connect() {
-    const chart = Chartkick.charts[this.idValue]
+        const chartOptions = {
+          series: {
+            0: { type: "column" },
+            1: { type: "column" },
+          },
+        };
 
-    // const controllers = Object.values(Chartjs).filter(
-    //   (chart) => chart.id !== undefined
-    // )
-    // Chart.register(...controllers)
+        const chartElement = document.getElementById("chart");
+        if (chartElement) {
+          new Chartkick.ColumnChart("chart", chartData);
+        }
 
+      })
+      .catch((error) => {
+        console.error("Error fetching stats data:", error);
+      });
   }
 }
