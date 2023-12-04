@@ -1,8 +1,53 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<h1>Show du player
-</h1>
+<div class="container">
+  <div class="title-container">
+    <h3>Players stats</h3>
+  </div>
+    <div class="columns">
+      <div class="column-left">
+        <img src="<%= @player && @player.photo.present? ?cl_image_path(@player.photo.key) :asset_path('curry.png')%>" alt="player_picture">
+        <h4><%= @player.player_name_full %></h4>
+      </div>
+      <div class="column-right">
+        <div class="content-right">
+          <p><%= @player.position %></p>
+          <p><%= @player.size_cm %></p>
+        </div>
+      </div>
+    </div>
+    <div class="player-description">
+      <p><%= @player.description %></p>
+    </div>
+    <div class="player-display-stats">
+      <div class="stat-uniq">
+        <p>PPG</p>
+        <p class="number-bold">20.1</p>
+      </div>
+      <div class="stat-uniq">
+        <p>AST</p>
+        <p class="number-bold">3.4</p>
+      </div>
+      <div class="stat-uniq">
+        <p>REB</p>
+        <p class="number-bold">2.4</p>
+      </div>
+      <div class="stat-uniq">
+        <p>PIE</p>
+        <p class="number-bold">10</p>
+      </div>
+    </div>
+    <div class="charts-player">
+      <br>
+      <br>
+      <p><em>// placeholder chart 1 //</em></p>
+      <br>
+      <br>
+    </div>
+    <div class="charts-player">
+      <h5>Points per game evolution </h5>
+      <br>
+      <br>
+       <p><em>// placeholder chart 2 //</em></p>
+      <br>
+      <br>
+    </div>
+</div>
