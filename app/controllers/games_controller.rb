@@ -8,7 +8,8 @@ class GamesController < ApplicationController
 
   def show
     @team = Team.where(coach: current_user)
-    @my_players = @team.first.players.where[selected: true].group_by(&:position)
+    @my_particip = @team.first.participations.where(selected: true)
+    @my_players = @my_particip.players.group_by(&:position)
   end
 
   def index
@@ -37,7 +38,7 @@ class GamesController < ApplicationController
   end
 
   def play
-    @my_players = @game.participations.where(team_id: current_user.teams.first.id, selected: true).map(&:user)
+    # @my_players = @game.participations.where(team_id: current_user.teams.first.id, selected: true).map(&:user)
   end
 
   private
