@@ -21,7 +21,7 @@ class GamesController < ApplicationController
     participations = []
     participation_params[:players].each do |user_id|
       team_id = User.find(user_id).teams.first.id
-      new_participation = Participation.new(team_id: team_id, user_id: user_id, game_id: @game.id)
+      new_participation = Participation.new(team_id: team_id, user_id: user_id, game_id: @game.id, selected?: true)
 
       participations << new_participation
     end
@@ -41,6 +41,6 @@ class GamesController < ApplicationController
   end
 
   def participation_params
-    params.permit(players: [])
+    params.permit(:authenticity_token, :commit, :id, players: [])
   end
 end
