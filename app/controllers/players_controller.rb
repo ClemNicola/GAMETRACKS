@@ -25,7 +25,7 @@ class PlayersController < ApplicationController
   end
 
   def show
-    # @player = player.find(params[:id])
+    @player = User.find(params[:id])
   end
 
   def edit

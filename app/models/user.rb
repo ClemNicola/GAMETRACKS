@@ -20,4 +20,15 @@ class User < ApplicationRecord
     first_name = "#{name.split(', ').last[0]}."
     [last_name, first_name].join(' ')
   end
+
+  def player_name_full
+    last_name = name.split(', ').first
+    first_name = name.split(', ').last
+    [first_name, last_name].join(' ')
+  end
+
+  def size_cm
+    cm = height.fdiv(100)
+    size = "#{cm} m"
+  end
 end
