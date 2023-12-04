@@ -1,4 +1,4 @@
-<div class="maximaxidiv" data-controller="titulaire">
+<div class="maximaxidiv">
 
   <div id="titleyourteam">
 
@@ -17,12 +17,10 @@
 
       <div class="divclass1">
         <% @my_guards.each do |player| %>
-          <%= link_to set_titulaire_game_path(@game, user_id: player) do %>
-            <div class="player-container" data-action="click->titulaire#newTitulaire">
-              <%# <%= check_box_tag "players[]", player.id, false, id: "player_#{player.id}", class: "checkbox", style: "display: none;" %>
-              <%= label_tag "player_#{player.id}", image_tag(player && player.photo.present? ? cl_image_path(player.photo.key) : asset_path('curry.png'), alt: "player_picture", class: "imgimgimg"), id: "player_#{player.id}" %>
-            </div>
-          <% end %>
+          <div class="player-container">
+            <%= check_box_tag "players[]", player.id, false, id: "player_#{player.id}", class: "checkbox", style: "display: none;" %>
+            <%= label_tag "player_#{player.id}", image_tag(player && player.photo.present? ? cl_image_path(player.photo.key) : asset_path('curry.png'), alt: "player_picture", class: "imgimgimg") %>
+          </div>
         <% end %>
       </div>
 
@@ -54,7 +52,7 @@
 </div>
 
 
-<%# <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
   $(document).ready(function () {
     $('.player-container').click(function () {
@@ -77,4 +75,4 @@
       }
     }
   });
-</script> %>
+</script>
