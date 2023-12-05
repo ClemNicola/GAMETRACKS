@@ -2,16 +2,28 @@
 
   <div class="divpoints">
     <div class="divpoints1">
-        <span class="btn-green-round btnmarginb1">1</span>
-        <span class="btn-green-round btnmarginb1">2</span>
-        <span class="btn-green-round btnmargin2">3</span>
-        <span class="material-symbols-outlined">menu</span>
+      <%= radio_button_tag 'stats', '1', id: 'points_1' %>
+      <%= label_tag 'points_1', '1', class: 'btn-green-round btnmarginb1' %>
+
+      <%= radio_button_tag 'stats', '2', id: 'points_2' %>
+      <%= label_tag 'points_2', '2', class: 'btn-green-round btnmarginb1' %>
+
+      <%= radio_button_tag 'stats', '3', id: 'points_3' %>
+      <%= label_tag 'points_3', '3', class: 'btn-green-round btnmargin2' %>
+
+      <span class="material-symbols-outlined">menu</span>
     </div>
     <div class="divpoints2">
-        <span class="btn-red-round btnmarginb1">1</span>
-        <span class="btn-red-round btnmarginb1">2</span>
-        <span class="btn-red-round btnmargin2">3</span>
-        <span class="material-symbols-outlined">undo</span>
+      <%= radio_button_tag 'stats', '1', id: 'points_1_red' %>
+      <%= label_tag 'points_1_red', '1', class: 'btn-red-round btnmarginb1' %>
+
+      <%= radio_button_tag 'stats', '2', id: 'points_2_red' %>
+      <%= label_tag 'points_2_red', '2', class: 'btn-red-round btnmarginb1' %>
+
+      <%= radio_button_tag 'stats', '3', id: 'points_3_red' %>
+      <%= label_tag 'points_3_red', '3', class: 'btn-red-round btnmargin2' %>
+
+      <span class="material-symbols-outlined">undo</span>
     </div>
   </div>
 
@@ -27,21 +39,38 @@
       </div>
     </div>
     <div class="divaffichage3">
-      <p>stats affichées</p>
+    <%# AFFICHAGE DES JOUEURS SELECTED POUR TEST %>
+      <ul>
+        <% @players_selected.each do |player_name| %>
+          <li><%= button_tag player_name, name: 'player', value: player_name, class: 'player-button', type: 'submit' %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
 
   <div class="divstats">
     <div class="divstats1">
-      <span class="btn-white-round btnmarginb1">BLK</span>
-      <span class="btn-white-round btnmarginb1">STL</span>
-      <span class="btn-white-round btnmargin2">OR</span>
+      <%= radio_button_tag 'stats', 'BLK', id: 'stats_BLK' %>
+      <%= label_tag 'stats_BLK', 'BLK', class: 'btn-white-round btnmarginb1' %>
+
+      <%= radio_button_tag 'stats', 'STL', id: 'stats_STL' %>
+      <%= label_tag 'stats_STL', 'STL', class: 'btn-white-round btnmarginb1' %>
+
+      <%= radio_button_tag 'stats', 'OR', id: 'stats_OR' %>
+      <%= label_tag 'stats_OR', 'OR', class: 'btn-white-round btnmargin2' %>
+
       <span class="btn-rectangle">SUB</span>
     </div>
     <div class="divstats2">
-      <span class="btn-white-round btnmarginb1">TO</span>
-      <span class="btn-white-round btnmarginb1">AST</span>
-      <span class="btn-white-round btnmargin2">DR</span>
+      <%= radio_button_tag 'stats', 'TO', id: 'stats_TO' %>
+      <%= label_tag 'stats_TO', 'TO', class: 'btn-white-round btnmarginb1' %>
+
+      <%= radio_button_tag 'stats', 'AST', id: 'stats_AST' %>
+      <%= label_tag 'stats_AST', 'AST', class: 'btn-white-round btnmarginb1' %>
+
+      <%= radio_button_tag 'stats', 'DR', id: 'stats_DR' %>
+      <%= label_tag 'stats_DR', 'DR', class: 'btn-white-round btnmargin2' %>
+
       <span class="btn-rectangle">foul</span>
     </div>
   </div>
@@ -49,5 +78,27 @@
 </div>
 
 <div class="lillildiv">
-  <%= link_to 'End QT', stats_game_path(Game.find(Game.last.id)), class: 'btn-rectangle' %>
+  <%= link_to 'End QT1', stats_game_path(Game.find(Game.last.id)), id: 'endQtButton', class: 'btn-rectangle' %>
 </div>
+
+<!-- Add this to your layout file -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var buttonTexts = ['End QT1', 'End QT2', 'End QT3', 'End GAME'];
+    var currentButtonTextIndex = 0;
+
+    $('#endQtButton').on('click', function(e) {
+      e.preventDefault();
+
+      // If it's the last button, redirect to the desired path
+      if (currentButtonTextIndex === buttonTexts.length - 1) {
+        window.location.href = '<%= stats_game_path(@game) %>';
+        return;
+      }
+
+      // Change the text to the next one in the array
+      $(this).text(buttonTexts[++currentButtonTextIndex]);
+    });
+  });
+</script>
