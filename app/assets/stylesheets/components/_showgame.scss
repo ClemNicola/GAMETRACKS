@@ -45,6 +45,9 @@
   height: 80px;
   width: 80px;
   object-fit: contain;
+}
+
+.player-container {
   border-radius: 50%;
 }
 
@@ -60,24 +63,29 @@
   position: fixed;
   top: 23vh;
   align-items: baseline;
+  z-index: 10;
 }
 
 .divclass2 {
-  display: flex;
-  justify-content: space-between;
+  // display: flex;
+  // justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   position: fixed;
   top: 27vh;
+  width: 85%;
 }
 
 .divclass21 {
   display: flex;
   flex-direction: column;
-  padding-right: 175px;
 }
 
 .divclass22 {
+  // display: flex;
+  // flex-direction: column;
   display: flex;
-  flex-direction: column;
+  justify-content: end;
 }
 
 .divclass3 {
@@ -89,4 +97,9 @@
 
 .titu {
   border: 4px solid $orange
+}
+
+.imgimgimg.selected {
+  border: 4px solid #FF7517;
+  border-radius: 50%;
 }

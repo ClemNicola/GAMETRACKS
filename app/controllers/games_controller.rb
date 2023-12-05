@@ -7,8 +7,12 @@ class GamesController < ApplicationController
   end
 
   def show
-    @team = Team.where(coach: current_user)
-    @my_players = @team.first.players.where[selected: true].group_by(&:position)
+    selected = @game.participations.where(selected?: true)
+    user_ids = selected.map(&:user_id)
+    my_players = User.where(id: user_ids)
+    @my_centers = my_players.group_by(&:position)["C"]
+    @my_forwards = my_players.group_by(&:position)["F"]
+    @my_guards = my_players.group_by(&:position)["G"]
   end
 
   def index
@@ -37,7 +41,11 @@ class GamesController < ApplicationController
   end
 
   def play
-    @my_players = @game.participations.where(team_id: current_user.teams.first.id, selected: true).map(&:user)
+    # @my_players = @game.participations.where(team_id: current_user.teams.first.id, selected: true).map(&:user)
+    @skip_navbar = true
+    @skip_footer = true
+    @players_titulaires = @game.participations.where(selected?: true, titulaire?: true).map(&:user)
+    @players_selected = @game.participations.where(selected?: true).map(&:user).map(&:name)
   end
 
   private
