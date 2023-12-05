@@ -55,14 +55,12 @@
 
 #divgametracks {
   display: flex;
-  margin-top: 16px;
-  margin-left: -150px;
+  margin-top: 40px;
 }
 
 #divlevelupyourgame {
   display: flex;
   margin-top: 200px;
-  margin-left: -80px;
 }
 
 #levelup {
@@ -100,4 +98,11 @@
 
 .btn-center {
   margin-left: 102px;
+}
+
+.flex-home {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 50px;
 }
