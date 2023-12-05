@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container" data-controller='checked-player'>
   <div class="title-container">
     <h3>Select your players</h3>
   </div>
-  <p class="new-part-right selected-count">0/10</p>
+  <p class="new-part-right selected-count" data-checked-player-target='count'>0/10</p>
 
-  <div class="card-select-players">
+  <div class="card-select-players" data-checked-player-target='playersContainer'>
     <%= form_with url:  set_participations_game_path(@game), method: :post, class: "@", remote: true do %>
       <% @players_list.each do |position, player| %>
         <% if position == "C" %>
@@ -16,55 +16,19 @@
         <% end %>
         <div class="container-flex">
           <% player.each do |player| %>
-            <div class="card-select-player">
-              <input type="checkbox" name="players[]" id="player_<%= player.id %>" value="<%= player.id %>" class="checkbox">
+            <label for="player_<%= player.id %>" class="card-select-player" data-action='click->checked-player#selectCard'>
               <img src="<%= player && player.photo.present? ?cl_image_path(player.photo.key) :asset_path('curry.png')%>" alt="player_picture">
-              <p><%= label_tag "player_#{player.id}", player.player_name %></p>
-              <i class="fa-regular fa-circle-check"></i>
-            </div>
+              <p><%= player.player_name %></p>
+              <i class="fa-regular fa-circle-check" hidden></i>
+              <input type="checkbox" name="players[]" id="player_<%= player.id %>" value="<%= player.id %>" class="checkbox">
+            </label>
+
           <% end %>
         </div>
       <% end %>
-      <div class="btn-flex" style="display: none;">
+      <div class="btn-flex" data-checked-player-target='buttonNext' hidden>
         <%= submit_tag "Next >", class: "btn-orange-classic" %>
       </div>
     <% end %>
   </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-
-  $(document).ready(function () {
-    $('.card-select-player').click(function () {
-      var checkbox = $(this).find('.checkbox');
-      checkbox.prop('checked', !checkbox.prop('checked'));
-
-      var checkIcon = $(this).find('.fa-circle-check');
-      checkIcon.toggle(checkbox.prop('checked'));
-
-      $(this).toggleClass('checked', checkbox.prop('checked'));
-
-      updateSelectedCount();
-    });
-
-    $('.card-select-player input[type="checkbox"]').change(function () {
-      var checkIcon = $(this).siblings('.fa-circle-check');
-      checkIcon.toggle($(this).prop('checked'));
-      $(this).closest('.card-select-player').toggleClass('checked', $(this).prop('checked'));
-
-       updateSelectedCount();
-    });
-
-    function updateSelectedCount() {
-      var selectedCount = $('.card-select-player.checked').length;
-      $('.selected-count').text(selectedCount + '/10');
-        if (selectedCount >= 5) {
-        $('.btn-flex').show();
-      } else {
-        $('.btn-flex').hide();
-      }
-    }
-  });
-
-</script>
