@@ -28,4 +28,8 @@ class PagesController < ApplicationController
     @skip_footer = true
 
   end
+
+  def profile
+
+  end
 end

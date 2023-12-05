@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "dashboard", to: "pages#dashboard"
   get "calendar", to: "pages#calendar"
+  get "profile", to: "pages#profile"
 
   get "fake_new", to: "pages#fake_new"
 
