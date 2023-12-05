@@ -80,7 +80,7 @@
         <td><%= game_home_team_stats[:def_rebound] %></td>
         <td><%= game_home_team_stats[:turnover] %></td>
         <td><%= game_home_team_stats[:fault] %></td>
-        <td><%= game_home_team_stats[:eval_mean]</td> %>
+        <td><%= game_home_team_stats[:eval_mean] %></td>
       </tr>
   </tbody>
 </table>
@@ -91,23 +91,7 @@
 </div>
 
 <div class='chart-container' data-controller='chart' data-chart-game-id-value='<%= @game.id %>'>
-  <div class='card-chart' id='chart'></div>
-
-<%# <div class='chart-container' data-controller='chart'>
-  <div class='card' data-chart-id-value='chart'>
-    <%= column_chart(
-      {
-        "Game Team Stats" => @game.home_stats_for_chart,
-        "Game Team Stats" => @game.home_stats_for_chart,
-        # "Total Team Stats" => @game.home_team.total_team_stats_for_chart(@game)
-      },
-      library: {
-        series: {
-          0 => { type: "column" },
-          1 => { type: "column" }
-        }
-      },
-      id: 'chart'
-    ) %>
-  </div>
-</div> %>
+  <canvas class='card-chart' id='chart' data-chart-target='chartContainer'></canvas>
+  <canvas class='card-chart' id='chartLine' data-chart-target='chartLine'></canvas>
+  <canvas class='card-chart' id='chartLineBis' data-chart-target='chartLineBis'></canvas>
+</div>

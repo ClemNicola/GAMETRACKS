@@ -1,13 +1,34 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:play, :show, :set_participations]
+  before_action :set_game, only: [:play, :show, :set_participations, :quarter_data, :total_quarter_data]
 
   def stats
     @game = Game.find(params[:id])
     @home_team_stats = @game.home_team_stats
     home_stats = @game.home_stats_for_chart
     total_team_stats = @game.home_team.total_team_stats_for_chart(@game)
+    @game_data = { home_stats: home_stats, total_team_stats: total_team_stats }
+    respond_to do |format|
+      format.html
+      format.json { render json: @game_data }
+    end
+  end
 
-    render json: { home_stats: home_stats, total_team_stats: total_team_stats }
+  def quarter_data
+    score_per_quarter_team = @game.score_per_quarter_team(@game)
+    score_per_quarter_opponent = @game.score_per_quarter_opponent(@game)
+
+    @quarter_data = { score_per_quarter_team: score_per_quarter_team, score_per_quarter_opponent: score_per_quarter_opponent }
+
+    render json: @quarter_data
+  end
+
+  def total_quarter_data
+    total_score_per_quarter_team = @game.total_score_per_quarter_team(@game)
+    total_score_per_quarter_opponent = @game.total_score_per_quarter_opponent(@game)
+
+    @total_quarter_data = { total_score_per_quarter_team: total_score_per_quarter_team, total_score_per_quarter_opponent: total_score_per_quarter_opponent }
+
+    render json: @total_quarter_data
   end
 
   def show

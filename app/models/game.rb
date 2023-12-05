@@ -24,8 +24,8 @@ class Game < ApplicationRecord
 
     ## WARNING
 
-    # Participation.where(game: self, team: home_team).map(&:player_stat)
-    Participation.all.map(&:player_stat)
+    Participation.where(game: self, team: home_team).map(&:player_stat)
+    # Participation.all.map(&:player_stat)
   end
 
   def compiled_home_stats
@@ -75,4 +75,39 @@ class Game < ApplicationRecord
     Participation.where(game: self, team: away_team).map(&:player_stat)
   end
 
+  def score_per_quarter_team(game)
+    quarters_home = {
+      Q1_home: game.Q1_home,
+      Q2_home: game.Q2_home,
+      Q3_home: game.Q3_home,
+      Q4_home: game.Q4_home
+    }
+  end
+
+  def score_per_quarter_opponent(game)
+    quarters_away = {
+      Q1_away: game.Q1_away,
+      Q2_away: game.Q2_away,
+      Q3_away: game.Q3_away,
+      Q4_away: game.Q4_away
+    }
+  end
+
+  def total_score_per_quarter_team(game)
+    total_quarters_home = {
+      Q1_home: game.Q1_home,
+      Q2_home: game.Q1_home + game.Q2_home,
+      Q3_home: game.Q1_home + game.Q2_home + game.Q3_home,
+      Q4_home: game.Q1_home + game.Q2_home + game.Q3_home + game.Q4_home
+    }
+  end
+
+  def total_score_per_quarter_opponent(game)
+    total_quarters_away = {
+      Q1_away: game.Q1_away,
+      Q2_away: game.Q1_away + game.Q2_away,
+      Q3_away: game.Q1_away + game.Q2_away + game.Q3_away,
+      Q4_away: game.Q1_away + game.Q2_away + game.Q3_away + game.Q4_away
+    }
+  end
 end
