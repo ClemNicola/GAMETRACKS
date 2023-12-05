@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :teams, through: :team_players
   has_many :participations
   has_many :games, through: :participations
+  has_many :player_stats
 
   validates :category, presence: true, inclusion: { in: %w[Coach Player Spectator] }
   validates :email, presence: true, uniqueness: true

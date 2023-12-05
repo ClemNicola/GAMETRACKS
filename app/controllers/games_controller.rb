@@ -4,6 +4,10 @@ class GamesController < ApplicationController
   def stats
     @game = Game.find(params[:id])
     @home_team_stats = @game.home_team_stats
+    home_stats = @game.home_stats_for_chart
+    total_team_stats = @game.home_team.total_team_stats_for_chart(@game)
+
+    render json: { home_stats: home_stats, total_team_stats: total_team_stats }
   end
 
   def show

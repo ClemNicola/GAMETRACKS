@@ -11,6 +11,7 @@ class Game < ApplicationRecord
             :arena,
             :arena_address, presence: true
 
+
   def home_team
     teams.joins(:participations).where(participations: { home?: true }).distinct.first
   end
@@ -20,7 +21,11 @@ class Game < ApplicationRecord
   end
 
   def home_team_stats
-    Participation.where(game: self, team: home_team).map(&:player_stat)
+
+    ## WARNING
+
+    # Participation.where(game: self, team: home_team).map(&:player_stat)
+    Participation.all.map(&:player_stat)
   end
 
   def compiled_home_stats
@@ -42,6 +47,7 @@ class Game < ApplicationRecord
       fault: 0,
       eval_player: 0
     }
+
     home_team_stats.compact.each do |stat|
       reduced_stats.keys.each do |key|
         reduced_stats[key] += stat.send(key)
@@ -59,17 +65,6 @@ class Game < ApplicationRecord
       stats[output] = home_stats[output]
     end
     stats
-  end
-
-  def previous_home_stats
-    averages = {}
-    outputs = %i(total_point total_off_rebound total_def_rebound total_assist total_turnover)
-    outputs.each do |output|
-      avg_values = TeamStat.average(output)
-      averages[output] = avg_values
-    end
-    averages
-    # previous_team_stats / previous_team_stats.length
   end
 
   def away_team
