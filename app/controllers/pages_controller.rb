@@ -18,7 +18,7 @@ class PagesController < ApplicationController
   end
 
   def calendar
-    @games = current_user.managed_teams.first.games
+    @games = current_user.managed_teams.first.games.order(date: :asc)
     @home_team = Team.first
     @away_team = Team.second
   end
@@ -26,6 +26,5 @@ class PagesController < ApplicationController
   def fake_new
     @skip_navbar = true
     @skip_footer = true
-
   end
 end
