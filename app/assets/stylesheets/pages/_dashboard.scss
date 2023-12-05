@@ -1,5 +1,10 @@
 body{
-  background-color: black;
+  background-color: $black;
+  padding:0px;
+  margin: 0px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .title-container{
