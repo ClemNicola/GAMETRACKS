@@ -1,5 +1,10 @@
 body{
-  background-color: black;
+  background-color: $black;
+  padding:0px;
+  margin: 0px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .title-container{
@@ -7,6 +12,7 @@ body{
   margin: 0px auto;
   padding: 14px;
   h3{
+    padding-left: 10px;
     border-left: 4px solid $orange;
   }
 }

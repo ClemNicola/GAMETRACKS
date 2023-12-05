@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :games, only: :show do
     member do
+      get :play
       get :stats
     end
   end
@@ -28,6 +29,9 @@ Rails.application.routes.draw do
 
   resources :games, only: %i[show index] do
     resources :participations, only: %i[new]
+    member do
+      post 'set_titulaire', to: "participations#titularize"
+    end
     member do
       post "set_participations", to: "games#set_participations"
     end

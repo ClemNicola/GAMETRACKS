@@ -1,11 +1,15 @@
-<% @players.each do |player| %>
-
-  <%= link_to player_path(player) do %>
-
-    <div style="font-color: white">
-      <%= player.name %>
-    </div>
-
-  <% end %>
-
-<% end %>
+<div class="container">
+  <div class="title-container">
+    <h3>Your team:</h3>
+  </div>
+  <div class="row col-centered">
+    <% @players.each do |player| %>
+      <div class="card-list-players col-sm-6">
+        <%= link_to player_path(player) do %>
+          <img src="<%= player && player.photo.present? ?cl_image_path(player.photo.key) :asset_path('curry.png')%>" alt="player_picture">
+          <p><%= player.player_name_full %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

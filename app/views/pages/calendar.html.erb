@@ -1,10 +1,12 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<div class="title-container">
+  <h3>Calendar</h3>
+</div>
 
-<h1>LE CALENDRIER</h1>
+<div class="card-game-container">
+<% @games.each do |game| %>
+    <p><%= game.time %></p>
+    <p><%= game.date %></p>
+    <p><%= game.teams.first.club_name %></p>
+
+  <% end %>
+</div>

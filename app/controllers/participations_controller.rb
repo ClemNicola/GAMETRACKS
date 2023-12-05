@@ -7,18 +7,13 @@ class ParticipationsController < ApplicationController
     @game = Game.find(params[:game_id])
   end
 
-  def create
-    @participation = Participation.new(participation_params)
-    if @participation.save
-      redirect_to game_path(@game)
-    else
-      render :new
-    end
+  def titularize
+    @participations = Participation.where(user_id: params[:players], game_id: params[:id], selected?: true)
+    @participations.update_all(titulaire?: true)
+    redirect_to play_game_path(params[:id])
   end
 
-  private
-
-  def participation_params
-    params.require(:participation).permit(:team_id, :game_id, :player_id)
+  def set_game
+    @game = Game.find(params[:id])
   end
 end

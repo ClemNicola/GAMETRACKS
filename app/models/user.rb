@@ -5,7 +5,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :managed_teams, class_name: :Team, foreign_key: :coach_id
-  # belongs_to :teams, class_name: :Team, foreign_key: :player_id
   has_many :team_players
   has_many :teams, through: :team_players
   has_many :participations
@@ -16,5 +15,21 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :encrypted_password, presence: true
   validates :name, presence: true
-  # validates :date_of_birth, presence: true
+
+  def player_name
+    last_name = name.split(', ').first
+    first_name = "#{name.split(', ').last[0]}."
+    [last_name, first_name].join(' ')
+  end
+
+  def player_name_full
+    last_name = name.split(', ').first
+    first_name = name.split(', ').last
+    [first_name, last_name].join(' ')
+  end
+
+  def size_cm
+    cm = height.fdiv(100)
+    size = "#{cm} m"
+  end
 end

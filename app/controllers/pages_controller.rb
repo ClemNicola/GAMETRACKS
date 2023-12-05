@@ -15,14 +15,17 @@ class PagesController < ApplicationController
 
     @home_team = @next_game.home_team
     @away_team = @next_game.away_team
-
   end
 
   def calendar
+    @games = current_user.managed_teams.first.games.uniq
+    # @home_team = @games.home_team
+    # @away_team = @games.away_team
   end
 
   def fake_new
     @skip_navbar = true
     @skip_footer = true
+
   end
 end
