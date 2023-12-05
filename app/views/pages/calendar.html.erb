@@ -3,35 +3,25 @@
 </div>
 
 <% @games.each do |game| %>
-  <div class="card-game-container">
-    <div class="pregame-card">
-      <div class="card-info">
-        <p><%= game.time %></p>
-        <p><%= game.date %></p>
-        <p><%= game.teams.first.club_name %></p>
+  <div class="card-game-container-calendar">
+    <div class="pregame-card-calendar">
+      <div class="card-info-calendar">
+        <img src="<%= @home_team && @home_team.photo.present? ?cl_image_path(@home_team.photo.key) :asset_path('bcm_logo.png')%>" alt="">
+        <div class="flex-time">
+          <p><%= game.date.strftime("%d-%m-%Y") %></p>
+          <p><%= game.time.strftime("%Hh%M") %></p>
+          <p><%= game.arena %></p>
+        </div>
+        <img src="<%= @away_team && @away_team.photo.present? ?cl_image_path(@away_team.photo.key) :asset_path('sig_logo.png')%>" alt="">
+      </div>
+      <div class="name-hour-calendar">
+        <p><%= @home_team.city %></p>
+        <p><%= @away_team.city %></p>
+      </div>
+      <div class="name-hour-calendar">
+        <p><%= game.score_home_team %></p>
+        <p><%= game.score_away_team %></p>
       </div>
     </div>
   </div>
 <% end %>
-
-
-
-<div class="card-game-container">
-  <% if @next_game %>
-    <div class="pregame-card">
-      <div class="card-info">
-        <img src="<%= @home_team && @home_team.photo.present? ?cl_image_path(@home_team.photo.key) :asset_path('Tours.png')%>" alt="">
-        <p><%= Time.now.strftime("%Y-%m-%d")%></p>
-        <img src="<%= @away_team && @away_team.photo.present? ?cl_image_path(@away_team.photo.key) :asset_path('Pau.png')%>" alt="">
-      </div>
-      <div class="name-hour">
-        <% unless @next_game.nil? %>
-          <p><%= @home_team.city %></p>
-          <p><%= @next_game.time.strftime("%Hh%M") %></p>
-          <p><%= @away_team.city %></p>
-        <% end %>
-      </div>
-    </div>
-    <%= link_to "Prepare your game", new_game_participation_path(@next_game), class: "btn-dashboard"%>
-  <% end %>
-</div>

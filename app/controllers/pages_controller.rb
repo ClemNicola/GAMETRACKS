@@ -18,9 +18,9 @@ class PagesController < ApplicationController
   end
 
   def calendar
-    @games = current_user.managed_teams.first.games.uniq
-    # @home_team = @games.home_team
-    # @away_team = @games.away_team
+    @games = current_user.managed_teams.first.games
+    @home_team = Team.first
+    @away_team = Team.second
   end
 
   def fake_new
