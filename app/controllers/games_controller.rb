@@ -44,8 +44,9 @@ class GamesController < ApplicationController
     # @my_players = @game.participations.where(team_id: current_user.teams.first.id, selected: true).map(&:user)
     @skip_navbar = true
     @skip_footer = true
-    @players_titulaires = @game.participations.where(selected?: true, titulaire?: true).map(&:user)
-    @players_selected = @game.participations.where(selected?: true).map(&:user).map(&:name)
+    # @players_titulaires = @game.participations.where(selected?: true, titulaire?: true).map(&:user)
+    # @players_selected = @game.participations.where(selected?: true).map(&:user).map(&:name)
+    @participations_selected = @game.participations.where(selected?: true).uniq
   end
 
   private
