@@ -41,11 +41,14 @@ class GamesController < ApplicationController
   end
 
   def index
-    @games = []
-    current_user.managed_teams.each do |team|
-      @games << team.games
-    end
-    @games = @games.flatten
+    # @games = []
+    # current_user.managed_teams.each do |team|
+    #   @games << team.games
+    # end
+    # @games = @games.flatten
+    @games = current_user.managed_teams.first.games.where("date < :end", end: Date.today).order(date: :desc)
+    @home_team = Team.first
+    @away_team = Team.second
   end
 
   def set_participations
