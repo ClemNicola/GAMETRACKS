@@ -1,6 +1,4 @@
 class ParticipationsController < ApplicationController
-  # before_action :player_name
-
   def new
     @participation = Participation.new
     @user = current_user
@@ -10,18 +8,9 @@ class ParticipationsController < ApplicationController
   end
 
   def titularize
-    # set_game
-    # user = User.find(params[:user_id])
-    # participations = @game.participations
-    # to_titularize = participations.where(user: user)
-    # player_to_titularize = to_titularize.first
-    # if player_to_titularize.titulaire?
-    #   player_to_titularize.titulaire = false
-    # else
-    #   player_to_titularize.titulaire = true
-    # end
-    # player_to_titularize.save!
-    # render controller: "games", action: "show"
+    @participations = Participation.where(user_id: params[:players], game_id: params[:id], selected?: true)
+    @participations.update_all(titulaire?: true)
+    redirect_to play_game_path(params[:id])
   end
 
   def set_game
