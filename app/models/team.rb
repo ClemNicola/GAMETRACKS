@@ -19,8 +19,8 @@ class Team < ApplicationRecord
 
     ## WARNING
 
-    # games.where.not(id: current_game)
-    Game.all
+    games.where.not(id: current_game)
+    # Game.all
   end
 
   def compiled_team_stats(game)
@@ -51,7 +51,7 @@ class Team < ApplicationRecord
     reduced_team_stats.merge(eval_mean: reduced_team_stats[:eval_player] / past_game(game).count)
   end
 
-  def total_team_stats_for_chart(game)
+  def total_team_stats(game)
     outputs = %i(point assist off_rebound def_rebound turnover)
     team_stats = compiled_team_stats(game)
     t_stats = {}
@@ -61,6 +61,13 @@ class Team < ApplicationRecord
     t_stats
   end
 
+  def total_team_stats_for_chart(game)
+    total_team_stat = total_team_stats(game)
+    total_past_game = past_game(game).count
+    total_team_stat.transform_values! { |stat| stat.to_f / total_past_game }
+
+    total_team_stat
+  end
 
   def update_team_stat(game)
     stats = game.compiled_home_stats
@@ -118,26 +125,4 @@ class Team < ApplicationRecord
     total_off_rebound + total_def_rebound
   end
 
-  def calculate_field_goal_percentage
-    return 0 if total_fg_attempt.zero?
-
-    shoot_pct = (total_fg_made.to_f / total_fg_attempt) * 100
-    shoot_pct.roudn(2)
-  end
-
-  def calculate_free_throw_percentage
-    return 0 if total_ft_attempt.zero?
-
-    ft_pct = (total_ft_made.to_f / total_ft_attempt) * 100
-    ft_pct.round(2)
-  end
-
-  def compare_with_game_stats(game_stats)
-    comparison = {}
-
-    comparison[:fg_percentage_difference] = calculate_field_goal_percentage - game_stats.field_goal_percentage
-    comparison[:ft_percentage_difference] = calculate_free_throw_percentage - game_stats.free_throw_percentage
-
-    comparison
-  end
 end

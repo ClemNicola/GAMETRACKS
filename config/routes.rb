@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     resources :participations, only: %i[new]
     member do
       post 'set_titulaire', to: "participations#titularize"
+      get :quarter_data
+      get :total_quarter_data
     end
     member do
       post "set_participations", to: "games#set_participations"

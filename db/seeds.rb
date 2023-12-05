@@ -552,5 +552,4 @@ games_stats.each_with_index do |game_stat, index|
   game.Q3_away = away_team_quarters[2]
   game.Q4_away = away_team_quarters[3]
   game.save
-  
 end
