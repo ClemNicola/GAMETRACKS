@@ -5,7 +5,7 @@
   <p class="new-part-right selected-count">0/10</p>
 
   <div class="card-select-players">
-    <%= form_with url:  set_participations_game_path(@game), method: :post, class: "@" do %>
+    <%= form_with url:  set_participations_game_path(@game), method: :post, class: "@", remote: true do %>
       <% @players_list.each do |position, player| %>
         <% if position == "C" %>
           <h5>Center</h5>
