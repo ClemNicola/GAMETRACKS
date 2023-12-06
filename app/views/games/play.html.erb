@@ -7,19 +7,30 @@
 
       <div class="divpoints1">
 
-        <%# LA VALUE DU BOOLEAN NE PEUT PAS ETRE 2 OU 3 DOND COMMENT FAIRE ? MAIS QUE FAIRE ? I NEED SOME HELP %>
-        <%= f.input :ft_made, as: :boolean, label: "1", value: 1, wrapper: false, input_html: { class: 'btn-white-round btnmarginb1' } %>
-        <%= f.input :fg_made, as: :boolean, label: "2", value: 1, wrapper: false, input_html: { class: 'btn-white-round btnmarginb1' } %>
-        <%= f.input :threep_made, as: :boolean, label: "3", value: 1, wrapper: false, input_html: { class: 'btn-white-round btnmarginb1' } %>
+        <%= label_tag :player_stat_ft_made, "1", class: "btn-green-round" %>
+        <%= check_box_tag "player_stat[ft_made]", "1", false, hidden: true %>
+
+        <%= label_tag :player_stat_fg_made, "2", class: "btn-green-round" %>
+        <%= check_box_tag "player_stat[fg_made]", "1", false, hidden: true %>
+
+        <%= label_tag :player_stat_threep_made, "3", class: "btn-green-round" %>
+        <%= check_box_tag "player_stat[threep_made]", "1", false, hidden: true %>
+
         <span class="material-symbols-outlined">menu</span>
 
       </div>
 
       <div class="divpoints2">
 
-        <%= f.input :ft_attempt, as: :boolean, label: "1", value: 1, wrapper: false, input_html: { class: 'btn-red-round btnmarginb1' } %>
-        <%= f.input :fg_attempt, as: :boolean, label: "2", value: 1, wrapper: false, input_html: { class: 'btn-red-round btnmarginb1' } %>
-        <%= f.input :threep_attempt, as: :boolean, label: "3", value: 1, wrapper: false, input_html: { class: 'btn-red-round btnmarginb1' } %>
+        <%= label_tag :player_stat_ft_attempt, "1", class: "btn-red-round" %>
+        <%= check_box_tag "player_stat[ft_attempt]", "1", false, hidden: true %>
+
+        <%= label_tag :player_stat_fg_attempt, "2", class: "btn-red-round" %>
+        <%= check_box_tag "player_stat[fg_attempt]", "1", false, hidden: true %>
+
+        <%= label_tag :player_stat_threep_attempt, "3", class: "btn-red-round" %>
+        <%= check_box_tag "player_stat[threep_attempt]", "1", false, hidden: true %>
+
         <span class="material-symbols-outlined">undo</span>
 
       </div>
@@ -56,19 +67,32 @@
 
       <div class="divstats1">
 
-        <%= f.input :block, as: :boolean, label: "BLK", value: 1, wrapper: false, input_html: { class: 'btn-white-round btnmarginb1' } %>
-        <%= f.input :steal, as: :boolean, label: "STL", value: 1, wrapper: false, input_html: { class: 'btn-white-round btnmarginb1' } %>
-        <%= f.input :off_rebound, as: :boolean, label: "OR", value: 1, wrapper: false, input_html: { class: 'btn-white-round btnmarginb1' } %>
+        <%= label_tag :player_stat_block, "BLK", class: "btn-white-round" %>
+        <%= check_box_tag "player_stat[block]", "1", false, hidden: true %>
+
+        <%= label_tag :player_stat_steal, "STL", class: "btn-white-round" %>
+        <%= check_box_tag "player_stat[steal]", "1", false, hidden: true %>
+
+        <%= label_tag :player_stat_off_rebound, "OR", class: "btn-white-round" %>
+        <%= check_box_tag "player_stat[off_rebound]", "1", false, hidden: true %>
+
         <span class="btn-rectangle">SUB</span>
 
       </div>
 
       <div class="divstats2">
 
-        <%= f.input :turnover, as: :boolean, label: "TO", value: 1, wrapper: false, input_html: { class: 'btn-white-round btnmarginb1' } %>
-        <%= f.input :assist, as: :boolean, label: "AST", value: 1, wrapper: false, input_html: { class: 'btn-white-round btnmarginb1' } %>
-        <%= f.input :def_rebound, as: :boolean, label: "DR", value: 1, wrapper: false, input_html: { class: 'btn-white-round btnmarginb1' } %>
-        <%= f.input :fault, as: :boolean, label: "Foul", value: 1, wrapper: false, input_html: { class: 'btn-white-round btnmarginb1' } %>
+        <%= label_tag :player_stat_turnover, "TO", class: "btn-white-round" %>
+        <%= check_box_tag "player_stat[turnover]", "1", false, hidden: true %>
+
+        <%= label_tag :player_stat_assist, "AST", class: "btn-white-round" %>
+        <%= check_box_tag "player_stat[assist]", "1", false, hidden: true %>
+
+        <%= label_tag :player_stat_def_rebound, "DR", class: "btn-white-round" %>
+        <%= check_box_tag "player_stat[def_rebound]", "1", false, hidden: true %>
+
+        <%= label_tag :player_stat_fault, "Foul", class: "btn-rectangle" %>
+        <%= check_box_tag "player_stat[fault]", "1", false, hidden: true %>
 
       </div>
 
