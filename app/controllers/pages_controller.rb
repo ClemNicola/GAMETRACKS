@@ -18,7 +18,7 @@ class PagesController < ApplicationController
   end
 
   def calendar
-    @games = current_user.managed_teams.first.games.order(date: :asc)
+    @games = current_user.managed_teams.first.games.where("date >= :end", end: Date.today).order(date: :asc)
     @home_team = Team.first
     @away_team = Team.second
   end
