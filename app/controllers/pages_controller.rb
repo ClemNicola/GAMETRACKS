@@ -31,6 +31,22 @@ class PagesController < ApplicationController
   end
 
   def profile
+    @user = current_user
+  end
 
+  def update_profile
+    @user = current_user
+
+    if @user.update(profile_params)
+      redirect_to dashboard_path, notice: 'Profile updated successfully.'
+    else
+      render :profile
+    end
+  end
+
+  private
+
+  def profile_params
+    params.permit(:category, :club_name, :age_level, :coach_category, :city, :license_id, :phone, :sex, :description, :position, :height)
   end
 end
