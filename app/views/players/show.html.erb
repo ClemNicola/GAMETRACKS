@@ -42,10 +42,10 @@
     </div>
 
     <div class="charts-player">
-      <div class='chart-container' data-controller='playerChart' data-chart-game-id-value='<%= @player.id %>'>
-        <canvas class='card-chart' id='chart' data-chart-target='chartContainer'></canvas>
-        <canvas class='card-chart' id='chartLine' data-chart-target='chartLine'></canvas>
-        <canvas class='card-chart' id='chartLineBis' data-chart-target='chartLineBis'></canvas>
+      <div class='chart-container' data-controller='player-charts' data-player-charts-player-id-value='<%= @player.id %>'>
+        <canvas class='card-chart' id='chart' data-player-charts-target='chartBar'></canvas>
+        <canvas class='card-chart' id='chartLine' data-player-charts-target='chartPolar'></canvas>
+        <canvas class='card-chart' id='chartLineBis' data-player-charts-target='chartLineBis'></canvas>
       </div>
 
       <br>

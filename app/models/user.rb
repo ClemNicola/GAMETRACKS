@@ -35,9 +35,8 @@ class User < ApplicationRecord
 
   def player_stat_for_game(game)
    participation = participations.find_by(game: game).player_stat
-   stats = participation.slice(:minute, :point, :rebound, :assist, :fg_made, :ft_made, :threep_made, :off_rebound, :def_rebound, :block, :turnover, :eval_player)
+   stats = participation.slice(:minute, :point, :rebound, :assist, :off_rebound, :def_rebound, :block, :turnover, :eval_player)
    stats[:rebound] = stats[:off_rebound] + stats[:def_rebound]
-  #  stats[:fg_pct] = (stats[:fg_made] / stats[:fg_attempt]) * 100
    stats
   end
 
@@ -83,8 +82,11 @@ class User < ApplicationRecord
     total_player_stats = compiled_player_stats(game)
     total_past_game = past_game(game).count
     total_player_stats.transform_values! { |stat| stat.to_f / total_past_game }
+    total_player_stats.slice(:minute, :point, :rebound, :assist, :fg_made, :ft_made, :threep_made, :off_rebound, :def_rebound, :block, :turnover, :eval_player)
+  end
 
-    total_player_stats
+  def radar_player_stats(game)
+    mean_player_stats(game).except(:minute)
   end
 
   def player

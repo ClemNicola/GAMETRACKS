@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :players do
     member do
       get :player_data
+      get :radar_player_data
     end
   end
 
