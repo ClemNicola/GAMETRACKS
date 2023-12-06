@@ -10,9 +10,10 @@ class PlayersController < ApplicationController
   end
 
   def radar_player_data
-    radar_player_stats = @player.radar_player_stats(@player)
-    @radar_player_stats = { radar_player_stats: radar_player_stats }
-    render json: @radar_player_stats
+    radar_total_stats = @player.radar_total_stats(@player)
+
+    @radar_total_stats = { radar_total_stats: radar_total_stats }
+    render json: @radar_total_stats
   end
 
   def new

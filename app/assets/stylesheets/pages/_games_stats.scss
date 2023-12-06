@@ -1,0 +1,39 @@
+.table-wrapper {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.table{
+  padding: 0.5rem 1rem !important;
+  border-collapse: collapse !important;
+  border-spacing: 0;
+}
+
+.sticky-col-name{
+  position: sticky;
+  left: 0;
+  background-color: #5e5e5e !important;
+
+}
+
+.row-grey{
+  background-color: #5e5e5e !important ;
+}
+.sticky-col {
+  position: sticky;
+  left: 0;
+}
+
+th{
+  color: $white;
+  font-family: 'Hind Guntur';
+  font-weight: 500;
+  font-size: 1em;
+  background-color: black !important;
+  border: none important;
+  padding: 0.5rem 1rem !important
+}
+
+td{
+  background-color: black !important;
+}

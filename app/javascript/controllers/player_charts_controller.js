@@ -80,8 +80,8 @@ export default class extends Controller {
   }
 
   polarChart(data) {
-    const labels = ['Points', 'Assist', 'Rebound', 'Off Rebound', 'Def Rebound', 'Block', 'Turnover', 'Eval Player']
-    const radarStats = data.radar_player_stats
+    const labels = ['Points', 'Assist', 'Rebound', 'Block', 'Turnover']
+    const radarTotal = data.radar_total_stats
     new Chart(this.chartPolarTarget, {
       type: 'radar',
       data: {
@@ -90,13 +90,13 @@ export default class extends Controller {
           {
             fill: true,
             label: 'My Player',
-            data: Object.values(radarStats),
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgb(255, 99, 132)',
-            pointBackgroundColor: 'rgb(255, 99, 132)',
-            pointBorderColor: 'rgb(255, 99, 132)',
-            pointHoverBackgroundColor: '#0000000',
-            pointHoverBorderColor: 'rgb(255, 99, 132)',
+            data: Object.values(radarTotal),
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgb(54, 162, 235)',
+            pointBackgroundColor: 'rgb(54, 162, 235)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(54, 162, 235)',
             hoverOffset: 4
           }
         ]
