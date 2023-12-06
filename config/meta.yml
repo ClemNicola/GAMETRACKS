@@ -1,0 +1,9 @@
+meta_product_name: "Game Tracks"
+
+meta_title: "Game Tracks | Level Up Your Game"
+
+meta_description: "Use statistics to track your progress and improve your basket-ball team management"
+
+meta_image: "meta_image_gametracks.jpg" # should exist in `app/assets/images/`
+
+twitter_account: "@elonmusk" # required for Twitter Cards
