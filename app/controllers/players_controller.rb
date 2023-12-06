@@ -1,5 +1,19 @@
 class PlayersController < ApplicationController
-  before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :set_player, only: [:show, :edit, :update, :destroy, :player_data, :radar_player_data]
+
+  def player_data
+    player_stat_for_game = @player.player_stat_for_game(@player)
+    mean_player_stats = @player.mean_player_stats(@player)
+
+    @player_data = { player_stat_for_game: player_stat_for_game, mean_player_stats: mean_player_stats}
+    render json: @player_data
+  end
+
+  def radar_player_data
+    radar_player_stats = @player.radar_player_stats(@player)
+    @radar_player_stats = { radar_player_stats: radar_player_stats }
+    render json: @radar_player_stats
+  end
 
   def new
     @player = Player.new
@@ -25,7 +39,6 @@ class PlayersController < ApplicationController
   end
 
   def show
-    @player = User.find(params[:id])
   end
 
   def edit

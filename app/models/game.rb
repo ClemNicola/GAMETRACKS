@@ -21,9 +21,7 @@ class Game < ApplicationRecord
   end
 
   def home_team_stats
-
     ## WARNING
-
     Participation.where(game: self, team: home_team).map(&:player_stat)
     # Participation.all.map(&:player_stat)
   end
@@ -65,6 +63,10 @@ class Game < ApplicationRecord
       stats[output] = home_stats[output]
     end
     stats
+  end
+
+  def rebound
+    off_rebound + def_rebound
   end
 
   def away_team

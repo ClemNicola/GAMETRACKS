@@ -17,7 +17,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :players
+  resources :players do
+    member do
+      get :player_data
+      get :radar_player_data
+    end
+  end
 
   resources :coaches, only: %i[new edit update delete] do
     resources :participations, except: %i[index new]
@@ -40,6 +45,7 @@ Rails.application.routes.draw do
     end
   end
 
+end
 
   # Define a route for displaying the coach's profile and dashboard (Same page)
   # get :profile, to: 'pages#profile', as: :coach_dashboard
@@ -55,4 +61,3 @@ Rails.application.routes.draw do
 
   # # Define a route for displaying the game play interface
   # get :game_play, to: 'games#play', as: :game_play
-end
