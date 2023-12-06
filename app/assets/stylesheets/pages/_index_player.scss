@@ -1,7 +1,5 @@
 .col-centered {
-  float: none;
-  margin: 0 auto !important;
-  width: 80%;
+  justify-content: center;
 }
 
 .col-sm-6 {
@@ -10,7 +8,7 @@
 
 .card-list-players{
   height: 145px;
-  width: 125px;
+  width: 40%;
   border-radius: 4px;
   background: $white;
   margin: 10px;
@@ -38,7 +36,7 @@
   font-weight: 500;
   line-height: 25px;
   margin: 0px;
-  width: 110px;
+  width: 135px;
   text-decoration: none;
   word-wrap: break-word;
 }
