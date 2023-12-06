@@ -54,28 +54,32 @@ export default class extends Controller {
             label: 'My Game Stat',
             data: Object.values(playerStats),
             backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(54, 162, 235)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
+              'rgb(255, 117, 23)'
             ],
-            hoverOffset: 4
+
           },
           {
             label: 'Total Player Stats',
             data: Object.values(totalStats),
             backgroundColor: [
-            'rgb(54, 162, 235)',
-            'rgb(255, 99, 132)',
-            'rgb(255, 99, 132)',
-            'rgb(255, 99, 132)',
-            'rgb(255, 205, 86)'
+              'rgb(246, 244, 244)'
             ],
-            hoverOffset: 4
-          }
-        ]
-      }
+
+          },
+        ],
+      },
+      options:{
+        plugins: {
+          legend:{
+            labels: {
+              color: 'rgb(246, 244, 244)',
+              font: {
+                size: 14,
+              },
+            },
+          },
+        },
+      },
     })
   }
 
@@ -91,16 +95,27 @@ export default class extends Controller {
             fill: true,
             label: 'My Player',
             data: Object.values(radarTotal),
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgb(54, 162, 235)',
-            pointBackgroundColor: 'rgb(54, 162, 235)',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgb(54, 162, 235)',
-            hoverOffset: 4
-          }
-        ]
-      }
+            backgroundColor: 'rgb(255, 117, 23)',
+            borderColor: 'rgb(255, 117, 23)',
+            pointBackgroundColor: 'rgb(255, 117, 23)',
+            pointBorderColor: 'rgb(246,244,244)',
+            pointHoverBackgroundColor: 'rgb(246,244,244)',
+            pointHoverBorderColor: 'rgb(255, 117, 23)',
+          },
+        ],
+      },
+      options:{
+        plugins: {
+          legend:{
+            labels: {
+              color: 'rgb(246, 244, 244)',
+              font: {
+                size: 14,
+              },
+            },
+          },
+        },
+      },
     })
   }
 
