@@ -1,19 +1,16 @@
 <div class="maximaxidiv" data-controller='checked-player'>
 
-  <div id="titleyourteam">
-
-    <h3>Your Team :</h3>
-
+  <div class="title-container" id="titleyourteam">
+    <h3>Pick your Team :</h3>
     <%= link_to new_game_participation_path(@game) do %>
       <span class="material-symbols-outlined editsymbol">
         edit
       </span>
     <% end %>
-
   </div>
 
   <%= form_with url: set_titulaire_game_path(@game), method: :post, class: "@" do %>
-    <div id="terrainbackground" class="terrainimg" data-checked-player-target='checkboxesContainer'>
+    <div id="terrainbackground" data-checked-player-target='checkboxesContainer'>
 
       <div class="divclass1">
         <% @my_guards.each do |player| %>
@@ -48,5 +45,5 @@
       <%= submit_tag "Start Game", class: "btn-orange-classic startgame" %>
     </div>
   <% end %>
-  
+
 </div>
