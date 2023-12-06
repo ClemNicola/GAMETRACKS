@@ -1,0 +1,70 @@
+<h3>Complete Profile</h3>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="form-section">
+      <h5>Category</h5>
+      <%= f.input :category, collection: ['Coach', 'Player'], prompt: 'Select a category', label: false %>
+    </div>
+
+    <% if resource.category == "Coach" %>
+      <div class="form-section">
+        <h5>Club name</h5>
+        <%= f.input :club_name, required: true, label: false %>
+      </div>
+
+      <div class="form-section">
+        <h5>Age level</h5>
+        <%= f.input :age_level, collection: ['Senior', 'U20', 'U15'], prompt: 'Select an age level', label: false %>
+      </div>
+
+      <div class="form-section">
+        <h5>Category</h5>
+        <%= f.input :category, collection: ['N1', 'N2', 'N3', 'R1', 'R2', 'R3', 'D1', 'D2', 'D3'], prompt: 'Select a category', label: false %>
+      </div>
+
+      <div class="form-section">
+        <h5>City</h5>
+        <%= f.input :city, required: true, label: false %>
+      </div>
+    <% else %>
+      <div class="form-section">
+        <h5>License ID</h5>
+        <%= f.input :license_id, required: true, label: false %>
+      </div>
+
+      <div class="form-section">
+        <h5>Phone</h5>
+        <%= f.input :phone, required: true, label: false %>
+      </div>
+
+      <div class="form-section">
+        <h5>Sex</h5>
+        <%= f.input :sex, collection: ['Male', 'Female'], prompt: 'Select a sex', label: false %>
+      </div>
+
+      <div class="form-section">
+        <h5>Description</h5>
+        <%= f.input :description, required: true, label: false %>
+      </div>
+
+      <div class="form-section">
+        <h5>Position</h5>
+        <%= f.input :position, collection: ['Point Guard', 'Shooting Guard', 'Small Forward', 'Power Forward', 'Center'], prompt: 'Select a position', label: false %>
+      </div>
+
+      <div class="form-section">
+        <h5>Height</h5>
+        <%= f.input :height, required: true, label: false %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Update Profile", class: "btn btn-primary btn-light" %>
+  </div>
+
+<% end %>
