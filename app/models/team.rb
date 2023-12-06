@@ -16,9 +16,7 @@ class Team < ApplicationRecord
   #           :city, presence: true
 
   def past_game(current_game)
-
     ## WARNING
-
     games.where.not(id: current_game)
     # Game.all
   end
