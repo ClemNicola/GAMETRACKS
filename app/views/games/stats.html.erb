@@ -1,88 +1,90 @@
 <div class="title-container">
   <h3>Game Stats</h3>
 </div>
-<table class="table" style="overflow: auto;">
-  <thead>
-    <tr>
-      <th scope="col">NAME</th>
-      <th scope="col">MIN</th>
-      <th scope="col">PTS</th>
-      <th scope="col">REB</th>
-      <th scope="col">AST</th>
-      <th scope="col">STL</th>
-      <th scope="col">BLK</th>
-      <th scope="col">FGM</th>
-      <th scope="col">FGA</th>
-      <th scope="col">%FG</th>
-      <th scope="col">3PM</th>
-      <th scope="col">3PA</th>
-      <th scope="col">3P%</th>
-      <th scope="col">FTM</th>
-      <th scope="col">FTA</th>
-      <th scope="col">%FT</th>
-      <th scope="col">OREB</th>
-      <th scope="col">DREB</th>
-      <th scope="col">TOV</th>
-      <th scope="col">FLT</th>
-      <th scope="col">EVAL</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @home_team_stats.each do |stat| %>
+<div class="table-wrapper">
+  <table class="table table-dark">
+    <thead>
       <tr>
-       <% if stat.present? && stat.respond_to?(:player) %>
-        <th scope="row"><%= stat.player %></th>
-          <td><%= stat.minute %></td>
-          <td><%= stat.point %></td>
-          <td><%= stat.rebound %></td>
-          <td><%= stat.assist %></td>
-          <td><%= stat.steal %></td>
-          <td><%= stat.block %></td>
-          <td><%= stat.fg_made %></td>
-          <td><%= stat.fg_attempt %></td>
-          <td><%= stat.fg_made != 0 ? (stat.fg_made.fdiv(stat.fg_attempt) * 100).round(1) : 0 %></td>
-          <td><%= stat.threep_made %></td>
-          <td><%= stat.threep_attempt %></td>
-          <td><%= stat.threep_made != 0 ? (stat.threep_made.fdiv(stat.threep_attempt) * 100).round(1) : 0 %></td>
-          <td><%= stat.ft_made %></td>
-          <td><%= stat.ft_attempt %></td>
-          <td><%= stat.ft_made != 0 ? (stat.ft_made.fdiv(stat.ft_attempt) * 100).round(1) : 0 %></td>
-          <td><%= stat.off_rebound %></td>
-          <td><%= stat.def_rebound %></td>
-          <td><%= stat.turnover %></td>
-          <td><%= stat.fault %></td>
-          <td><%= stat.eval_player %></td>
-
-      <% end %>
-    </tr>
-    <% end %>
-      <% game_home_team_stats = @game.compiled_home_stats %>
-
-      <tr>
-        <td>Total</td>
-        <td><%= game_home_team_stats[:minute]%></td>
-        <td><%= game_home_team_stats[:point ]%></td>
-        <td><%= game_home_team_stats[:rebound]%></td>
-        <td><%= game_home_team_stats[:assist]%></td>
-        <td><%= game_home_team_stats[:steal]%></td>
-        <td><%= game_home_team_stats[:block]%></td>
-        <td><%= game_home_team_stats[:fg_made]%></td>
-        <td><%= game_home_team_stats[:fg_attempt]%></td>
-        <td><%= game_home_team_stats[:fg_attempt] != 0 ? (game_home_team_stats[:fg_made].fdiv(game_home_team_stats[:fg_attempt]) * 100).round(1) : 0 %></td>
-        <td><%= game_home_team_stats[:threep_made] %></td>
-        <td><%= game_home_team_stats[:threep_attempt] %></td>
-        <td><%= game_home_team_stats[:threep_attempt] != 0 ? (game_home_team_stats[:threep_made].fdiv(game_home_team_stats[:threep_attempt]) * 100).round(1) : 0 %></td>
-        <td><%= game_home_team_stats[:ft_made] %></td>
-        <td><%= game_home_team_stats[:ft_attempt] %></td>
-        <td><%= game_home_team_stats[:ft_attempt] != 0 ? (game_home_team_stats[:ft_made].fdiv(game_home_team_stats[:ft_attempt]) * 100).round(1) : 0 %></td>
-        <td><%= game_home_team_stats[:off_rebound]%></td>
-        <td><%= game_home_team_stats[:def_rebound] %></td>
-        <td><%= game_home_team_stats[:turnover] %></td>
-        <td><%= game_home_team_stats[:fault] %></td>
-        <td><%= game_home_team_stats[:eval_mean] %></td>
+        <th class='sticky-col-name' scope="col">NAME</th>
+        <th class='row-grey' scope="col">MIN</th>
+        <th class='row-grey'scope="col">PTS</th>
+        <th class='row-grey'scope="col">REB</th>
+        <th class='row-grey'scope="col">AST</th>
+        <th class='row-grey'scope="col">STL</th>
+        <th class='row-grey'scope="col">BLK</th>
+        <th class='row-grey'scope="col">FGM</th>
+        <th class='row-grey'scope="col">FGA</th>
+        <th class='row-grey'scope="col">%FG</th>
+        <th class='row-grey'scope="col">3PM</th>
+        <th class='row-grey'scope="col">3PA</th>
+        <th class='row-grey'scope="col">3P%</th>
+        <th class='row-grey'scope="col">FTM</th>
+        <th class='row-grey'scope="col">FTA</th>
+        <th class='row-grey'scope="col">%FT</th>
+        <th class='row-grey'scope="col">OREB</th>
+        <th class='row-grey'scope="col">DREB</th>
+        <th class='row-grey'scope="col">TOV</th>
+        <th class='row-grey'scope="col">FLT</th>
+        <th class='row-grey'scope="col">EVAL</th>
       </tr>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @home_team_stats.each do |stat| %>
+        <tr>
+        <% if stat.present? && stat.respond_to?(:player) %>
+          <th class='sticky-col' scope="row"><%= stat.player %></th>
+            <td><%= stat.minute %></td>
+            <td><%= stat.point %></td>
+            <td><%= stat.rebound %></td>
+            <td><%= stat.assist %></td>
+            <td><%= stat.steal %></td>
+            <td><%= stat.block %></td>
+            <td><%= stat.fg_made %></td>
+            <td><%= stat.fg_attempt %></td>
+            <td><%= stat.fg_made != 0 ? (stat.fg_made.fdiv(stat.fg_attempt) * 100).round(1) : 0 %></td>
+            <td><%= stat.threep_made %></td>
+            <td><%= stat.threep_attempt %></td>
+            <td><%= stat.threep_made != 0 ? (stat.threep_made.fdiv(stat.threep_attempt) * 100).round(1) : 0 %></td>
+            <td><%= stat.ft_made %></td>
+            <td><%= stat.ft_attempt %></td>
+            <td><%= stat.ft_made != 0 ? (stat.ft_made.fdiv(stat.ft_attempt) * 100).round(1) : 0 %></td>
+            <td><%= stat.off_rebound %></td>
+            <td><%= stat.def_rebound %></td>
+            <td><%= stat.turnover %></td>
+            <td><%= stat.fault %></td>
+            <td><%= stat.eval_player %></td>
+
+        <% end %>
+      </tr>
+      <% end %>
+        <% game_home_team_stats = @game.compiled_home_stats %>
+
+        <tr>
+          <th class='sticky-col' scope ='row'>Total</th>
+          <td><%= game_home_team_stats[:minute]%></td>
+          <td><%= game_home_team_stats[:point ]%></td>
+          <td><%= game_home_team_stats[:rebound]%></td>
+          <td><%= game_home_team_stats[:assist]%></td>
+          <td><%= game_home_team_stats[:steal]%></td>
+          <td><%= game_home_team_stats[:block]%></td>
+          <td><%= game_home_team_stats[:fg_made]%></td>
+          <td><%= game_home_team_stats[:fg_attempt]%></td>
+          <td><%= game_home_team_stats[:fg_attempt] != 0 ? (game_home_team_stats[:fg_made].fdiv(game_home_team_stats[:fg_attempt]) * 100).round(1) : 0 %></td>
+          <td><%= game_home_team_stats[:threep_made] %></td>
+          <td><%= game_home_team_stats[:threep_attempt] %></td>
+          <td><%= game_home_team_stats[:threep_attempt] != 0 ? (game_home_team_stats[:threep_made].fdiv(game_home_team_stats[:threep_attempt]) * 100).round(1) : 0 %></td>
+          <td><%= game_home_team_stats[:ft_made] %></td>
+          <td><%= game_home_team_stats[:ft_attempt] %></td>
+          <td><%= game_home_team_stats[:ft_attempt] != 0 ? (game_home_team_stats[:ft_made].fdiv(game_home_team_stats[:ft_attempt]) * 100).round(1) : 0 %></td>
+          <td><%= game_home_team_stats[:off_rebound]%></td>
+          <td><%= game_home_team_stats[:def_rebound] %></td>
+          <td><%= game_home_team_stats[:turnover] %></td>
+          <td><%= game_home_team_stats[:fault] %></td>
+          <td><%= game_home_team_stats[:eval_mean] %></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
 
 <div class="title-container">
   <h3>Charts Game</h3>

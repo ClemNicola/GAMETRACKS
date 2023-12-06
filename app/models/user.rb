@@ -85,8 +85,8 @@ class User < ApplicationRecord
     total_player_stats.slice(:minute, :point, :rebound, :assist, :fg_made, :ft_made, :threep_made, :off_rebound, :def_rebound, :block, :turnover, :eval_player)
   end
 
-  def radar_player_stats(game)
-    mean_player_stats(game).except(:minute)
+  def radar_total_stats(game)
+    mean_player_stats(game).except(:minute, :off_rebound, :def_rebound, :eval_player, :fg_made, :ft_made, :threep_made)
   end
 
   def player
