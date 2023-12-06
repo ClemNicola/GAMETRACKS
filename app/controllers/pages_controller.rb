@@ -11,8 +11,10 @@ class PagesController < ApplicationController
   def dashboard
     @coach_team = current_user.managed_teams.first
     @next_game = Game.first
-    # @next_game = @coach_team.games.distinct.select { |game| game.date >= Date.today }.min_by(&:date)
-
+    @wins = @coach_team.team_stat.total_wins
+    @losses = @coach_team.team_stat.total_losses
+    @win_rate = (@wins.fdiv(@wins + @losses) * 100).round(1)
+    @avg_pts = @coach_team.total_team_stats(@coach_team)[:point].fdiv(@wins + @losses).round(0)
     @home_team = @next_game.home_team
     @away_team = @next_game.away_team
   end

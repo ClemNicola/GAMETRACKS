@@ -124,5 +124,4 @@ class Team < ApplicationRecord
   def rebound
     total_off_rebound + total_def_rebound
   end
-
 end
