@@ -12,16 +12,20 @@
 .sticky-col-name{
   position: sticky;
   left: 0;
-  background-color: #5e5e5e !important;
+  background-color: #6b6b6b !important;
 
 }
 
 .row-grey{
-  background-color: #5e5e5e !important ;
+  background-color: #6b6b6b !important ;
 }
+
 .sticky-col {
   position: sticky;
   left: 0;
+  padding: 0.5rem 1rem !important;
+  white-space: nowrap;
+  background-color: rgb(23, 23, 23) !important;
 }
 
 th{
@@ -31,9 +35,9 @@ th{
   font-size: 1em;
   background-color: black !important;
   border: none important;
-  padding: 0.5rem 1rem !important
 }
 
 td{
   background-color: black !important;
+  color: $white !important;
 }
