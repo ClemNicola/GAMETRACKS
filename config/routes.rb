@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "dashboard", to: "pages#dashboard"
   get "calendar", to: "pages#calendar"
-  get "profile", to: "pages#profile"
+
+
 
   get "fake_new", to: "pages#fake_new"
 
@@ -44,7 +45,6 @@ Rails.application.routes.draw do
       post "set_participations", to: "games#set_participations"
     end
   end
-
 end
 
   # Define a route for displaying the coach's profile and dashboard (Same page)

@@ -17,7 +17,6 @@
       </div>
       <div class="column2">
         <p><%= game.date.strftime("%d-%m-%Y") %></p>
-        <p><i class="fa-regular fa-hand-pointer"></i></p>
       </div>
       <div class="column3">
         <img src="<%= @away_team && @away_team.photo.present? ?cl_image_path(@away_team.photo.key) :asset_path('sig_logo.png')%>" alt="">

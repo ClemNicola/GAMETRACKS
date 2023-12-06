@@ -10,7 +10,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @coach_team = current_user.managed_teams.first
-    @next_game = Game.first
+    @next_game = @coach_team.games.where("date >= :end", end: Date.today).first
     @wins = @coach_team.team_stat.total_wins
     @losses = @coach_team.team_stat.total_losses
     @win_rate = (@wins.fdiv(@wins + @losses) * 100).round(1)
@@ -31,6 +31,22 @@ class PagesController < ApplicationController
   end
 
   def profile
+    @user = current_user
+  end
 
+  def update_profile
+    @user = current_user
+
+    if @user.update(profile_params)
+      redirect_to dashboard_path, notice: 'Profile updated successfully.'
+    else
+      render :profile
+    end
+  end
+
+  private
+
+  def profile_params
+    params.permit(:category, :club_name, :age_level, :coach_category, :city, :license_id, :phone, :sex, :description, :position, :height)
   end
 end

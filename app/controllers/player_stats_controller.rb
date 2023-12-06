@@ -10,20 +10,18 @@ class PlayerStatsController < ApplicationController
   end
 
   def create
-    @game = Game.find(player_stat_params[:game_id])
-    clone = player_stat_params.clone
-    clone.delete(:game_id)
-    @participation = Participation.find(clone[:participation_id])
+    @game = Game.find(params[:game_id])
+    # clone = player_stat_params.clone
+    # clone.delete(:game_id)
+    @participation = Participation.find(params[:participation_id])
     if @participation.player_stat.nil?
-      @player_stat = PlayerStat.new(clone)
+      @player_stat = PlayerStat.new
+      @participation.player_stat = @player_stat
       tirs_tentes_points
-      if @player_stat.save
-        redirect_to play_game_path(@game)
-      end
+      @player_stat.save
     else
       tirs_tentes_points
       @participation.player_stat.save
-      redirect_to play_game_path(@game)
     end
   end
 

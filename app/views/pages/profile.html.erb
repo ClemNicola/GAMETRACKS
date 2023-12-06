@@ -1,70 +1,71 @@
+<!-- app/views/pages/profile.html.erb -->
 <h3>Complete Profile</h3>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_tag update_profile_path, method: :put do %>
 
-  <%= f.error_notification %>
+  <%= devise_error_messages! %>
 
   <div class="form-inputs">
     <div class="form-section">
       <h5>Category</h5>
-      <%= f.input :category, collection: ['Coach', 'Player'], prompt: 'Select a category', label: false %>
+      <%= select_tag :category, options_for_select(['Coach', 'Player'], selected: @user.category), prompt: 'Select a category' %>
     </div>
 
-    <% if resource.category == "Coach" %>
+    <% if @user.category == "Coach" %>
       <div class="form-section">
         <h5>Club name</h5>
-        <%= f.input :club_name, required: true, label: false %>
+        <%= text_field_tag :club_name, @user.club_name, required: true %>
       </div>
 
       <div class="form-section">
         <h5>Age level</h5>
-        <%= f.input :age_level, collection: ['Senior', 'U20', 'U15'], prompt: 'Select an age level', label: false %>
+        <%= select_tag :age_level, options_for_select(['Senior', 'U20', 'U15'], selected: @user.age_level), prompt: 'Select an age level' %>
       </div>
 
       <div class="form-section">
         <h5>Category</h5>
-        <%= f.input :category, collection: ['N1', 'N2', 'N3', 'R1', 'R2', 'R3', 'D1', 'D2', 'D3'], prompt: 'Select a category', label: false %>
+        <%= select_tag :coach_category, options_for_select(['N1', 'N2', 'N3', 'R1', 'R2', 'R3', 'D1', 'D2', 'D3'], selected: @user.coach_category), prompt: 'Select a category' %>
       </div>
 
       <div class="form-section">
         <h5>City</h5>
-        <%= f.input :city, required: true, label: false %>
+        <%= text_field_tag :city, @user.city, required: true %>
       </div>
     <% else %>
       <div class="form-section">
         <h5>License ID</h5>
-        <%= f.input :license_id, required: true, label: false %>
+        <%= text_field_tag :license_id, @user.license_id, required: true %>
       </div>
 
       <div class="form-section">
         <h5>Phone</h5>
-        <%= f.input :phone, required: true, label: false %>
+        <%= text_field_tag :phone, @user.phone, required: true %>
       </div>
 
       <div class="form-section">
         <h5>Sex</h5>
-        <%= f.input :sex, collection: ['Male', 'Female'], prompt: 'Select a sex', label: false %>
+        <%= select_tag :sex, options_for_select(['Male', 'Female'], @user.sex), prompt: 'Select a sex' %>
       </div>
 
       <div class="form-section">
         <h5>Description</h5>
-        <%= f.input :description, required: true, label: false %>
+        <%= text_area_tag :description, @user.description, required: true %>
       </div>
 
       <div class="form-section">
         <h5>Position</h5>
-        <%= f.input :position, collection: ['Point Guard', 'Shooting Guard', 'Small Forward', 'Power Forward', 'Center'], prompt: 'Select a position', label: false %>
+        <%= select_tag :position, options_for_select(['Point Guard', 'Shooting Guard', 'Small Forward', 'Power Forward', 'Center'], @user.position), prompt: 'Select a position' %>
       </div>
 
       <div class="form-section">
         <h5>Height</h5>
-        <%= f.input :height, required: true, label: false %>
+        <%= text_field_tag :height, @user.height, required: true %>
       </div>
     <% end %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update Profile", class: "btn btn-primary btn-light" %>
+    <%= submit_tag "Update Profile", class: "btn btn-primary btn-light" %>
   </div>
 
 <% end %>
