@@ -10,7 +10,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @coach_team = current_user.managed_teams.first
-    @next_game = Game.first
+    @next_game = @coach_team.games.where("date >= :end", end: Date.today).first
     @wins = @coach_team.team_stat.total_wins
     @losses = @coach_team.team_stat.total_losses
     @win_rate = (@wins.fdiv(@wins + @losses) * 100).round(1)
