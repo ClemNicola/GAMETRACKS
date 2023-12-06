@@ -38,13 +38,18 @@
       </div>
     </div>
     <div class="charts-player">
-      <br>
-      <br>
-      <p><em>// placeholder chart 1 //</em></p>
-      <br>
-      <br>
+      <h3>Player Charts</h3>
     </div>
+
     <div class="charts-player">
+      <div class='chart-container' data-controller='player-charts' data-player-charts-player-id-value='<%= @player.id %>'>
+        <canvas class='card-chart' id='chart' data-player-charts-target='chartBar'></canvas>
+        <canvas class='card-chart' id='chartLine' data-player-charts-target='chartPolar'></canvas>
+        <canvas class='card-chart' id='chartLineBis' data-player-charts-target='chartLineBis'></canvas>
+      </div>
+
+      <br>
+      <br>
       <h5>Points per game evolution </h5>
       <br>
       <br>

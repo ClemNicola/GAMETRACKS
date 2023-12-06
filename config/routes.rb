@@ -18,7 +18,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :players
+  resources :players do
+    member do
+      get :player_data
+      get :radar_player_data
+    end
+  end
 
   resources :coaches, only: %i[new edit update delete] do
     resources :participations, except: %i[index new]

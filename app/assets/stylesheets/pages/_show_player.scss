@@ -49,6 +49,7 @@
   justify-content: space-evenly;
   border-bottom: 1.5px solid orange;
   padding: 8px 0px;
+  margin-bottom: 1rem;
 }
 
 .player-display-stats .stat-uniq {
@@ -81,4 +82,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.charts-player h3{
+  padding-left: 10px;
+  border-left: 4px solid $orange;
 }
