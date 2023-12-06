@@ -17,6 +17,8 @@
   background-color: $white;
   box-shadow: 5px 5px 0px 0px $orange;
   border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
   p{
     color: $lighter-black;
     margin: 0px;
@@ -73,4 +75,8 @@
   background-color: $white;
   box-shadow: 5px 5px 0px 0px $orange;
   border-radius: 4px;
+}
+
+.fa-hand-pointer {
+  margin-top: 20px;
 }

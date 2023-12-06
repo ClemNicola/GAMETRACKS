@@ -33,21 +33,20 @@
 <div class="card-stats-container">
   <div class="parent">
    <div class="card-infos-orange-img">
-      <p>W6 - 2L</p>
+      <p><%= @wins %>W - <%= @losses %>L</p>
       <div class="ratio-logo">
         <div class="info-ratio">
-         <h4>61%</h4>
+         <h4><%= @win_rate %>%</h4>
           <p>Winrate</p>
         </div>
-        <img src="<%= asset_path('Tours.png')%>" alt="">
       </div>
     </div>
     <div class="card-infos-white">
-      <h4>75 pts</h4>
+      <h4><%= @avg_pts %> pts</h4>
       <p>scored / game</p>
     </div>
     <div class="card-infos-white">
-      <h4>3rd</h4>
+      <h4>1st</h4>
       <p>championship</p>
       <a target ="_blank" href="https://nm1.ffbb.com/classement">go to ranking ></a>
     </div>
