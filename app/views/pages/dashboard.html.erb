@@ -54,7 +54,7 @@
         <p>Last</p>
         <h4>MVP</h4>
       </div>
-      <img id='curry' src="<%= asset_path('curry.png')%>" alt="">
+      <img id='curry' src="<%= @player && @player.photo.present? ?cl_image_path(@player.photo.key) :asset_path('user.png')%>" alt="">
     </div>
   </div>
 </div>

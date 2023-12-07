@@ -154,24 +154,29 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-body">
-            <div class="laura1">
-              <% @titulaires.each do |participation| %>
-                <div class="card-select-player card-test1" data-action='click->add-stats#selectPlayer'>
-                  <img src="<%= asset_path('curry.png') %>">
-                  <p><%= participation.user.name %></p>
-                  <i class="fa-regular fa-circle-check"></i>
-                </div>
-              <% end %>
-            </div>
+            <div class="pierre">
               <div class="laura1">
-                <% @non_titulaires.each do |participation| %>
-                  <div class="card-select-player card-test2">
+                <% @titulaires.each do |participation| %>
+                  <div class="card-select-player card-test1" data-action='click->add-stats#selectPlayer'>
                     <img src="<%= asset_path('curry.png') %>">
                     <p><%= participation.user.name %></p>
+                    <i class="fa-regular fa-circle-check"></i>
                   </div>
                 <% end %>
+              </div>
+              <div class="laura1">
+                <% @non_titulaires.each do |participation| %>
+                  <div class="card-select-player card-test2" data-action='click->add-stats#selectPlayer'>
+                    <img src="<%= asset_path('curry.png') %>">
+                    <p><%= participation.user.name %></p>
+                    <i class="fa-regular fa-circle-check"></i>
+                  </div>
+                <% end %>
+              </div>
+              <div class="laura1">
                 <span class="btn-rectangle minibtnnext" data-bs-target="#stats_4" data-bs-toggle="modal">Next</span>
               </div>
+            </div>
           </div>
         </div>
       </div>
@@ -223,7 +228,7 @@
 
 
 <div class="lillildiv">
-  <%= link_to 'End QT1', stats_game_path(Game.find(Game.last.id)), id: 'endQtButton', class: 'btn-rectangle' %>
+  <%= link_to 'End QT1', stats_game_path(Game.find(Game.last.id)), id: 'endQtButton', class: 'btn-rectangle no-underline' %>
 </div>
 
 
