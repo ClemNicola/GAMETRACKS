@@ -7,13 +7,13 @@
 
       <div class="divpoints1">
 
-        <%= label_tag :player_stat_ft_made, "1", class: "btn-green-round btn-margin1", data: { type: "ft_made", type_action: '+1 point', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_2", point: '1' }%>
+        <%= label_tag :player_stat_ft_made, "1", class: "btn-green-round btn-margin1", data: { type: "ft_made", type_action: '+1 point ☝️', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_2", point: '1' }%>
         <%= check_box_tag "player_stat[ft_made]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_fg_made, "2", class: "btn-green-round btn-margin1", data: { type: "fg_made", type_action: '+2 points', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_2", point: '2' }%>
+        <%= label_tag :player_stat_fg_made, "2", class: "btn-green-round btn-margin1", data: { type: "fg_made", type_action: '+2 points ✌️', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_2", point: '2' }%>
         <%= check_box_tag "player_stat[fg_made]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_threep_made, "3", class: "btn-green-round btn-margin2", data: { type: "threep_made", type_action: '+3 points', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_2", point: '3' }%>
+        <%= label_tag :player_stat_threep_made, "3", class: "btn-green-round btn-margin2", data: { type: "threep_made", type_action: '+3 points 👌', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_2", point: '3' }%>
         <%= check_box_tag "player_stat[threep_made]", "1", false, hidden: true %>
 
         <span class="material-symbols-outlined">menu</span>
@@ -22,13 +22,13 @@
 
       <div class="divpoints2">
 
-        <%= label_tag :player_stat_ft_attempt, "1", class: "btn-red-round btn-margin1", data: { type: "ft_attempt", type_action: 'FT missed', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
+        <%= label_tag :player_stat_ft_attempt, "1", class: "btn-red-round btn-margin1", data: { type: "ft_attempt", type_action: 'FT missed 💩', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[ft_attempt]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_fg_attempt, "2", class: "btn-red-round btn-margin1", data: { type: "fg_attempt", type_action: 'FG missed', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
+        <%= label_tag :player_stat_fg_attempt, "2", class: "btn-red-round btn-margin1", data: { type: "fg_attempt", type_action: 'FG missed 💩', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[fg_attempt]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_threep_attempt, "3", class: "btn-red-round btn-margin2", data: { type: "threep_attempt", type_action: '3pts missed', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
+        <%= label_tag :player_stat_threep_attempt, "3", class: "btn-red-round btn-margin2", data: { type: "threep_attempt", type_action: '3pts missed 💩', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[threep_attempt]", "1", false, hidden: true %>
 
         <span class="material-symbols-outlined">undo</span>
@@ -71,13 +71,13 @@
 
       <div class="divstats1">
 
-        <%= label_tag :player_stat_block, "BLK", class: "btn-white-round btn-margin1", data: { type: "block", type_action: 'block', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" } %>
+        <%= label_tag :player_stat_block, "BLK", class: "btn-white-round btn-margin1", data: { type: "block", type_action: 'Block ⛔', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" } %>
         <%= check_box_tag "player_stat[block]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_steal, "STL", class: "btn-white-round btn-margin1", data: { type: "steal", type_action: 'steal', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
+        <%= label_tag :player_stat_steal, "STL", class: "btn-white-round btn-margin1", data: { type: "steal", type_action: 'Steal 🏀', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[steal]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_off_rebound, "OR", class: "btn-white-round btn-margin2", data: { type: "off_rebound", type_action: 'offensive rebound', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
+        <%= label_tag :player_stat_off_rebound, "OR", class: "btn-white-round btn-margin2", data: { type: "off_rebound", type_action: 'Offensive Rebound 🏀', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[off_rebound]", "1", false, hidden: true %>
 
         <%# LOGIQUE A BOSSER FORT OU A NE PAS MONTRER PENDANT LA DEMO %>
@@ -88,13 +88,13 @@
 
       <div class="divstats2">
 
-        <%= label_tag :player_stat_turnover, "TO", class: "btn-white-round btn-margin1", data: { type: "turnover", type_action: 'turnover', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
+        <%= label_tag :player_stat_turnover, "TO", class: "btn-white-round btn-margin1", data: { type: "turnover", type_action: 'Turnover 😩', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[turnover]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_assist, "AST", class: "btn-white-round btn-margin1", data: { type: "assist", type_action: 'assist', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
+        <%= label_tag :player_stat_assist, "AST", class: "btn-white-round btn-margin1", data: { type: "assist", type_action: 'Assist 🏀', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[assist]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_def_rebound, "DR", class: "btn-white-round btn-margin2", data: { type: "def_rebound", type_action: 'defensive rebound', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
+        <%= label_tag :player_stat_def_rebound, "DR", class: "btn-white-round btn-margin2", data: { type: "def_rebound", type_action: 'Defensive Rebound 🏀', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[def_rebound]", "1", false, hidden: true %>
 
         <%= label_tag :player_stat_fault, "Foul", class: "btn-rectangle", data: { type: "fault", type_action: 'Foul ❌', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
