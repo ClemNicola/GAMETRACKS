@@ -8,37 +8,38 @@
       </span>
     <% end %>
   </div>
-
+  <div class="test">
+  </div>
   <%= form_with url: set_titulaire_game_path(@game), method: :post, class: "@" do %>
     <div id="terrainbackground" data-checked-player-target='checkboxesContainer'>
+      <div class="margin-div">
+        <div class="divclass1">
+          <% @my_guards.each do |player| %>
+            <div class="player-container" data-action='click->checked-player#select'>
+              <%= check_box_tag "players[]", player.id, false, id: "player_#{player.id}", class: "checkbox", style: "display: none;" %>
+              <%= label_tag "player_#{player.id}", image_tag(player && player.photo.present? ? cl_image_path(player.photo.key) : asset_path('curry.png'), alt: "player_picture", class: "imgimgimg") %>
+            </div>
+          <% end %>
+        </div>
 
-      <div class="divclass1">
-        <% @my_guards.each do |player| %>
-          <div class="player-container" data-action='click->checked-player#select'>
-            <%= check_box_tag "players[]", player.id, false, id: "player_#{player.id}", class: "checkbox", style: "display: none;" %>
-            <%= label_tag "player_#{player.id}", image_tag(player && player.photo.present? ? cl_image_path(player.photo.key) : asset_path('curry.png'), alt: "player_picture", class: "imgimgimg") %>
-          </div>
-        <% end %>
+        <div class="divclass2">
+          <% @my_forwards.each_with_index do |player, index| %>
+            <div class="player-container <%= index.even? ? 'divclass21' : 'divclass22' %>" data-action='click->checked-player#select'>
+              <%= check_box_tag "players[]", player.id, false, id: "player_#{player.id}", class: "checkbox", style: "display: none;" %>
+              <%= label_tag "player_#{player.id}", image_tag(player && player.photo.present? ? cl_image_path(player.photo.key) : asset_path('curry.png'), alt: "player_picture", class: "imgimgimg") %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="divclass3">
+          <% @my_centers.each_with_index do |player, index| %>
+            <div class="player-container <%= index.even? ? 'divclass31' : 'divclass32' %>" data-action='click->checked-player#select'>
+              <%= check_box_tag "players[]", player.id, false, id: "player_#{player.id}", class: "checkbox", style: "display: none;" %>
+              <%= label_tag "player_#{player.id}", image_tag(player && player.photo.present? ? cl_image_path(player.photo.key) : asset_path('curry.png'), alt: "player_picture", class: "imgimgimg") %>
+            </div>
+          <% end %>
+        </div>
       </div>
-
-      <div class="divclass2">
-        <% @my_forwards.each_with_index do |player, index| %>
-          <div class="player-container <%= index.even? ? 'divclass21' : 'divclass22' %>" data-action='click->checked-player#select'>
-            <%= check_box_tag "players[]", player.id, false, id: "player_#{player.id}", class: "checkbox", style: "display: none;" %>
-            <%= label_tag "player_#{player.id}", image_tag(player && player.photo.present? ? cl_image_path(player.photo.key) : asset_path('curry.png'), alt: "player_picture", class: "imgimgimg") %>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="divclass3">
-        <% @my_centers.each_with_index do |player, index| %>
-          <div class="player-container <%= index.even? ? 'divclass31' : 'divclass32' %>" data-action='click->checked-player#select'>
-            <%= check_box_tag "players[]", player.id, false, id: "player_#{player.id}", class: "checkbox", style: "display: none;" %>
-            <%= label_tag "player_#{player.id}", image_tag(player && player.photo.present? ? cl_image_path(player.photo.key) : asset_path('curry.png'), alt: "player_picture", class: "imgimgimg") %>
-          </div>
-        <% end %>
-      </div>
-
     </div>
 
     <div class="btn-flex" data-checked-player-target='button' hidden>
