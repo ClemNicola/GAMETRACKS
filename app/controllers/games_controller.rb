@@ -71,6 +71,7 @@ class GamesController < ApplicationController
     @non_titulaires = @participations_selected.where(titulaire?: false)
     @away_team = Team.second
     @home_team = Team.first
+
   end
 
   private
