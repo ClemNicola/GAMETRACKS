@@ -3,7 +3,7 @@ body{
   padding:0px;
   margin: 0px;
   min-height: 100vh;
-  margin-bottom: 55px;
+  margin-bottom: 58px;
   display: flex;
   flex-direction: column;
 }
@@ -28,7 +28,7 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 
 .card-info{
@@ -74,7 +74,7 @@ body{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 2rem;
-  row-gap: 2rem;
+  row-gap: 1rem;
 }
 
 .card-stats-container{
@@ -134,4 +134,8 @@ body{
   max-width: 90%;
   max-height: 100%;
   object-fit: contain;
+}
+
+#dash {
+  padding-top: 0px;
 }
