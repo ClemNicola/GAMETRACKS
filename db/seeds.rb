@@ -99,6 +99,19 @@ json_parsed["season_competitors"].take(2).each_with_index do |team, index|
     )
     puts "#{player.name} created"
 
+    player_images_path = Rails.root.join("public", 'players')
+    images_in_folder = Dir.glob("#{player_images_path}/*")
+    selected_images = images_in_folder.shuffle
+    unless selected_images.empty?
+      selected_images.each do |selected_image|
+        file = File.open(selected_image)
+        player.photo.attach(io: file, filename: File.basename(selected_image))
+        player.save!
+      end
+    else
+      puts "No image found for"
+    end
+
     teamplayer = TeamPlayer.create(
       user_id: player.id,
       team_id: team.id

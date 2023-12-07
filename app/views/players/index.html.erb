@@ -6,7 +6,7 @@
     <% @players.each do |player| %>
       <div class="card-list-players col-sm-6">
         <%= link_to player_path(player) do %>
-          <img src="<%= player && player.photo.present? ?cl_image_path(player.photo.key) :asset_path('curry.png')%>" alt="player_picture">
+          <img src="<%= player && player.photo.present? ?cl_image_path(player.photo.key) :asset_path('user.png')%>" alt="player_picture">
           <p><%= player.player_name_full %></p>
         <% end %>
       </div>
