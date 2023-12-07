@@ -93,8 +93,8 @@ class User < ApplicationRecord
     total_player_stats = compiled_player_stats(game)
     total_past_game = past_game(game).count
     total_player_stats.transform_values! { |stat| (stat.to_f / total_past_game).round(2) }
-    avg_player = total_player_stats.slice(:minute, :point, :rebound, :assist, :off_rebound, :def_rebound, :block, :turnover,:eval_player, :fg_attempt, :fg_made, :ft_attempt, :)
-    avg_player[:eval_player] = (avg_player[:point] + avg_player[:off_rebound] + avg_player[:def_rebound] + avg_player[:assist] + avg_player[:steal] + avg_player[:block]) - ()
+    avg_player = total_player_stats.slice(:minute, :point, :rebound, :assist, :off_rebound, :def_rebound, :block, :turnover, :eval_player)
+    avg_player[:eval_player] = avg_player[:eval_player]
     avg_player
   end
 
