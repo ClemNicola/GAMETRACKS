@@ -41,17 +41,18 @@
       <h3>Player Charts</h3>
     </div>
 
-    <div class="charts-player mt-4" data-controller='player-charts'
+    <div class="chart-container mt-4" data-controller='player-charts'
            data-player-charts-player-id-value='<%= @player.id %>'>
-      <h5> Last Game Stats vs Average Game Stats </h5>
-        <div class='chart-container'>
+
+        <div class='container-bar'>
+          <h5> Last Game Stats vs Average Game Stats </h5>
           <canvas class='card-chart' id='chart' data-player-charts-target='chartBar'></canvas>
         </div>
 
-      <h5>See Your Strengths </h5>
-        <div class='chart-container'>
+        <div class='container-bar'>
+          <h5>See Your Strengths </h5>
           <canvas class='card-chart' id='chartRadar' data-player-charts-target='chartRadar'></canvas>
         </div>
+
     </div>
 </div>
-x

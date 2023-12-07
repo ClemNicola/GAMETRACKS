@@ -98,7 +98,7 @@ export default class extends Controller {
             labels: {
               color: 'rgb(246, 244, 244)',
               font: {
-                size: 14,
+                size: 12,
               },
             },
           },
@@ -149,7 +149,7 @@ export default class extends Controller {
             labels: {
               color: 'rgb(246, 244, 244)',
               font: {
-                size: 14,
+                size: 12,
               },
             },
           },
@@ -200,7 +200,7 @@ export default class extends Controller {
             labels: {
               color: 'rgb(246, 244, 244)',
               font: {
-                size: 14,
+                size: 12,
               },
             },
           },
