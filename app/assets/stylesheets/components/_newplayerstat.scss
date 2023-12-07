@@ -282,3 +282,9 @@
 .no-underline {
   text-decoration: none;
 }
+
+.photogood img{
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}

@@ -111,9 +111,9 @@
           <div class="modal-body">
             <div class="player-modal">
               <% @titulaires.each do |participation| %>
-                <div class="card-select-player card-test1" data-action="click->add-stats#player" data-id="<%= participation.id %>" data-bs-dismiss="modal" data-name="<%= participation.user.name %>">
-                  <img src="<%= asset_path('curry.png') %>">
-                  <p><%= participation.user.name %></p>
+                <div class="card-select-player card-test1 photogood" data-action="click->add-stats#player" data-id="<%= participation.id %>" data-bs-dismiss="modal" data-name="<%= participation.user.name %>">
+                  <img src="<%= participation.user.photo.present? ?cl_image_path(participation.user.photo.key) :asset_path('user.png') %>">
+                  <p><%= participation.user.player_name %></p>
                 </div>
               <% end %>
             </div>
@@ -135,9 +135,9 @@
               </div>
               <div class="laura">
                 <% @titulaires.each do |participation| %>
-                  <div class="card-select-player card-test1" data-action="click->add-stats#player" data-id="<%= participation.id %>" data-bs-dismiss="modal" data-team='home' data-name="<%= participation.user.name %>">
-                    <img src="<%= asset_path('curry.png') %>">
-                    <p><%= participation.user.name %></p>
+                  <div class="card-select-player card-test1 photogood" data-action="click->add-stats#player" data-id="<%= participation.id %>" data-bs-dismiss="modal" data-team='home' data-name="<%= participation.user.name %>">
+                    <img src="<%= participation.user.photo.present? ?cl_image_path(participation.user.photo.key) :asset_path('user.png') %>">
+                    <p><%= participation.user.player_name %></p>
                   </div>
                 <% end %>
               </div>
@@ -157,18 +157,18 @@
             <div class="pierre">
               <div class="laura1">
                 <% @titulaires.each do |participation| %>
-                  <div class="card-select-player card-test1" data-action='click->add-stats#selectPlayer'>
-                    <img src="<%= asset_path('curry.png') %>">
-                    <p><%= participation.user.name %></p>
+                  <div class="card-select-player card-test1 photogood" data-action='click->add-stats#selectPlayer'>
+                    <img src="<%= participation.user.photo.present? ?cl_image_path(participation.user.photo.key) :asset_path('user.png') %>">
+                    <p><%= participation.user.player_name %></p>
                     <i class="fa-regular fa-circle-check"></i>
                   </div>
                 <% end %>
               </div>
               <div class="laura1">
                 <% @non_titulaires.each do |participation| %>
-                  <div class="card-select-player card-test2" data-action='click->add-stats#selectPlayer'>
-                    <img src="<%= asset_path('curry.png') %>">
-                    <p><%= participation.user.name %></p>
+                  <div class="card-select-player card-test2 photogood" data-action='click->add-stats#selectPlayer'>
+                    <img src="<%= participation.user.photo.present? ?cl_image_path(participation.user.photo.key) :asset_path('user.png') %>">
+                    <p><%= participation.user.player_name %></p>
                     <i class="fa-regular fa-circle-check"></i>
                   </div>
                 <% end %>
