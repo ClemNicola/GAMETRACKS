@@ -113,7 +113,7 @@
               <% @titulaires.each do |participation| %>
                 <div class="card-select-player card-test1 photogood" data-action="click->add-stats#player" data-id="<%= participation.id %>" data-bs-dismiss="modal" data-name="<%= participation.user.name %>">
                   <img src="<%= participation.user.photo.present? ?cl_image_path(participation.user.photo.key) :asset_path('user.png') %>">
-                  <p><%= participation.user.name %></p>
+                  <p><%= participation.user.player_name %></p>
                 </div>
               <% end %>
             </div>
@@ -137,7 +137,7 @@
                 <% @titulaires.each do |participation| %>
                   <div class="card-select-player card-test1 photogood" data-action="click->add-stats#player" data-id="<%= participation.id %>" data-bs-dismiss="modal" data-team='home' data-name="<%= participation.user.name %>">
                     <img src="<%= participation.user.photo.present? ?cl_image_path(participation.user.photo.key) :asset_path('user.png') %>">
-                    <p><%= participation.user.name %></p>
+                    <p><%= participation.user.player_name %></p>
                   </div>
                 <% end %>
               </div>
@@ -159,7 +159,7 @@
                 <% @titulaires.each do |participation| %>
                   <div class="card-select-player card-test1 photogood" data-action='click->add-stats#selectPlayer'>
                     <img src="<%= participation.user.photo.present? ?cl_image_path(participation.user.photo.key) :asset_path('user.png') %>">
-                    <p><%= participation.user.name %></p>
+                    <p><%= participation.user.player_name %></p>
                     <i class="fa-regular fa-circle-check"></i>
                   </div>
                 <% end %>
@@ -168,7 +168,7 @@
                 <% @non_titulaires.each do |participation| %>
                   <div class="card-select-player card-test2 photogood" data-action='click->add-stats#selectPlayer'>
                     <img src="<%= participation.user.photo.present? ?cl_image_path(participation.user.photo.key) :asset_path('user.png') %>">
-                    <p><%= participation.user.name %></p>
+                    <p><%= participation.user.player_name %></p>
                     <i class="fa-regular fa-circle-check"></i>
                   </div>
                 <% end %>
