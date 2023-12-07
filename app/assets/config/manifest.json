@@ -1,6 +1,7 @@
 {
  "name": "Game Tracks",
  "background_color": "black",
+ "display": "fullscreen",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",
