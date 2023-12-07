@@ -42,15 +42,15 @@
       <div class="divdivaff">
 
         <div class="divaffichage1">
-          <img src="<%= asset_path('Tours.png') %>" alt="" class="logomatch">
+          <img src="<%= asset_path('bcm_logo.png') %>" alt="" class="logomatch">
           <%# SCORE DE LEQUIPE A CHANGER QUAND ON MARQUE %>
-          <p><%= @game.score_home_team %></p>
+          <p><%= "0" %></p>
         </div>
 
         <div class="divaffichage2">
-          <img src="<%= asset_path('Pau.png') %>" alt="" class="logomatch">
+          <img src="<%= asset_path('sig_logo.png') %>" alt="" class="logomatch">
           <%# SCORE DE LEQUIPE A CHANGER QUAND ILS MARQUENT %>
-          <p><%= @game.score_away_team %></p>
+          <p><%= "0" %></p>
         </div>
 
       </div>
@@ -127,16 +127,18 @@
           <div class="modal-body">
             <div class="player-modal player-team-modal">
               <%# AJOUTER ACTION AUGMENTER SCORE EQUIPE ADVERSE SUR STATS ET DONC AUSSI DISPLAY MID %>
-              <div class="card-select-player card-test1" data-bs-dismiss="modal">
-                <img src="<%= asset_path('curry.png') %>">
+              <div class="card-select-player card-test2" data-bs-dismiss="modal">
+                <img src="<%= asset_path('sig_logo.png') %>" id="logomatchsig">
                 <p><%= @away_team.city %></p>
               </div>
-              <% @titulaires.each do |participation| %>
-                <div class="card-select-player card-test1" data-action="click->add-stats#player" data-id="<%= participation.id %>" data-bs-dismiss="modal">
-                  <img src="<%= asset_path('curry.png') %>">
-                  <p><%= participation.user.name %></p>
-                </div>
-              <% end %>
+              <div class="laura">
+                <% @titulaires.each do |participation| %>
+                  <div class="card-select-player card-test1" data-action="click->add-stats#player" data-id="<%= participation.id %>" data-bs-dismiss="modal">
+                    <img src="<%= asset_path('curry.png') %>">
+                    <p><%= participation.user.name %></p>
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -152,31 +154,66 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-body">
-            <% @participations_selected.each do |participation| %>
-                <div class="card-select-player card-test1">
+            <div class="laura1">
+              <% @titulaires.each do |participation| %>
+                <div class="card-select-player card-test1" data-action='click->add-stats#selectPlayer'>
                   <img src="<%= asset_path('curry.png') %>">
                   <p><%= participation.user.name %></p>
+                  <i class="fa-regular fa-circle-check"></i>
                 </div>
               <% end %>
+            </div>
+              <div class="laura1">
+                <% @non_titulaires.each do |participation| %>
+                  <div class="card-select-player card-test2">
+                    <img src="<%= asset_path('curry.png') %>">
+                    <p><%= participation.user.name %></p>
+                  </div>
+                <% end %>
+                <span class="btn-rectangle minibtnnext" data-bs-target="#stats_4" data-bs-toggle="modal">Next</span>
+              </div>
           </div>
         </div>
-        <%# BTN pour accéder à la prochaine modal %>
-        <button class="btn btn-primary" data-bs-target="#stats_4" data-bs-toggle="modal">Open second modal</button>
       </div>
     </div>
 
-    <%# 2ème modal ou on indique le temps restant sur le tableau d'affichage %>
     <div class="modal fade" id="stats_4" aria-hidden="true" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-body">
-            <div class="card-test1">
-              <p>coucou</p>
+            <div class="card-test11">
+              <span class="timerem">Remaining Time :</span>
+              <div class="temps1" style="margin-top: 2vh;">
+                <span data-bs-dismiss="modal">10:00</span>
+                <span data-bs-dismiss="modal">9:30</span>
+                <span data-bs-dismiss="modal">9:00</span>
+                <span data-bs-dismiss="modal">8:30</span>
+                <span data-bs-dismiss="modal">8:00</span>
+              </div>
+              <div class="temps1">
+                <span data-bs-dismiss="modal">7:30</span>
+                <span data-bs-dismiss="modal">7:00</span>
+                <span data-bs-dismiss="modal">6:30</span>
+                <span data-bs-dismiss="modal">6:00</span>
+                <span data-bs-dismiss="modal">5:30</span>
+              </div>
+              <div class="temps1">
+                <span data-bs-dismiss="modal">5:00</span>
+                <span data-bs-dismiss="modal">4:30</span>
+                <span data-bs-dismiss="modal">4:00</span>
+                <span data-bs-dismiss="modal">3:30</span>
+                <span data-bs-dismiss="modal">3:00</span>
+              </div>
+              <div class="temps1">
+                <span data-bs-dismiss="modal">2:30</span>
+                <span data-bs-dismiss="modal">2:00</span>
+                <span data-bs-dismiss="modal">1:30</span>
+                <span data-bs-dismiss="modal">1:00</span>
+                <span data-bs-dismiss="modal">0:30</span>
+              </div>
             </div>
           </div>
         </div>
-        <%# BTN pour fermer la 2ème modal (on ne veut pas revenir en arrière) %>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Save"></button>
       </div>
     </div>
 

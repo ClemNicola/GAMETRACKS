@@ -68,6 +68,7 @@ class GamesController < ApplicationController
     @skip_footer = true
     @participations_selected = @game.participations.where(selected?: true).distinct
     @titulaires = @participations_selected.where(titulaire?: true)
+    @non_titulaires = @participations_selected.where(titulaire?: false)
     @away_team = Team.second
     @home_team = Team.first
   end

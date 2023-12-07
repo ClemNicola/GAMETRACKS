@@ -6,6 +6,14 @@ export default class extends Controller {
     console.log("coucou");
   }
 
+  selectPlayer(event) {
+    const card = event.currentTarget
+    const icon = card.querySelector('.fa-regular')
+
+    card.classList.toggle('card-test2')
+    card.classList.toggle('card-test1')
+  }
+
   action(event) {
     event.preventDefault();
     const target = event.currentTarget;
