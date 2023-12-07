@@ -92,7 +92,20 @@
 </div>
 
 <div class='chart-container' data-controller='chart' data-chart-game-id-value='<%= @game.id %>'>
-  <canvas class='card-chart' id='chart' data-chart-target='chartContainer'></canvas>
-  <canvas class='card-chart' id='chartLine' data-chart-target='chartLine'></canvas>
-  <canvas class='card-chart' id='chartLineBis' data-chart-target='chartLineBis'></canvas>
+
+  <div class="container-bar">
+    <h5>Your Team Stats</h5>
+    <canvas class='card-chart' id='chart' data-chart-target='chartContainer'></canvas>
+  </div>
+
+  <div class="container-line">
+    <h5>Points per Quarter</h5>
+    <canvas class='card-chart' id='chartLine' data-chart-target='chartLine'></canvas>
+  </div>
+
+  <div class="container-line">
+    <h5>Points Evolution</h5>
+    <canvas class='card-chart' id='chartLineBis' data-chart-target='chartLineBis'></canvas>
+  </div>
+  
 </div>

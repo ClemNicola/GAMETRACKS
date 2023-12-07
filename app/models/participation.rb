@@ -7,4 +7,8 @@ class Participation < ApplicationRecord
   def player_name
     user.name
   end
+
+  def add_player_stat
+    PlayerStat.create(participation: self)
+  end
 end
