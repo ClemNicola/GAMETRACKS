@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :managed_teams, class_name: :Team, foreign_key: :coach_id
   has_many :team_players
+  scope :players, -> { where(category: 'Player') }
   has_many :teams, through: :team_players
   has_many :participations
   has_many :games, through: :participations

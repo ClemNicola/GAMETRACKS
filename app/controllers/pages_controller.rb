@@ -10,6 +10,8 @@ class PagesController < ApplicationController
 
   def dashboard
     @coach_team = current_user.managed_teams.first
+    stats = Participation.where(team: @coach_team).extract_associated(:player_stat).compact
+    @player = PlayerStat.where(id: stats).order(evaluation: :desc).first.user
     @next_game = @coach_team.games.where("date >= :end", end: Date.today).first
     @wins = @coach_team.team_stat.total_wins
     @losses = @coach_team.team_stat.total_losses

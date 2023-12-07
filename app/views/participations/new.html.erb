@@ -17,7 +17,7 @@
         <div class="container-flex">
           <% player.each do |player| %>
             <label for="player_<%= player.id %>" class="card-select-player" data-action='click->checked-player#selectCard'>
-              <img src="<%= player && player.photo.present? ?cl_image_path(player.photo.key) :asset_path('curry.png')%>" alt="player_picture">
+              <img src="<%= player && player.photo.present? ?cl_image_path(player.photo.key) :asset_path('user.png')%>" alt="player_picture">
               <p><%= player.player_name %></p>
               <i class="fa-regular fa-circle-check" hidden></i>
               <input type="checkbox" name="players[]" id="player_<%= player.id %>" value="<%= player.id %>" class="checkbox">
