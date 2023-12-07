@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   get "dashboard", to: "pages#dashboard"
   get "calendar", to: "pages#calendar"
 
-
-
   get "fake_new", to: "pages#fake_new"
 
   resources :games, only: :show do
@@ -46,7 +44,11 @@ Rails.application.routes.draw do
       post "set_participations", to: "games#set_participations"
     end
   end
+
+  # Add the update_profile route
+  put '/update_profile', to: 'pages#update_profile', as: 'update_profile'
 end
+
 
   # Define a route for displaying the coach's profile and dashboard (Same page)
   # get :profile, to: 'pages#profile', as: :coach_dashboard
