@@ -68,28 +68,42 @@ export default class extends Controller {
             label: 'Game Team Stats',
             data: Object.values(gameStats),
             backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(54, 162, 235)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
+            'rgb(255, 117, 23)',
             ],
-            hoverOffset: 4
           },
           {
             label: 'Total Team Stats',
             data: Object.values(totalStats),
             backgroundColor: [
-              'rgb(54, 162, 235)',
-            'rgb(255, 99, 132)',
-            'rgb(255, 99, 132)',
-            'rgb(255, 99, 132)',
-            'rgb(255, 205, 86)'
+            'rgb(246,244,244)',
             ],
-            hoverOffset: 4
-          }
-        ]
-      }
+          },
+        ],
+      },
+      options:{
+        scales: {
+          x: {
+            ticks:{
+              color:'rgb(246,244,244)',
+            },
+          },
+          y:{
+            ticks:{
+              color: 'rgb(246,244,244)',
+            },
+          },
+        },
+        plugins: {
+          legend:{
+            labels: {
+              color: 'rgb(246, 244, 244)',
+              font: {
+                size: 14,
+              },
+            },
+          },
+        },
+      },
     })
   }
 
@@ -107,18 +121,40 @@ export default class extends Controller {
             label: 'Team point per quarter',
             data: Object.values(quarterHome),
             fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            hoverOffset: 4
+            borderColor: 'rgb(255, 117, 23)',
           },
           {
             label: 'Opponent point per quarter',
             data: Object.values(quarterOpponent),
             fill: false,
-            borderColor: 'rgb(255, 99, 132)',
-            hoverOffset: 4
-          }
-        ]
-      }
+            borderColor: 'rgb(246,244,244)',
+          },
+        ],
+      },
+      options:{
+        scales: {
+          x: {
+            ticks:{
+              color:'rgb(246,244,244)',
+            },
+          },
+          y:{
+            ticks:{
+              color: 'rgb(246,244,244)',
+            },
+          },
+        },
+        plugins: {
+          legend:{
+            labels: {
+              color: 'rgb(246, 244, 244)',
+              font: {
+                size: 14,
+              },
+            },
+          },
+        },
+      },
     })
   }
 
@@ -133,21 +169,43 @@ export default class extends Controller {
         labels: labels,
         datasets: [
           {
-            label: 'Total Team point per quarter',
+            label: 'Total Team points per quarter',
             data: Object.values(TotalQuarterHome),
             fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            hoverOffset: 4
+            borderColor: 'rgb(255, 117, 23)',
           },
           {
-            label: 'Total Opponent point per quarter',
+            label: 'Total Opponent points per quarter',
             data: Object.values(TotalQuarterOpponent),
             fill: false,
-            borderColor: 'rgb(255, 99, 132)',
-            hoverOffset: 4
-          }
-        ]
-      }
+            borderColor: 'rgb(246,244,244)',
+          },
+        ],
+      },
+      options:{
+        scales: {
+          x: {
+            ticks:{
+              color:'rgb(246,244,244)',
+            },
+          },
+          y:{
+            ticks:{
+              color: 'rgb(246,244,244)',
+            },
+          },
+        },
+        plugins: {
+          legend:{
+            labels: {
+              color: 'rgb(246, 244, 244)',
+              font: {
+                size: 14,
+              },
+            },
+          },
+        },
+      },
     })
   }
 

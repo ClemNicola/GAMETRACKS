@@ -1,4 +1,4 @@
-<div class="megamegadiv">
+<div class="megamegadiv" data-controller="add-stats">
 
   <%= simple_form_for PlayerStat.new do |f| %>
     <%= f.hidden_field :game_id, value: @game.id %>
@@ -7,13 +7,13 @@
 
       <div class="divpoints1">
 
-        <%= label_tag :player_stat_ft_made, "1", class: "btn-green-round" %>
+        <%= label_tag :player_stat_ft_made, "1", class: "btn-green-round btn-margin1", data: { type: "ft_made", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_2" }%>
         <%= check_box_tag "player_stat[ft_made]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_fg_made, "2", class: "btn-green-round" %>
+        <%= label_tag :player_stat_fg_made, "2", class: "btn-green-round btn-margin1", data: { type: "fg_made", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_2" }%>
         <%= check_box_tag "player_stat[fg_made]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_threep_made, "3", class: "btn-green-round" %>
+        <%= label_tag :player_stat_threep_made, "3", class: "btn-green-round btn-margin2", data: { type: "threep_made", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_2" }%>
         <%= check_box_tag "player_stat[threep_made]", "1", false, hidden: true %>
 
         <span class="material-symbols-outlined">menu</span>
@@ -22,13 +22,13 @@
 
       <div class="divpoints2">
 
-        <%= label_tag :player_stat_ft_attempt, "1", class: "btn-red-round" %>
+        <%= label_tag :player_stat_ft_attempt, "1", class: "btn-red-round btn-margin1", data: { type: "ft_attempt", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[ft_attempt]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_fg_attempt, "2", class: "btn-red-round" %>
+        <%= label_tag :player_stat_fg_attempt, "2", class: "btn-red-round btn-margin1", data: { type: "fg_attempt", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[fg_attempt]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_threep_attempt, "3", class: "btn-red-round" %>
+        <%= label_tag :player_stat_threep_attempt, "3", class: "btn-red-round btn-margin2", data: { type: "threep_attempt", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[threep_attempt]", "1", false, hidden: true %>
 
         <span class="material-symbols-outlined">undo</span>
@@ -43,21 +43,22 @@
 
         <div class="divaffichage1">
           <img src="<%= asset_path('Tours.png') %>" alt="" class="logomatch">
-          <p>68</p>
+          <%# SCORE DE LEQUIPE A CHANGER QUAND ON MARQUE %>
+          <p><%= @game.score_home_team %></p>
         </div>
 
         <div class="divaffichage2">
           <img src="<%= asset_path('Pau.png') %>" alt="" class="logomatch">
-          <p>62</p>
+          <%# SCORE DE LEQUIPE A CHANGER QUAND ILS MARQUENT %>
+          <p><%= @game.score_away_team %></p>
         </div>
 
       </div>
 
       <div class="divaffichage3">
 
-        <%# AFFICHAGE DES JOUEURS SELECTED POUR TEST %>
-        <%= f.association :participation, collection: @participations_selected, label_method: :player_name %>
-        <%= f.submit 'Create Player Stat', class: 'material-symbols-outlined' %>
+        <%# AFFICHER LES 3 DERNIERES STATS PRISES A FAIRE %>
+        <p>stats display</p>
 
       </div>
 
@@ -67,48 +68,126 @@
 
       <div class="divstats1">
 
-        <%= label_tag :player_stat_block, "BLK", class: "btn-white-round" %>
+        <%= label_tag :player_stat_block, "BLK", class: "btn-white-round btn-margin1", data: { type: "block", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[block]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_steal, "STL", class: "btn-white-round" %>
+        <%= label_tag :player_stat_steal, "STL", class: "btn-white-round btn-margin1", data: { type: "steal", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[steal]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_off_rebound, "OR", class: "btn-white-round" %>
+        <%= label_tag :player_stat_off_rebound, "OR", class: "btn-white-round btn-margin2", data: { type: "off_rebound", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[off_rebound]", "1", false, hidden: true %>
 
-        <span class="btn-rectangle">SUB</span>
+        <%# LOGIQUE A BOSSER FORT OU A NE PAS MONTRER PENDANT LA DEMO %>
+        <%= label_tag :player_stat_minute, "Sub", class: "btn-rectangle", data: { type: "minute", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_3" }%>
+        <%= check_box_tag "player_stat[minute]", "1", false, hidden: true %>
 
       </div>
 
       <div class="divstats2">
 
-        <%= label_tag :player_stat_turnover, "TO", class: "btn-white-round" %>
+        <%= label_tag :player_stat_turnover, "TO", class: "btn-white-round btn-margin1", data: { type: "turnover", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[turnover]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_assist, "AST", class: "btn-white-round" %>
+        <%= label_tag :player_stat_assist, "AST", class: "btn-white-round btn-margin1", data: { type: "assist", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[assist]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_def_rebound, "DR", class: "btn-white-round" %>
+        <%= label_tag :player_stat_def_rebound, "DR", class: "btn-white-round btn-margin2", data: { type: "def_rebound", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[def_rebound]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_fault, "Foul", class: "btn-rectangle" %>
+        <%= label_tag :player_stat_fault, "Foul", class: "btn-rectangle", data: { type: "fault", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[fault]", "1", false, hidden: true %>
 
       </div>
 
     </div>
 
-  
+    <%# MODAL POUR LA PRISE DE TOUTES LES STATS %>
+    <div class="modal fade" id="stats_1" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="player-modal">
+              <% @titulaires.each do |participation| %>
+                <div class="card-select-player card-test1" data-action="click->add-stats#player" data-id="<%= participation.id %>" data-bs-dismiss="modal">
+                  <img src="<%= asset_path('curry.png') %>">
+                  <p><%= participation.user.name %></p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+
+    <%# MODAL POUR LES POINTS MARQUES (5 joueurs titulaires + logo équipe adverse) %>
+    <div class="modal fade" id="stats_2" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="player-modal player-team-modal">
+              <%# AJOUTER ACTION AUGMENTER SCORE EQUIPE ADVERSE SUR STATS ET DONC AUSSI DISPLAY MID %>
+              <div class="card-select-player card-test1" data-bs-dismiss="modal">
+                <img src="<%= asset_path('curry.png') %>">
+                <p><%= @away_team.city %></p>
+              </div>
+              <% @titulaires.each do |participation| %>
+                <div class="card-select-player card-test1" data-action="click->add-stats#player" data-id="<%= participation.id %>" data-bs-dismiss="modal">
+                  <img src="<%= asset_path('curry.png') %>">
+                  <p><%= participation.user.name %></p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <%# MODAL POUR LES CHANGEMENTS %>
+
+    <%# 1ère modal ou on sélectionne / déselectionne les joueurs %>
+    <div class="modal fade" id="stats_3" aria-hidden="true" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <% @participations_selected.each do |participation| %>
+                <div class="card-select-player card-test1">
+                  <img src="<%= asset_path('curry.png') %>">
+                  <p><%= participation.user.name %></p>
+                </div>
+              <% end %>
+          </div>
+        </div>
+        <%# BTN pour accéder à la prochaine modal %>
+        <button class="btn btn-primary" data-bs-target="#stats_4" data-bs-toggle="modal">Open second modal</button>
+      </div>
+    </div>
+
+    <%# 2ème modal ou on indique le temps restant sur le tableau d'affichage %>
+    <div class="modal fade" id="stats_4" aria-hidden="true" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="card-test1">
+              <p>coucou</p>
+            </div>
+          </div>
+        </div>
+        <%# BTN pour fermer la 2ème modal (on ne veut pas revenir en arrière) %>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Save"></button>
+      </div>
+    </div>
 
   <% end %>
 
 </div>
 
 
-  <div class="lillildiv">
-    <%= link_to 'End QT1', stats_game_path(Game.find(Game.last.id)), id: 'endQtButton', class: 'btn-rectangle' %>
-  </div>
+<div class="lillildiv">
+  <%= link_to 'End QT1', stats_game_path(Game.find(Game.last.id)), id: 'endQtButton', class: 'btn-rectangle' %>
+</div>
 
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

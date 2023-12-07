@@ -39,6 +39,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 1;
 }
 
 .divstats2 {
@@ -46,26 +47,34 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 1;
 }
 
-.btnmarginb1 {
+.btn-margin1 {
   margin-bottom: 5vh;
 }
 
-.btnmargin2 {
+.btn-margin2 {
   margin-bottom: 8vh;
+}
+
+.divaffichage {
+  margin-left: 11vh;
+  margin-right: 11vh;
 }
 
 .divaffichage1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-right: 2vh;
 }
 
 .divaffichage2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 2vh;
 }
 
 .divaffichage3 {
@@ -91,6 +100,7 @@
   justify-content: center;
   position: relative;
   top: -9vh;
+  left: -4vh;
 }
 
 .divdivaff {
@@ -104,3 +114,64 @@
   }
 }
 
+.simple_form {
+  display: flex;
+}
+
+.megamegadiv {
+  .btn-green-round:active {
+    background-color: #24FF00;
+  }
+}
+
+.megamegadiv {
+  .btn-red-round:active {
+    background-color: #f00;
+  }
+}
+
+.megamegadiv {
+  .btn-white-round:active {
+    background-color: $white;
+  }
+}
+
+.megamegadiv {
+  .btn-rectangle:active {
+    background-color: $orange
+  }
+}
+
+// MODAL
+
+.modal-content {
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+.card-test1 {
+  border: 2px solid $orange;
+  justify-content: center;
+  background-color: transparent;
+  p {
+    font-size: 16px;
+    color: $white;
+  }
+}
+
+.fade {
+  backdrop-filter: blur(5px);
+}
+
+.card-test1:active {
+  background-color: $orange;
+}
+
+.player-team-modal {
+  display: flex;
+  align-content: center;
+}
+
+.player-modal {
+  justify-content: center;
+}

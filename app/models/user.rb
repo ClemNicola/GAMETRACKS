@@ -34,10 +34,10 @@ class User < ApplicationRecord
   end
 
   def player_stat_for_game(game)
-   participation = participations.find_by(game: game).player_stat
-   stats = participation.slice(:minute, :point, :rebound, :assist, :off_rebound, :def_rebound, :block, :turnover, :eval_player)
-   stats[:rebound] = stats[:off_rebound] + stats[:def_rebound]
-   stats
+    participation = participations.find_by(game: game).player_stat
+    stats = participation.slice(:minute, :point, :rebound, :assist, :off_rebound, :def_rebound, :block, :turnover, :eval_player)
+    stats[:rebound] = stats[:off_rebound] + stats[:def_rebound]
+    stats
   end
 
   # def player_participations(user)
@@ -55,6 +55,15 @@ class User < ApplicationRecord
 
   def compiled_player_stats(game)
     stat = past_game_stats(game)
+
+    fg_attempt_total = stat.sum(&:fg_attempt)
+    ft_attempt_total = stat.sum(&:ft_attempt)
+    threep_attempt_total = stat.sum(&:threep_attempt)
+
+    fg_pct = fg_attempt_total != 0 ? (stat.sum(&:fg_made) / fg_attempt_total) * 100 : 0
+    ft_pct = ft_attempt_total != 0 ? (stat.sum(&:ft_made) / ft_attempt_total) * 100 : 0
+    threep_pct = threep_attempt_total != 0 ? (stat.sum(&:threep_made) / threep_attempt_total) * 100 : 0
+    
     reduced_player_stats = {
       minute: stat.sum(&:minute),
       point: stat.sum(&:point),
@@ -63,13 +72,14 @@ class User < ApplicationRecord
       steal: stat.sum(&:steal),
       block: stat.sum(&:block),
       fg_made: stat.sum(&:fg_made),
-      fg_attempt: stat.sum(&:fg_attempt),
-      fg_pct: stat.sum(&:fg_made) / stat.sum(&:fg_attempt) * 100,
+      fg_attempt: fg_attempt_total,
+      fg_pct: fg_pct,
       threep_made: stat.sum(&:threep_made),
       threep_attempt: stat.sum(&:threep_attempt),
+      threep_pct: threep_pct,
       ft_made: stat.sum(&:ft_made),
-      ft_attempt: stat.sum(&:ft_attempt),
-      ft_pct: stat.sum(&:ft_made) / stat.sum(&:ft_attempt) * 100,
+      ft_attempt: ft_attempt_total,
+      ft_pct: ft_pct,
       off_rebound: stat.sum(&:off_rebound),
       def_rebound: stat.sum(&:def_rebound),
       turnover: stat.sum(&:turnover),
@@ -81,12 +91,12 @@ class User < ApplicationRecord
   def mean_player_stats(game)
     total_player_stats = compiled_player_stats(game)
     total_past_game = past_game(game).count
-    total_player_stats.transform_values! { |stat| stat.to_f / total_past_game }
+    total_player_stats.transform_values! { |stat| (stat.to_f / total_past_game).round(2) }
     total_player_stats.slice(:minute, :point, :rebound, :assist, :fg_made, :ft_made, :threep_made, :off_rebound, :def_rebound, :block, :turnover, :eval_player)
   end
 
-  def radar_player_stats(game)
-    mean_player_stats(game).except(:minute)
+  def radar_total_stats(game)
+    mean_player_stats(game).except(:minute, :off_rebound, :def_rebound, :eval_player, :fg_made, :ft_made, :threep_made)
   end
 
   def player

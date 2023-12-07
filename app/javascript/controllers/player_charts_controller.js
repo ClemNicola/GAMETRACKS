@@ -54,34 +54,38 @@ export default class extends Controller {
             label: 'My Game Stat',
             data: Object.values(playerStats),
             backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(54, 162, 235)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
+              'rgb(255, 117, 23)'
             ],
-            hoverOffset: 4
+
           },
           {
             label: 'Total Player Stats',
             data: Object.values(totalStats),
             backgroundColor: [
-            'rgb(54, 162, 235)',
-            'rgb(255, 99, 132)',
-            'rgb(255, 99, 132)',
-            'rgb(255, 99, 132)',
-            'rgb(255, 205, 86)'
+              'rgb(246, 244, 244)'
             ],
-            hoverOffset: 4
-          }
-        ]
-      }
+
+          },
+        ],
+      },
+      options:{
+        plugins: {
+          legend:{
+            labels: {
+              color: 'rgb(246, 244, 244)',
+              font: {
+                size: 14,
+              },
+            },
+          },
+        },
+      },
     })
   }
 
   polarChart(data) {
-    const labels = ['Points', 'Assist', 'Rebound', 'Off Rebound', 'Def Rebound', 'Block', 'Turnover', 'Eval Player']
-    const radarStats = data.radar_player_stats
+    const labels = ['Points', 'Assist', 'Rebound', 'Block', 'Turnover']
+    const radarTotal = data.radar_total_stats
     new Chart(this.chartPolarTarget, {
       type: 'radar',
       data: {
@@ -90,17 +94,28 @@ export default class extends Controller {
           {
             fill: true,
             label: 'My Player',
-            data: Object.values(radarStats),
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgb(255, 99, 132)',
-            pointBackgroundColor: 'rgb(255, 99, 132)',
-            pointBorderColor: 'rgb(255, 99, 132)',
-            pointHoverBackgroundColor: '#0000000',
-            pointHoverBorderColor: 'rgb(255, 99, 132)',
-            hoverOffset: 4
-          }
-        ]
-      }
+            data: Object.values(radarTotal),
+            backgroundColor: 'rgb(255, 117, 23)',
+            borderColor: 'rgb(255, 117, 23)',
+            pointBackgroundColor: 'rgb(255, 117, 23)',
+            pointBorderColor: 'rgb(246,244,244)',
+            pointHoverBackgroundColor: 'rgb(246,244,244)',
+            pointHoverBorderColor: 'rgb(255, 117, 23)',
+          },
+        ],
+      },
+      options:{
+        plugins: {
+          legend:{
+            labels: {
+              color: 'rgb(246, 244, 244)',
+              font: {
+                size: 14,
+              },
+            },
+          },
+        },
+      },
     })
   }
 

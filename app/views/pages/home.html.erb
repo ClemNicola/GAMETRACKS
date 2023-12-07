@@ -1,4 +1,4 @@
-<div id="global" class="<%= ["img1", "img2", "img3", "img4"].sample %>">
+<div id="global" class="<%= ["img2", "img3", "img4"].sample %>">
 
   <div id="divlogo">
     <img id="homepagelogo" src="<%= asset_path('gtlogo.png') %>" alt="GameTracks logo">
@@ -11,11 +11,11 @@
         TRACKS
       </h1>
     </div>
-
     <div id="divlevelupyourgame">
       <h4><span id="levelup">Level up</span> your game</h4>
     </div>
   </div>
+
   <div id="divbtn">
     <% if user_signed_in? %>
       <%= link_to "Dashboard", dashboard_path, class: "btn-login btn-center" %>
