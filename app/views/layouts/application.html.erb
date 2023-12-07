@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,12 +32,12 @@
     <meta name="twitter:description" content="<%= meta_description %>">
     <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
     <meta name="twitter:image:src" content="<%= meta_image %>">
+    <%= render "shared/ios_pwa_links" %>
   </head>
 
-  <body>
+  <body class='<%= "home-no-footer" if action_name == "home" %>'>
     <%= render "shared/navbar" unless @skip_navbar %>
     <%#= render "shared/flashes" %>
-    <%= render 'shared/ios_pwa_links' %>
 
     <%= yield %>
 

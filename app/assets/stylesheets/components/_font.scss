@@ -52,7 +52,7 @@ h1 .game-time{
 }
 
 p .game-time{
-  color: var(--white, #FFF);
+  color: $white;
   text-align: center;
   font-family: 'Archivo Black';
   font-size: 20px;

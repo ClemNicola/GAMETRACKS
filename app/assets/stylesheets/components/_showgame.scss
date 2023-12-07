@@ -4,20 +4,30 @@
   background-position: center;
   background-repeat: no-repeat;
   background-image: asset-url('terrain.png');
-  height: 30vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 35vh;
-  position: relative;
-  object-fit: contain;
-  margin-bottom: 1.5em;
+  height: 29vh;
+  margin: 50px 0 45px 0;
+  width: 100vw;
+  //position: relative;
 }
 
 #titleyourteam {
   display: flex;
   justify-content: space-between;
+  width:100%;
+  margin: 0px auto;
+  padding: 14px;
+  h3 {
+    border-left: 4px solid $orange;
+  }
+}
+
+.startgame {
+  text-align: center;
+  padding-top: 6px;
+  text-decoration: none;
+  margin-top: 125px;
+  position: relative;
+  z-index: 1;
 }
 
 .editsymbol {
@@ -43,17 +53,18 @@
 .divclass1 {
   display: flex;
   flex-direction: column;
-  position: fixed;
+  //position: fixed;
+  top: 23vh;
   align-items: baseline;
   z-index: 10;
 }
 
 .divclass2 {
-  display: flex;
-  justify-content: space-between;
+  // display: flex;
+  // justify-content: space-between;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  position: fixed;
+  //position: fixed;
   top: 27vh;
   width: 85%;
 }
@@ -73,8 +84,8 @@
 .divclass3 {
   display: flex;
   flex-direction: column;
-  position: fixed;
-  // top: 53vh;
+  //position: fixed;
+  top: 53vh;
 }
 
 .titu {
@@ -86,38 +97,9 @@
   border-radius: 50%;
 }
 
-// @media screen and (max-width: 767px) {
-//   #terrainbackground {
-//     height: auto;
-//     margin-top: 0;
-//   }
-
-//   .divclass1,
-//   .divclass2,
-//   .divclass3 {
-//     position: static;
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//   }
-
-//   .divclass2 {
-//     grid-template-columns: 1fr;
-//   }
-
-//   .divclass21,
-//   .divclass22 {
-//     justify-content: center;
-//   }
-
-//   .startgame {
-//     margin-top: 20px;
-//   }
-// }
-
-// @media screen and (max-width: 479px) {
-//   .imgimgimg {
-//     height: 60px;
-//     width: 60px;
-//   }
-// }
+.margin-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

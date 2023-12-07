@@ -48,3 +48,16 @@
     width: 90%;
   }
 }
+
+.container-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-flex-col .form-label {
+  color: $white;
+}
+
+.container-flex-col .form-check-label {
+  color: $white;
+}
