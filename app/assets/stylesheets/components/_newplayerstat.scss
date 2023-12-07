@@ -3,7 +3,7 @@
   justify-content: space-between;
   margin-left: 15vh;
   margin-right: 15vh;
-  margin-top: 10vh;
+  margin-top: 6vh;
 }
 
 .petitepetitediv {
@@ -23,7 +23,7 @@
 }
 
 .divpoints1 {
-  margin-right: 20vh;
+  margin-right: 12vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,7 +43,7 @@
 }
 
 .divstats2 {
-  margin-left: 20vh;
+  margin-left: 12vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -159,6 +159,9 @@
     font-size: 16px;
     color: $white;
   }
+  i {
+    color: $orange;
+  }
 }
 
 .card-test1:active {
@@ -265,4 +268,17 @@
 .divaffichage2 p {
   margin-top: 5vh;
   font-family: 'Archivo Black';
+}
+
+.pierre {
+  display: flex;
+  flex-direction: column;
+}
+
+#endQtButton {
+  width: 120px;;
+}
+
+.no-underline {
+  text-decoration: none;
 }
