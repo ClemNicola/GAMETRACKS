@@ -22,34 +22,37 @@
     <div class="player-display-stats">
       <div class="stat-uniq">
         <p>PPG</p>
-        <p class="number-bold">20.1</p>
+        <p class="number-bold"><%= @player.avg_player_stats(@player)[:point] %></p>
       </div>
       <div class="stat-uniq">
         <p>AST</p>
-        <p class="number-bold">3.4</p>
+        <p class="number-bold"><%= @player.avg_player_stats(@player)[:assist] %></p>
       </div>
       <div class="stat-uniq">
         <p>REB</p>
-        <p class="number-bold">2.4</p>
+        <p class="number-bold"><%= @player.avg_player_stats(@player)[:rebound] %></p>
       </div>
       <div class="stat-uniq">
-        <p>PIE</p>
-        <p class="number-bold">10</p>
+        <p>EVAL</p>
+        <p class="number-bold"><%= @player.avg_player_stats(@player)[:eval_player] %></p>
       </div>
     </div>
     <div class="charts-player">
       <h3>Player Charts</h3>
     </div>
 
-    <div class="charts-player mt-4">
-      <h4> Last Game Stats vs Mean Game Stats </h4>
-        <div class='chart-container' data-controller='player-charts' data-player-charts-player-id-value='<%= @player.id %>'>
+    <div class="chart-container mt-4" data-controller='player-charts'
+           data-player-charts-player-id-value='<%= @player.id %>'>
+
+        <div class='container-bar'>
+          <h5> Last Game Stats vs Average Game Stats </h5>
           <canvas class='card-chart' id='chart' data-player-charts-target='chartBar'></canvas>
         </div>
 
-      <h4>See Your Strengths </h4>
-        <div class='chart-container' data-controller='player-charts' data-player-charts-player-id-value='<%= @player.id %>'>
-          <canvas class='card-chart' id='chartLine' data-player-charts-target='chartPolar'></canvas>
-          </div>
+        <div class='container-bar'>
+          <h5>See Your Strengths </h5>
+          <canvas class='card-chart' id='chartRadar' data-player-charts-target='chartRadar'></canvas>
+        </div>
+
     </div>
 </div>

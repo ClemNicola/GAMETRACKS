@@ -63,7 +63,7 @@ class User < ApplicationRecord
     fg_pct = fg_attempt_total != 0 ? (stat.sum(&:fg_made) / fg_attempt_total) * 100 : 0
     ft_pct = ft_attempt_total != 0 ? (stat.sum(&:ft_made) / ft_attempt_total) * 100 : 0
     threep_pct = threep_attempt_total != 0 ? (stat.sum(&:threep_made) / threep_attempt_total) * 100 : 0
-    
+
     reduced_player_stats = {
       minute: stat.sum(&:minute),
       point: stat.sum(&:point),
@@ -88,7 +88,7 @@ class User < ApplicationRecord
     }
   end
 
-  def mean_player_stats(game)
+  def avg_player_stats(game)
     total_player_stats = compiled_player_stats(game)
     total_past_game = past_game(game).count
     total_player_stats.transform_values! { |stat| (stat.to_f / total_past_game).round(2) }
@@ -96,7 +96,7 @@ class User < ApplicationRecord
   end
 
   def radar_total_stats(game)
-    mean_player_stats(game).except(:minute, :off_rebound, :def_rebound, :eval_player, :fg_made, :ft_made, :threep_made)
+    avg_player_stats(game).except(:minute, :off_rebound, :def_rebound, :eval_player, :fg_made, :ft_made, :threep_made)
   end
 
   def player

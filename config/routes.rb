@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
   resources :games, only: %i[show index] do
     resources :participations, only: %i[new]
+
     member do
       post 'set_titulaire', to: "participations#titularize"
       get :quarter_data

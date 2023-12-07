@@ -5,7 +5,7 @@ export default class extends Controller {
 
   static targets = [
     'chartBar',
-    'chartPolar',
+    'chartRadar',
   ]
 
   static values = {
@@ -15,7 +15,7 @@ export default class extends Controller {
   connect() {
     console.log(this.playerIdValue);
     this.loadStats()
-    this.polarStats()
+    this.radarStats()
   }
 
   loadStats() {
@@ -29,11 +29,11 @@ export default class extends Controller {
       });
   }
 
-  polarStats() {
+  radarStats() {
     fetch(`/players/${this.playerIdValue}/radar_player_data`)
       .then((response) => response.json())
       .then((data) => {
-        this.polarChart(data)
+        this.radarChart(data)
       })
       .catch((error) => {
         console.error("Error fetching stats data:", error);
@@ -43,7 +43,7 @@ export default class extends Controller {
   createChart(data) {
     const labels = ['Minutes','Points', 'Assist', 'Rebound', 'Off Rebound', 'Def Rebound', 'Block', 'Turnover', 'Eval Player']
     const playerStats = data.player_stat_for_game
-    const totalStats = data.mean_player_stats
+    const avgStats = data.avg_player_stats
 
     new Chart(this.chartBarTarget, {
       type: 'bar',
@@ -59,8 +59,8 @@ export default class extends Controller {
 
           },
           {
-            label: 'Total Player Stats',
-            data: Object.values(totalStats),
+            label: 'Average Player Stats',
+            data: Object.values(avgStats),
             backgroundColor: [
               'rgb(246, 244, 244)'
             ],
@@ -69,12 +69,24 @@ export default class extends Controller {
         ],
       },
       options:{
+        scales: {
+          x: {
+            ticks:{
+              color:'rgb(246,244,244)',
+            },
+          },
+          y:{
+            ticks:{
+              color: 'rgb(246,244,244)',
+            },
+          },
+        },
         plugins: {
           legend:{
             labels: {
               color: 'rgb(246, 244, 244)',
               font: {
-                size: 14,
+                size: 12,
               },
             },
           },
@@ -83,36 +95,51 @@ export default class extends Controller {
     })
   }
 
-  polarChart(data) {
+  radarChart(data) {
     const labels = ['Points', 'Assist', 'Rebound', 'Block', 'Turnover']
     const radarTotal = data.radar_total_stats
-    new Chart(this.chartPolarTarget, {
+    new Chart(this.chartRadarTarget, {
       type: 'radar',
       data: {
         labels: labels,
-        datasets: [
-          {
+        datasets: [{
             fill: true,
             label: 'My Player',
             data: Object.values(radarTotal),
-            backgroundColor: 'rgb(255, 117, 23)',
-            borderColor: 'rgb(255, 117, 23)',
+            backgroundColor: 'rgb(255, 117, 23, 0.2)',
+            borderColor: 'rgb(255, 117, 23,1)',
             pointBackgroundColor: 'rgb(255, 117, 23)',
             pointBorderColor: 'rgb(246,244,244)',
-            pointHoverBackgroundColor: 'rgb(246,244,244)',
-            pointHoverBorderColor: 'rgb(255, 117, 23)',
-          },
-        ],
+          }],
       },
       options:{
-        plugins: {
-          legend:{
-            labels: {
+        scales: {
+          r: {
+            pointLabels: {
               color: 'rgb(246, 244, 244)',
               font: {
-                size: 14,
-              },
+                size: 12
+              }
             },
+            grid: {
+              color: 'rgb(70, 70, 70)',
+              backgroundColor: 'rgba(188, 188, 188, 0.1)',
+            },
+            ticks: {
+              backdropColor: 'transparent',
+              color:'rgb(246, 244, 244)',
+            }
+
+          },
+        },
+        plugins:{
+          legend:{
+            labels:{
+              color: 'rgb(246, 244, 244)',
+              font:{
+                size: 12,
+              }
+            }
           },
         },
       },
