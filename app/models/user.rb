@@ -84,15 +84,18 @@ class User < ApplicationRecord
       def_rebound: stat.sum(&:def_rebound),
       turnover: stat.sum(&:turnover),
       fault: stat.sum(&:fault),
-      eval_player: stat.sum(&:eval_player) / stat.count
+      eval_player: stat.sum(&:eval_player)
     }
   end
+  # / stat.count
 
   def avg_player_stats(game)
     total_player_stats = compiled_player_stats(game)
     total_past_game = past_game(game).count
     total_player_stats.transform_values! { |stat| (stat.to_f / total_past_game).round(2) }
-    total_player_stats.slice(:minute, :point, :rebound, :assist, :fg_made, :ft_made, :threep_made, :off_rebound, :def_rebound, :block, :turnover, :eval_player)
+    avg_player = total_player_stats.slice(:minute, :point, :rebound, :assist, :off_rebound, :def_rebound, :block, :turnover,:eval_player, :fg_attempt, :fg_made, :ft_attempt, :)
+    avg_player[:eval_player] = (avg_player[:point] + avg_player[:off_rebound] + avg_player[:def_rebound] + avg_player[:assist] + avg_player[:steal] + avg_player[:block]) - ()
+    avg_player
   end
 
   def radar_total_stats(game)
@@ -103,5 +106,9 @@ class User < ApplicationRecord
     last_name = user.name.split(', ').first
     first_name = "#{user.name.split(', ').last[0]}."
     [last_name, first_name].join(' ')
+  end
+
+  def eval_player
+    ( point + off_rebound + def_rebound + assist + steal + block ) - ( fg_attempt - fg_made - ft_attempt - ft_made - turnover )
   end
 end
