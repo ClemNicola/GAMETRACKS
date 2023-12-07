@@ -7,13 +7,13 @@
 
       <div class="divpoints1">
 
-        <%= label_tag :player_stat_ft_made, "1", class: "btn-green-round btn-margin1", data: { type: "ft_made", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_2" }%>
+        <%= label_tag :player_stat_ft_made, "1", class: "btn-green-round btn-margin1", data: { type: "ft_made", type_action: '+1 point ☝️', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_2", point: '1' }%>
         <%= check_box_tag "player_stat[ft_made]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_fg_made, "2", class: "btn-green-round btn-margin1", data: { type: "fg_made", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_2" }%>
+        <%= label_tag :player_stat_fg_made, "2", class: "btn-green-round btn-margin1", data: { type: "fg_made", type_action: '+2 points ✌️', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_2", point: '2' }%>
         <%= check_box_tag "player_stat[fg_made]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_threep_made, "3", class: "btn-green-round btn-margin2", data: { type: "threep_made", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_2" }%>
+        <%= label_tag :player_stat_threep_made, "3", class: "btn-green-round btn-margin2", data: { type: "threep_made", type_action: '+3 points 👌', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_2", point: '3' }%>
         <%= check_box_tag "player_stat[threep_made]", "1", false, hidden: true %>
 
         <span class="material-symbols-outlined">menu</span>
@@ -22,13 +22,13 @@
 
       <div class="divpoints2">
 
-        <%= label_tag :player_stat_ft_attempt, "1", class: "btn-red-round btn-margin1", data: { type: "ft_attempt", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
+        <%= label_tag :player_stat_ft_attempt, "1", class: "btn-red-round btn-margin1", data: { type: "ft_attempt", type_action: 'FT missed 💩', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[ft_attempt]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_fg_attempt, "2", class: "btn-red-round btn-margin1", data: { type: "fg_attempt", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
+        <%= label_tag :player_stat_fg_attempt, "2", class: "btn-red-round btn-margin1", data: { type: "fg_attempt", type_action: 'FG missed 💩', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[fg_attempt]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_threep_attempt, "3", class: "btn-red-round btn-margin2", data: { type: "threep_attempt", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
+        <%= label_tag :player_stat_threep_attempt, "3", class: "btn-red-round btn-margin2", data: { type: "threep_attempt", type_action: '3pts missed 💩', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[threep_attempt]", "1", false, hidden: true %>
 
         <span class="material-symbols-outlined">undo</span>
@@ -42,15 +42,15 @@
       <div class="divdivaff">
 
         <div class="divaffichage1">
-          <img src="<%= asset_path('Tours.png') %>" alt="" class="logomatch">
+          <img src="<%= asset_path('bcm_logo.png') %>" alt="" class="logomatch">
           <%# SCORE DE LEQUIPE A CHANGER QUAND ON MARQUE %>
-          <p><%= @game.score_home_team %></p>
+          <p data-add-stats-target='myScore'>0</p>
         </div>
 
         <div class="divaffichage2">
-          <img src="<%= asset_path('Pau.png') %>" alt="" class="logomatch">
+          <img src="<%= asset_path('sig_logo.png') %>" alt="" class="logomatch">
           <%# SCORE DE LEQUIPE A CHANGER QUAND ILS MARQUENT %>
-          <p><%= @game.score_away_team %></p>
+          <p data-add-stats-target='opponentScore'>0</p>
         </div>
 
       </div>
@@ -58,7 +58,10 @@
       <div class="divaffichage3">
 
         <%# AFFICHER LES 3 DERNIERES STATS PRISES A FAIRE %>
-        <p>stats display</p>
+        <div class="alexis">
+          <div data-add-stats-target="player"></div>
+          <div data-add-stats-target="action"></div>
+        </div>
 
       </div>
 
@@ -68,33 +71,33 @@
 
       <div class="divstats1">
 
-        <%= label_tag :player_stat_block, "BLK", class: "btn-white-round btn-margin1", data: { type: "block", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
+        <%= label_tag :player_stat_block, "BLK", class: "btn-white-round btn-margin1", data: { type: "block", type_action: 'Block ⛔', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" } %>
         <%= check_box_tag "player_stat[block]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_steal, "STL", class: "btn-white-round btn-margin1", data: { type: "steal", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
+        <%= label_tag :player_stat_steal, "STL", class: "btn-white-round btn-margin1", data: { type: "steal", type_action: 'Steal 🏀', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[steal]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_off_rebound, "OR", class: "btn-white-round btn-margin2", data: { type: "off_rebound", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
+        <%= label_tag :player_stat_off_rebound, "OR", class: "btn-white-round btn-margin2", data: { type: "off_rebound", type_action: 'Offensive Rebound 🏀', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[off_rebound]", "1", false, hidden: true %>
 
         <%# LOGIQUE A BOSSER FORT OU A NE PAS MONTRER PENDANT LA DEMO %>
-        <%= label_tag :player_stat_minute, "Sub", class: "btn-rectangle", data: { type: "minute", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_3" }%>
+        <%= label_tag :player_stat_minute, "Sub", class: "btn-rectangle", data: { type: "minute", type_action: 'substitution', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_3" }%>
         <%= check_box_tag "player_stat[minute]", "1", false, hidden: true %>
 
       </div>
 
       <div class="divstats2">
 
-        <%= label_tag :player_stat_turnover, "TO", class: "btn-white-round btn-margin1", data: { type: "turnover", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
+        <%= label_tag :player_stat_turnover, "TO", class: "btn-white-round btn-margin1", data: { type: "turnover", type_action: 'Turnover 😩', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[turnover]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_assist, "AST", class: "btn-white-round btn-margin1", data: { type: "assist", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
+        <%= label_tag :player_stat_assist, "AST", class: "btn-white-round btn-margin1", data: { type: "assist", type_action: 'Assist 🏀', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[assist]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_def_rebound, "DR", class: "btn-white-round btn-margin2", data: { type: "def_rebound", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
+        <%= label_tag :player_stat_def_rebound, "DR", class: "btn-white-round btn-margin2", data: { type: "def_rebound", type_action: 'Defensive Rebound 🏀', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[def_rebound]", "1", false, hidden: true %>
 
-        <%= label_tag :player_stat_fault, "Foul", class: "btn-rectangle", data: { type: "fault", action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
+        <%= label_tag :player_stat_fault, "Foul", class: "btn-rectangle", data: { type: "fault", type_action: 'Foul ❌', action: "click->add-stats#action", bs_toggle: "modal", bs_target: "#stats_1" }%>
         <%= check_box_tag "player_stat[fault]", "1", false, hidden: true %>
 
       </div>
@@ -108,7 +111,7 @@
           <div class="modal-body">
             <div class="player-modal">
               <% @titulaires.each do |participation| %>
-                <div class="card-select-player card-test1" data-action="click->add-stats#player" data-id="<%= participation.id %>" data-bs-dismiss="modal">
+                <div class="card-select-player card-test1" data-action="click->add-stats#player" data-id="<%= participation.id %>" data-bs-dismiss="modal" data-name="<%= participation.user.name %>">
                   <img src="<%= asset_path('curry.png') %>">
                   <p><%= participation.user.name %></p>
                 </div>
@@ -126,17 +129,18 @@
         <div class="modal-content">
           <div class="modal-body">
             <div class="player-modal player-team-modal">
-              <%# AJOUTER ACTION AUGMENTER SCORE EQUIPE ADVERSE SUR STATS ET DONC AUSSI DISPLAY MID %>
-              <div class="card-select-player card-test1" data-bs-dismiss="modal">
-                <img src="<%= asset_path('curry.png') %>">
+              <div class="card-select-player card-test2" data-bs-dismiss="modal"  data-action="click->add-stats#player" data-team='opponent' data-name="<%= @away_team.city %>">
+                <img src="<%= asset_path('sig_logo.png') %>" id="logomatchsig">
                 <p><%= @away_team.city %></p>
               </div>
-              <% @titulaires.each do |participation| %>
-                <div class="card-select-player card-test1" data-action="click->add-stats#player" data-id="<%= participation.id %>" data-bs-dismiss="modal">
-                  <img src="<%= asset_path('curry.png') %>">
-                  <p><%= participation.user.name %></p>
-                </div>
-              <% end %>
+              <div class="laura">
+                <% @titulaires.each do |participation| %>
+                  <div class="card-select-player card-test1" data-action="click->add-stats#player" data-id="<%= participation.id %>" data-bs-dismiss="modal" data-team='home' data-name="<%= participation.user.name %>">
+                    <img src="<%= asset_path('curry.png') %>">
+                    <p><%= participation.user.name %></p>
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -146,37 +150,70 @@
 
 
     <%# MODAL POUR LES CHANGEMENTS %>
-
-    <%# 1ère modal ou on sélectionne / déselectionne les joueurs %>
     <div class="modal fade" id="stats_3" aria-hidden="true" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-body">
-            <% @participations_selected.each do |participation| %>
-                <div class="card-select-player card-test1">
+            <div class="laura1">
+              <% @titulaires.each do |participation| %>
+                <div class="card-select-player card-test1" data-action='click->add-stats#selectPlayer'>
                   <img src="<%= asset_path('curry.png') %>">
                   <p><%= participation.user.name %></p>
+                  <i class="fa-regular fa-circle-check"></i>
                 </div>
               <% end %>
+            </div>
+              <div class="laura1">
+                <% @non_titulaires.each do |participation| %>
+                  <div class="card-select-player card-test2">
+                    <img src="<%= asset_path('curry.png') %>">
+                    <p><%= participation.user.name %></p>
+                  </div>
+                <% end %>
+                <span class="btn-rectangle minibtnnext" data-bs-target="#stats_4" data-bs-toggle="modal">Next</span>
+              </div>
           </div>
         </div>
-        <%# BTN pour accéder à la prochaine modal %>
-        <button class="btn btn-primary" data-bs-target="#stats_4" data-bs-toggle="modal">Open second modal</button>
       </div>
     </div>
 
-    <%# 2ème modal ou on indique le temps restant sur le tableau d'affichage %>
     <div class="modal fade" id="stats_4" aria-hidden="true" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-body">
-            <div class="card-test1">
-              <p>coucou</p>
+            <div class="card-test11">
+              <span class="timerem">Remaining Time :</span>
+              <div class="temps1" style="margin-top: 2vh;">
+                <span data-bs-dismiss="modal">10:00</span>
+                <span data-bs-dismiss="modal">9:30</span>
+                <span data-bs-dismiss="modal">9:00</span>
+                <span data-bs-dismiss="modal">8:30</span>
+                <span data-bs-dismiss="modal">8:00</span>
+              </div>
+              <div class="temps1">
+                <span data-bs-dismiss="modal">7:30</span>
+                <span data-bs-dismiss="modal">7:00</span>
+                <span data-bs-dismiss="modal">6:30</span>
+                <span data-bs-dismiss="modal">6:00</span>
+                <span data-bs-dismiss="modal">5:30</span>
+              </div>
+              <div class="temps1">
+                <span data-bs-dismiss="modal">5:00</span>
+                <span data-bs-dismiss="modal">4:30</span>
+                <span data-bs-dismiss="modal">4:00</span>
+                <span data-bs-dismiss="modal">3:30</span>
+                <span data-bs-dismiss="modal">3:00</span>
+              </div>
+              <div class="temps1">
+                <span data-bs-dismiss="modal">2:30</span>
+                <span data-bs-dismiss="modal">2:00</span>
+                <span data-bs-dismiss="modal">1:30</span>
+                <span data-bs-dismiss="modal">1:00</span>
+                <span data-bs-dismiss="modal">0:30</span>
+              </div>
             </div>
           </div>
         </div>
-        <%# BTN pour fermer la 2ème modal (on ne veut pas revenir en arrière) %>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Save"></button>
       </div>
     </div>
 
