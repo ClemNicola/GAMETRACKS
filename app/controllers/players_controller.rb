@@ -2,10 +2,10 @@ class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy, :player_data, :radar_player_data]
 
   def player_data
-    player_stat_for_game = @player.player_stat_for_game(@player)
-    mean_player_stats = @player.mean_player_stats(@player)
+    player_stat_for_game = @player.player_stat_for_game(@player.games.last)
+    avg_player_stats = @player.avg_player_stats(@player)
 
-    @player_data = { player_stat_for_game: player_stat_for_game, mean_player_stats: mean_player_stats}
+    @player_data = { player_stat_for_game: player_stat_for_game, avg_player_stats: avg_player_stats}
     render json: @player_data
   end
 

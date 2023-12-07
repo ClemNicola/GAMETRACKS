@@ -72,7 +72,7 @@ export default class extends Controller {
             ],
           },
           {
-            label: 'Total Team Stats',
+            label: 'Average Team Stats',
             data: Object.values(totalStats),
             backgroundColor: [
             'rgb(246,244,244)',
@@ -118,13 +118,13 @@ export default class extends Controller {
         labels: labels,
         datasets: [
           {
-            label: 'Team point per quarter',
+            label: 'Team points per quarter',
             data: Object.values(quarterHome),
             fill: false,
             borderColor: 'rgb(255, 117, 23)',
           },
           {
-            label: 'Opponent point per quarter',
+            label: 'Opponent points per quarter',
             data: Object.values(quarterOpponent),
             fill: false,
             borderColor: 'rgb(246,244,244)',
