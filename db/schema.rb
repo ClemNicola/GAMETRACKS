@@ -97,7 +97,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_07_151625) do
     t.datetime "updated_at", null: false
     t.boolean "home?", default: false
     t.boolean "selected?"
-    t.boolean "titulaire?"
+    t.boolean "titulaire?", default: false
     t.index ["game_id"], name: "index_participations_on_game_id"
     t.index ["team_id"], name: "index_participations_on_team_id"
     t.index ["user_id"], name: "index_participations_on_user_id"

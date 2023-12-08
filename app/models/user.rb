@@ -58,7 +58,7 @@ class User < ApplicationRecord
 
   def compiled_player_stats(game)
     stat = past_game_stats(game)
-
+    stat.delete(nil)
     fg_attempt_total = stat.sum(&:fg_attempt)
     ft_attempt_total = stat.sum(&:ft_attempt)
     threep_attempt_total = stat.sum(&:threep_attempt)

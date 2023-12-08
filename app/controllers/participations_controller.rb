@@ -8,8 +8,10 @@ class ParticipationsController < ApplicationController
   end
 
   def titularize
-    @participations = Participation.where(user_id: params[:players], game_id: params[:id], selected?: true)
-    @participations.update_all(titulaire?: true)
+    params[:players].each do |player_id|
+      @participation = Participation.where(user_id: player_id, game_id: params[:id], selected?: true)
+      @participation.update(titulaire?: true)
+    end
     redirect_to play_game_path(params[:id])
   end
 
