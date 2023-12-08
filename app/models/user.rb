@@ -114,8 +114,4 @@ class User < ApplicationRecord
   def eval_player
     ( point + off_rebound + def_rebound + assist + steal + block ) - ( fg_attempt - fg_made - ft_attempt - ft_made - turnover )
   end
-
-  attr_accessor :club_name
-  attr_accessor :coach_category
-  attr_accessor :city
 end
