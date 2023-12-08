@@ -1,37 +1,80 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h3 class="text-center">Complete User's Profile</h3>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+<%= form_tag update_profile_path, method: :put, id: 'profile-form' do %>
+
+  <%= devise_error_messages! %>
 
   <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+    <div class="form-section">
+      <h5>Category</h5>
+      <%= select_tag :category, options_for_select(['Coach', 'Player'], selected: @user.category), prompt: 'Select a category', id: 'category-select' %>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+      <% if @user.category == "Coach" %>
+      <h6 class="coach-info">(This is your team's information)</h6>
+      <% end %>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
+    </div>
 
-    <%= f.input :phone %>
+    <div class="form-section" id="coach-section">
+      <!-- Coach Fields -->
+      <h5>Club name</h5>
+      <%= text_field_tag :club_name, @user.club_name, required: true %>
+
+      <h5>Age level</h5>
+      <%= select_tag :age_level, options_for_select(['Senior', 'U20', 'U15'], selected: @user.age_level), prompt: 'Select an age level' %>
+
+      <h5>Coach Category</h5>
+      <%= select_tag :coach_category, options_for_select(['N1', 'N2', 'N3', 'R1', 'R2', 'R3', 'D1', 'D2', 'D3'], selected: @user.coach_category), prompt: 'Select a category' %>
+
+      <h5>City</h5>
+      <%= text_field_tag :city, @user.city, required: true %>
+    </div>
+
+    <div class="form-section" id="player-section" style="display: none;">
+      <!-- Player Fields -->
+      <h5>License ID</h5>
+      <%= text_field_tag :license_id, @user.license_id, required: true %>
+
+      <h5>Phone</h5>
+      <%= text_field_tag :phone, @user.phone, required: true %>
+
+      <h5>Sex</h5>
+      <%= select_tag :sex, options_for_select(['Male', 'Female'], @user.sex), prompt: 'Select a sex' %>
+
+      <h5>Description</h5>
+      <%= text_area_tag :description, @user.description, required: true %>
+
+      <h5>Position</h5>
+      <%= select_tag :position, options_for_select(['Point Guard', 'Shooting Guard', 'Small Forward', 'Power Forward', 'Center'], @user.position), prompt: 'Select a position' %>
+
+      <h5>Height</h5>
+      <%= text_field_tag :height, @user.height, required: true %>
+    </div>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= submit_tag "Update Profile", class: "btn btn-primary btn-light" %>
   </div>
+
 <% end %>
 
-<h3>Cancel my account</h3>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const categorySelect = document.getElementById('category-select');
+    const coachSection = document.getElementById('coach-section');
+    const playerSection = document.getElementById('player-section');
+    const coachInfo = document.querySelector('.coach-info');
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+    categorySelect.addEventListener('change', function () {
+      if (categorySelect.value === 'Coach') {
+        coachSection.style.display = 'block';
+        playerSection.style.display = 'none';
+        coachInfo.style.display = 'inline';
+      } else if (categorySelect.value === 'Player') {
+        coachSection.style.display = 'none';
+        playerSection.style.display = 'block';
+        coachInfo.style.display = 'none';
+      }
+    });
+  });
+</script>
