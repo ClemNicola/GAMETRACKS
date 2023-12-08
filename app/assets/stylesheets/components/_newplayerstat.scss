@@ -127,7 +127,20 @@
 }
 
 .megamegadiv {
+  .btn-green-round:hover {
+    background-color: #24FF00;
+  }
+}
+
+
+.megamegadiv {
   .btn-red-round:active {
+    background-color: #f00;
+  }
+}
+
+.megamegadiv {
+  .btn-red-round:hover {
     background-color: #f00;
   }
 }
@@ -137,9 +150,19 @@
     background-color: $white;
   }
 }
+.megamegadiv {
+  .btn-white-round:hover {
+    background-color: $white;
+  }
+}
 
 .megamegadiv {
   .btn-rectangle:active {
+    background-color: $orange
+  }
+}
+.megamegadiv {
+  .btn-rectangle:hover {
     background-color: $orange
   }
 }
@@ -168,6 +191,10 @@
   background-color: $orange;
 }
 
+.card-test1:hover {
+  background-color: $orange;
+}
+
 .card-test2 {
   border: 2px solid $white;
   justify-content: center;
@@ -182,6 +209,10 @@
 }
 
 .card-test2:active {
+  background-color: $white;;
+}
+
+.card-test2:hover {
   background-color: $white;;
 }
 
@@ -226,6 +257,10 @@
   span:active {
     background-color: $orange;
   }
+}
+
+.temps1 span:hover{
+  background-color: $orange;
 }
 
 .minibtnnext {
